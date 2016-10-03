@@ -36,10 +36,10 @@ function getRegisterLoginUserLinks()
 	});
 	// Callback handler that will be called on success
 	request.done(function (response, textStatus, jqXHR){
-		console.log('request done');
+		//console.log('request done');
 		var res = response.split("|");
-		console.log(res[0]);
-		console.log(res[1]);
+		//console.log(res[0]);
+		//console.log(res[1]);
 		replaceHtml('login/user', res[0]);              //replaces the link with either the logged in user link or login link
 		replaceHtml('register/projects', res[1]);       //replaces the link with either the projects link or register link
 	});
@@ -77,7 +77,7 @@ function showProfile(uid)
 function getBody()
 {
     //window.location.search is only the ?= ... part
-    var request = $.ajax({ rl: "Body.php", type: "post", data: window.location.search })
+    var request = $.ajax({ url: "Body.php", type: "post", data: window.location.search })
     request.done(function (response, textStatus, jqXHR) {
         console.log('request done');
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link

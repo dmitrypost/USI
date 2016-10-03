@@ -59,3 +59,6 @@
 	
 // 	calls the function to change the links html
 getRegisterLoginUserLinks.call();
+
+//  calls the function to change the body panel to the body of either url based if search parameters included or to default page
+getBody.call();

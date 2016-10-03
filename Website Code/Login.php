@@ -1,22 +1,20 @@
 <!--script to process the login -->
 <?php
-	function CreateSessionID(string $email,string $firstname)
+	function CreateSessionID($email,$firstname)
 	{
+		include 'Database.php';
+		$query = "INSERT ";
+		
+		session_start();
 		//session salt cookie
+		
+		return 'Dmitry';
 		
 	}
 	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     { // Handle the form.
-
-		//connect to database
-		$host = gethostbyname ('mysqlsvr.ddns.net');
-		$con = mysqli_connect($host, 'user', 'password', 'usiprojectrepository','3301');
-		
-		if (!$con)
-		{
-			die ("connection error: " . mysqli_connect_error());
-		}
+		include 'Database.php';
 		//login attempt
 		$error = FALSE;
 		if (!empty($_POST['email']) && !empty($_POST['password']))
@@ -32,7 +30,7 @@
 		if (!$error)
 		{
 			//Define query
-			$query = "SELECT usr_fname, usr_lname FROM tblUser WHERE usr_email = '".$email."' AND usr_password = '".$password."'";
+			$query = "SELECT usr_fname, usr_lname, usr_id FROM tblUser WHERE usr_email = '".$email."' AND usr_password = '".$password."'";
 			//Execute query
 			if ($result = mysqli_query($con, $query))
 			{
@@ -41,13 +39,15 @@
 				{
 					//echo $row['usr_fname'] . " " . $row['usr_lname'] ;
 					//start creating session cookie so webpage can read cookie to determine if user is logged in or not
-					session_start();
-					// Set session variables
-					$_SESSION["sid"] = CreateSessionID($email,$row['usr_fname']);
 					
-				}
-				
-				
+					// Set session variables
+					session_start();
+					setcookie('u_name', $row['usr_fname'], time() + (86400 * 30), "/");
+					$query = "INSERT INTO tblSession (ses_session,ses_usr_id,ses_date)SET(".session_id().",".$row['usr_id'].",NOW())";
+					if ($result = mysqli_query($con, $query2))
+					{
+					}				
+				}				
 			}
 			else
 			{
