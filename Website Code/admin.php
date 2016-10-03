@@ -14,14 +14,7 @@
         if ($_SERVER['REQUEST_METHOD'] == 'POST') 
         { // Handle the form.
 			
-			//connect to database
-			$host = gethostbyname ('mysqlsvr.ddns.net');
-            $con = mysqli_connect($host, 'user', 'password', 'usiprojectrepository','3301');
-			
-			if (!$con)
-			{
-				die ("connection error: " . mysqli_connect_error());
-			}
+			include 'Database.php';
 			//login attempt
 			$error = FALSE;
 			if (!empty($_POST['email']) && !empty($_POST['password']))
