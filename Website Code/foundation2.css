@@ -1,0 +1,34 @@
+@charset "utf-8";
+/* CSS Document */
+
+#loginDiv {
+	display: inline-block;
+    width: 240px;
+    height: 180px;
+    margin: 10px;
+    border: 2px solid rgba(255,50,50,0.80);
+    position: absolute;
+    right: 10%;
+	background:rgba(0,0,0,0.65);
+	-moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+	overflow:hidden;
+	visibility:hidden;
+	}
+
+#loginForm {
+	padding:5px;
+	display:compact;	
+}
+
+#loginForm > input {
+	height:2px;
+}
+
+input {
+	-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}#ComboSearch {
+}

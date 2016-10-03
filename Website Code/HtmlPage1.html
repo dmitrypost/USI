@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://www.usi.edu/f4/css/foundation.css">
+    <link rel="stylesheet" type="text/css" href="foundation2.css">
+	<script src="EarlyBindingFunctions.js"></script>    
+</head>
+<body>
+    <div id="HeadPanel" style="height:150px;width:100%;"> 
+        <div>
+            <!-- Image area -->
+            <div class="row-container">
+                <header class="row usi-header">
+                    <div class="large-12 small-12 columns">
+                        <a href="/"><img src="https://www.usi.edu/images/newlogo/USI-Logo.png" alt="University of Southern Indiana"></a>
+                    </div>
+                </header>
+            </div>
+        </div>
+        
+        <div>
+            
+            <nav class="top-bar no-bottom-margin">
+                <!--Links, search, login area -->
+                <section class="top-bar-section">
+                    <ul class="left">
+                        <li class="divider show-for-medium-down"></li>
+                        <li class=""><a href="my.usi.edu">Home</a></li>
+                        <li class="divider"></li>
+                        <li class=""><a href="my.usi.edu">Link2</a></li>
+                        <li class="divider show-for-medium-down"></li>
+                    </ul>
+					<ul class="right">
+                        <li id="login/user"><a href="javascript:void(0)" onClick="showLogin()">Login</a></li>
+            			<li id="register/projects"><a href="javascript:void(0)" onClick="showRegister()">Register</a></li>
+                        <li class="has-form">
+                            <form  novalidate>
+                                <div class="row collapse">
+                                    <div class="small-12 columns">
+                                        <div class="input-container icon-right">
+                                            <input type="text" id="ComboSearch" name="q" class="small-12 ui-autocomplete-input" title="Search repositories" value="Search" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                            <div class="fi-magnifying-glass"></div>
+                                        </div>
+                         
+                                    </div>
+                                </div>
+                            </form>
+							
+                        </li>
+                    </ul>
+                    <ul class="right"></ul>
+                </section>
+
+            </nav>
+        </div>
+    </div>
+	<nav class="">
+        <section class="">
+                    <div id="loginDiv">
+                        <form id="loginForm">
+                            <div><input type="email" name="email" class="small ui-autocomplete-input" title="Enter Email" value="Email" autocomplete="off"></div>
+                            <div><input type="password" name="password" class="small ui-autocomplete-input" title="Enter Password" value="" autocomplete="off">        </div>
+                            <div><input type="hidden" name="session" value="none"></div>
+							<div><input type="submit" class="button" value="Login"></div>
+                        </form>
+                    </div>            
+        </section>
+    </nav>
+    <div id="Body">
+        <table style="width:100%">
+            <tr>
+                <td style="width:30%">
+                    <div id="SidePanel"> side panel area here</div>
+                </td>
+                <td style="width:70%">
+                    <div id="BodyPanel"> body panel area here</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+<script src="LateBindingFunctions.js"></script>
+</html>
