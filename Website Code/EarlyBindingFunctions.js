@@ -3,7 +3,6 @@
 //shows the login div containing the login form
 function showLogin()
 {
-	console.log('clicked');
 	document.getElementById('loginDiv').style.visibility='visible'
 	return false;	
 }
@@ -11,7 +10,6 @@ function showLogin()
 //clears login information
 function clearLogin()
 {
-	console.log('clearLogin function called');
 	document.getElementById("loginForm").reset();
 	return false;	
 }
@@ -27,7 +25,6 @@ function replaceHtml(element,html) {
 function getRegisterLoginUserLinks()
 {
     var request;
-	console.log('called');
 	serializedData = "" ;
 	request = $.ajax({
 		url: "GetLoginLinks.php",
@@ -36,10 +33,7 @@ function getRegisterLoginUserLinks()
 	});
 	// Callback handler that will be called on success
 	request.done(function (response, textStatus, jqXHR){
-		//console.log('request done');
 		var res = response.split("|");
-		//console.log(res[0]);
-		//console.log(res[1]);
 		replaceHtml('login/user', res[0]);              //replaces the link with either the logged in user link or login link
 		replaceHtml('register/projects', res[1]);       //replaces the link with either the projects link or register link
 	});
@@ -63,7 +57,6 @@ function showProfile(uid)
 {
     var request = $.ajax({url:"Body.php",type: "post", data: "uid=" + uid })
     request.done(function (response, textStatus, jqXHR) {
-        console.log('request done');
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
     });
     // Callback handler that will be called on failure
@@ -79,7 +72,6 @@ function getBody()
     //window.location.search is only the ?= ... part
     var request = $.ajax({ url: "Body.php", type: "post", data: window.location.search })
     request.done(function (response, textStatus, jqXHR) {
-        console.log('request done');
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
     });
     // Callback handler that will be called on failure

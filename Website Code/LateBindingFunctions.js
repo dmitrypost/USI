@@ -1,17 +1,17 @@
 // JavaScript Document
 
 //clears out the text "search" from the search box on first focus
-	$('#ComboSearch').focus(function () { $(this).val(""); })
+$('#ComboSearch').focus(function () { $(this).val(""); })
 
 
 //Sending login info for processing
 
 	// Variable to hold request
-	var request;
+var request;
 	// Bind to the submit event of our form
-	$("#loginForm").submit(function(event){
+$("#loginForm").submit(function(event)
+{
 		// Prevent default posting of form - put here to work in case of errors
-		console.log('login clicked');
 		event.preventDefault();
 		// Abort any pending request
 		if (request) {
@@ -36,9 +36,8 @@
 		// Callback handler that will be called on success
 		request.done(function (response, textStatus, jqXHR){
 			// Log a message to the console
-			console.log("Hooray, it worked!");
-			console.log(response);
 			clearLogin.call();
+			getRegisterLoginUserLinks();
 		});
 		// Callback handler that will be called on failure
 		request.fail(function (jqXHR, textStatus, errorThrown){
@@ -55,7 +54,7 @@
 			$inputs.prop("disabled", false);
 		});
 		document.getElementById('loginDiv').style.visibility='hidden';
-	});
+});
 	
 // 	calls the function to change the links html
 getRegisterLoginUserLinks.call();
