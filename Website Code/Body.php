@@ -1,9 +1,8 @@
 <?php
 /*
 	Body.php
-	the body panel php which gets the proper page based on what was posted to it.
-	will get profile from Profile.php, Project from Project.php, Edit project from Edit.php
-
+	this php file prevents revealing the existance of addtional php files
+	
 	if the Index.html page recieves a uid=1 in the url then this page will pull the info and return a user's profile
 	uid: profile content to return		example: localhost/?uid=1
 	pid: project content to return		example: localhost/?pid=1
@@ -15,28 +14,45 @@
 */
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     { 
-		if (!empty($_POST['uid']))
-		{
-			include 'Profile.php';
-			// ^ Profile.php can read same post data as this page. no need to pass it in a post again
+		$defaultPage = true;
+		foreach ($_POST as $key => $val) {
+		  //echo '<p>'.$key.'</p>';
+		  $defaultPage = false;
+		  switch ($key)
+			{
+				case 'euid':
+					echo "edit profile";	
+					include 'EditProfile.php';		
+					break;	
+				case 'uid':
+					//echo "profile";
+					include 'Profile.php';
+					break;
+				case 'epid':
+					echo "edit project";
+					include 'EditProject.php';
+					break;
+				case 'pid';
+					echo "project";
+					include 'Project.php';
+					break;
+				case 's';
+					echo "search";
+					include 'Search.php';
+					break;
+				case 'pjs':
+					echo "user projects page";
+					include 'Projects.php';
+					break;	
+				case 'logout':
+					include 'Logout.php';
+					break;		
+			}
+			
 		}
-		elseif (!empty($_POST['pid']))
+		if ($defaultPage)
 		{
-			include 'Project.php';
-		}
-		elseif (!empty($_POST['eid']) && !empty($_POST['sid']))
-		{
-			// user has to be logged in to edit a project... thus make sure session id is passed
-			include 'EditProject.php';
-		}
-		elseif (!empty($_POST['s']))
-		{
-			include 'Search.php';
-		}
-		else
-		{
-			//default page
-			echo 'Default landing page';
+			echo "default landing page";
 		}
 	}
 ?>

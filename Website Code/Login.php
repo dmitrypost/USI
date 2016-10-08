@@ -17,9 +17,7 @@
 						// Set session variables
 						session_start();
 						setcookie('u_name', $row['usr_fname'], time() + (86400 * 30), "/");
-						$query = "INSERT INTO tblSession (ses_session,ses_usr_id,ses_date)VALUES('".session_id()."',".$row['usr_id'].",NOW())";
-						if ($result = mysqli_query($con, $query)){}
-						break; //leave the while loop 	
+						QuickQuery("INSERT INTO tblSession (ses_session,ses_usr_id,ses_date)VALUES('".session_id()."',".$row['usr_id'].",NOW())");
 					}	
 				}
 			}

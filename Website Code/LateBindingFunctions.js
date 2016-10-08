@@ -1,9 +1,9 @@
 // JavaScript Document
+//jshint unused:false
 
 //clears out the text "search" from the search box on first focus
-$('#ComboSearch').focus(function () { $(this).val(""); })
-
-
+$('#ComboSearch').focus(function () { "use strict"; //jshint unused:false
+$(this).val(""); });
 //Sending login info for processing
 
 	// Variable to hold request
@@ -11,6 +11,7 @@ var request;
 	// Bind to the submit event of our form
 $("#loginForm").submit(function(event)
 {
+	"use strict"; //jshint unused:false
 		// Prevent default posting of form - put here to work in case of errors
 		event.preventDefault();
 		// Abort any pending request
@@ -36,8 +37,9 @@ $("#loginForm").submit(function(event)
 		// Callback handler that will be called on success
 		request.done(function (response, textStatus, jqXHR){
 			// Log a message to the console
+			/* exported clearLogin */
 			clearLogin.call();
-			getRegisterLoginUserLinks();
+			getRegisterLoginUserLinks.call();
 		});
 		// Callback handler that will be called on failure
 		request.fail(function (jqXHR, textStatus, errorThrown){

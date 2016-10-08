@@ -5,7 +5,7 @@
 		if (!empty(session_id()))
 		{
 			include 'Database.php';
-			$query = "SELECT usr_fname, usr_id FROM tblUser INNER JOIN tblSession ON tblUser.usr_id = tblSession.ses_usr_id WHERE ses_session = '".session_id()."'";
+			$query = "SELECT usr_fname, usr_id FROM tblUser INNER JOIN tblSession ON tblUser.usr_id = tblSession.ses_usr_id WHERE ses_session = '".session_id()."' AND ISNULL(ses_expired)";
 			if ($result = mysqli_query($con, $query))
 			{
 				if (mysqli_num_rows($result) > 0)
@@ -13,11 +13,12 @@
 					while($row = mysqli_fetch_assoc( $result)) 
 					{
 						echo('<li class="has-dropdown">');
-						echo('<a href="javascript:void(0)" onClick="showProfile('.$row['usr_id'].')" title="View Profile">'.$row['usr_fname'].'</a>');
-						echo('<ul class="dropdown">');
+						echo('<a href="javascript:void(0)" onClick="showProfile('.$row['usr_id'].')" title="View Profile" onMouseOver="$(\'li.has-dropdown\').addClass(\'hover\')" >'.$row['usr_fname'].'</a>');
+						echo('<ul class="dropdown" onMouseOut="$(\'li.has-dropdown\').removeClass(\'hover\')">');
 						echo('<li class="title back js-generated"><h5><a href="#">« Back</a></h5></li>');
 						echo('<li><a class="parent-link js-generated" href="javascript:void(0)" onClick="showProfile('.$row['usr_id'].')" title="View Profile">'.$row['usr_fname'].'</a></li>');
-						echo('<li class=""><a href="javascript:void(0)" onClick="editProfile()" title="Edit Profile">Edit Profile</a></li>');				
+						echo('<li class=""><a href="javascript:void(0)" onClick="editProfile(0)" title="Edit Profile">Edit Profile</a></li>');			
+						echo('<li class=""><a href="javascript:void(0)" onClick="Logout()" title="Logout">Logout</a></li>');				
 						echo('</ul></li>');
 						echo('|');		
 						echo('<a href="javascript:void(0)" onClick="showProjects()" title="View Projects">Projects</a>');	
@@ -45,5 +46,6 @@
 			echo('|');		
 			echo('<a href="javascript:void(0)" onClick="showRegister()">Register</a>');					
 		}
+		mysqli_close($con);
 	}
 ?>

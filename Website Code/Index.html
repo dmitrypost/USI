@@ -3,6 +3,8 @@
 <head>
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://www.usi.edu/f4/css/foundation.css">
     <link rel="stylesheet" type="text/css" href="foundation2.css">
 	<script src="http://www.usi.edu/f4/js/foundation.min.js"></script>
@@ -22,40 +24,43 @@
             </div>
         </div>
         
-        <div>
-            
-            <nav class="top-bar no-bottom-margin">
-                <!--Links, search, login area -->
-                <section class="top-bar-section">
-                    <ul class="left">
-                        <li class="divider show-for-medium-down"></li>
-                        <li class=""><a href="my.usi.edu">Home</a></li>
-                        <li class="divider"></li>
-                        <li class=""><a href="my.usi.edu">Link2</a></li>
-                        <li class="divider show-for-medium-down"></li>
-                    </ul>
-					<ul class="right">
-                        <li id="login/user"><a href="javascript:void(0)" onClick="showLogin()">Login</a></li>
-            			<li id="register/projects"><a href="javascript:void(0)" onClick="showRegister()">Register</a></li>
-                        <li class="has-form">
-                            <form  novalidate>
-                                <div class="row collapse">
-                                    <div class="small-12 columns">
-                                        <div class="input-container icon-right">
-                                            <input type="text" id="ComboSearch" name="q" class="small-12 ui-autocomplete-input" title="Search repositories" value="Search" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-                                            <div class="fi-magnifying-glass"></div>
+        <div class="row-container top-bar-container">
+            <div class="row">
+                <nav class="top-bar no-bottom-margin">
+                    <!--Links, search, login area -->
+                    <section class="top-bar-section">
+                        <ul class="left">
+                            <li class="divider show-for-medium-down"></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="my.usi.edu">Home</a></li>
+                            <li class="divider"></li>
+                            <li class=""><a href="my.usi.edu">Link2</a></li>
+                            <li class="divider"></li>
+                            <li class="divider show-for-medium-down"></li>
+                        </ul>
+                        <ul class="right">
+                            <li id="login/user"><a href="javascript:void(0)" onClick="showLogin()">Login</a></li>
+                            <li id="register/projects"><a href="javascript:void(0)" onClick="showRegister()">Register</a></li>
+                            <li class="has-form">
+                                <form  novalidate>
+                                    <div class="row collapse">
+                                        <div class="small-12 columns">
+                                            <div class="input-container icon-right">
+                                                <input type="text" id="ComboSearch" name="q" class="small-12 ui-autocomplete-input" title="Search repositories" value="Search" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
+                                                <div class="fi-magnifying-glass"></div>
+                                            </div>
+                             
                                         </div>
-                         
                                     </div>
-                                </div>
-                            </form>
-							
-                        </li>
-                    </ul>
-                    <ul class="right"></ul>
-                </section>
-
-            </nav>
+                                </form>
+                                
+                            </li>
+                        </ul>
+                        <ul class="right"></ul>
+                    </section>
+    
+                </nav>
+            </div>
         </div>
     </div>
 	<nav class="">
@@ -70,18 +75,68 @@
                     </div>            
         </section>
     </nav>
-    <div id="Body">
-        <table style="width:100%">
-            <tr>
-                <td style="width:30%">
-                    <div id="SidePanel"> side panel area here</div>
-                </td>
-                <td style="width:70%">
-                    <div id="BodyPanel"> body panel area here</div>
-                </td>
-            </tr>
-        </table>
+    
+    <div id="body" class="BgContainer">
+    	<div id="ContentContainer" class="row-container">
+            <div class="row">
+				<div id="SidePanel" class="large-3 small-12 columns nav-column">
+                      side panel content here
+                </div>
+                <div id="BodyPanel" class="small-12 large-9 columns subtable" style="min-height: 760px;">
+                   	  body panel content here
+                </div>
+            </div>
+		</div>
     </div>
+    
+    
+    <div class="row-container" id="USIFooter">
+    <div class="row">
+        <div class="small-7 columns">
+            <div class="row">
+                <div class="small-12 column">
+                    <ul class="inline-list">
+                        <li><a href="/about/">About USI</a></li> 
+                        <li><a href="https://usi.peopleadmin.com/">Employment</a></li> 
+                        <li><a href="/visit/">Visit Campus</a></li>
+                        <li><a href="/emergency/">Emergency Info</a></li>
+                        <li><a onclick="showContact();">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 columns"></div>
+            </div>   
+        </div>
+        <div class="small-5 columns text-right">
+            <div class="row">
+                <div id="FooterIcons" class="small-12 column">
+                    <a href="http://www.facebook.com/USIedu" class="fi-social-facebook"></a>
+                    <a href="http://twitter.com/USIedu" class="fi-social-twitter"></a> 
+                    <a href="http://www.youtube.com/user/uofsouthernindiana" class="fi-social-youtube"></a>
+                    <br class="show-for-small">
+                    <a href="https://www.linkedin.com/edu/school?id=18369" class="fi-social-linkedin"></a>
+                    <a href="http://instagram.com/usiedu" class="fi-social-instagram"></a>
+                </div>
+            </div>
+        </div>   
+    </div> 
+    <div class="row">
+        <div class="small-12 large-8 columns">
+            <a href="http://goo.gl/Bh40WU" style="margin:0">
+                <ul class="copy inline-list">
+                    <li>© 2016 University of Southern Indiana</li>
+                    <li>8600 University Blvd.</li>
+                    <li>Evansville, IN 47712</li>
+                    <li><span id="gc-number-0" class="gc-cs-link" title="Call with Google Voice">812-464-8600</span></li>
+                </ul>
+            </a>
+        </div>
+        <div class="small-12 large-4 columns text-right">
+            <a href="/planning-research-and-assessment/carnegie">A Carnegie Foundation Engaged University</a>
+        </div>
+    </div>
+</div>
 </body>
 
 <script src="LateBindingFunctions.js"></script>

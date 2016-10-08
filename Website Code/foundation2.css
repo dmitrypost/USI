@@ -32,3 +32,43 @@ input {
     border-radius: 4px;
 }#ComboSearch {
 }
+
+
+
+div.staffList div.row:nth-child(odd) {
+	background-color: #E6E6E6;
+}
+
+div.staffList div.row:nth-child(even) {
+	border-right: 1px solid #E6E6E6;
+	border-left: 1px solid #E6E6E6;
+}
+
+div.facultyList div.row:nth-child(even) {
+	background-color: #E6E6E6;
+}
+
+div.facultyList div.row:nth-child(odd) {
+	background-color: #EFEFEF;
+	border-right: 1px solid #E6E6E6;
+	border-left: 1px solid #E6E6E6;
+}
+
+div.facultyList div.row {
+	padding: 15px 5px;
+	font-size: 11px;
+}
+
+div.staffAndFacultyList div.row:nth-child(odd) {
+	background-color: #E6E6E6;
+}
+
+div.staffAndFacultyList div.row:nth-child(even) {
+	border-right: 1px solid #E6E6E6;
+	border-left: 1px solid #E6E6E6;
+}
+
+div.staffAndFacultyList div.row {
+	padding: 15px 5px;
+	font-size: 11px;
+}
