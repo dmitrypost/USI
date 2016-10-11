@@ -4,7 +4,8 @@
     { 
 		if (!empty($_POST['email']) && !empty($_POST['password']))
 		{
-			include 'Database.php';
+			include_once 'Database.php';
+			$con = Open();
 			$email = mysqli_real_escape_string($con,trim(strip_tags($_POST['email'])));
 			$password = mysqli_real_escape_string($con,trim(strip_tags($_POST['password'])));
 			$query = "SELECT usr_fname, usr_lname, usr_id FROM tblUser WHERE usr_email = '$email' AND usr_password = '$password'";

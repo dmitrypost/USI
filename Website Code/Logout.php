@@ -1,5 +1,5 @@
 <?php
-include 'Functions.php';
+include_once 'Functions.php';
 //check to see if session exists else created session won't be in the session table and will deny access to actions requiring logged in user
 if (isLoggedIn())
 {

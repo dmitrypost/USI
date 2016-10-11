@@ -1,8 +1,11 @@
 <?php
 	function isLoggedIn()
 	{
-		session_start();	
-		include 'Database.php';
+		if (session_status() == PHP_SESSION_NONE) {
+    		session_start();
+		}	
+		include_once 'Database.php';
+		$con = Open();
 		$query = "SELECT ses_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
 		$loggedin = false;
 		if ($result = mysqli_query($con, $query))
@@ -12,6 +15,28 @@
 		}
 		mysqli_close($con);
 		return $loggedin;
+	}
+	
+	function getUID()
+	{
+		if (session_status() == PHP_SESSION_NONE) {
+    		session_start();
+		}
+		include_once 'Database.php';
+		$con = Open();
+		$query = "SELECT ses_usr_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
+		$uid = 0;
+		if ($result = mysqli_query($con, $query))
+		{
+			if (mysqli_num_rows($result) > 0)
+			{
+				while($row = mysqli_fetch_assoc( $result)) {
+					$uid = $row['ses_usr_id'];
+				}
+			} else { $loggedin= false; }
+		}
+		mysqli_close($con);
+		return $uid;	
 	}
 	
 	function sendEmail($address, $content)
@@ -80,7 +105,8 @@
 		{
 			// now that the file has been uploaded you can read the file and add it to database
 			// after it's added you can delete it
-			include 'Database.php';
+			include_once 'Database.php';
+			$con = Open();
 			$query = "UPDATE TABLE tblUser SET usr_picture='".image_to_base64($_FILES["fileToUpload"]["tmp_name"])."') WHERE usr_id =". $uid;
 			echo $query;
 			if (mysqli_query($con, $sql)) {

@@ -11,7 +11,8 @@
 </head>
 <body>
 <?php
-    include 'database.php'; include 'Functions.php';
+    include_once 'database.php'; include_once 'Functions.php';
+	$con = Open();
 	//set uid to 2 for testing purposes if a uid is not posted to the page (only possible in testing)
 	if (!isset($_POST['uid'])) { $uid = 2; }
 	else{ $uid = mysqli_real_escape_string($con,trim(strip_tags($_POST['uid']))); }
