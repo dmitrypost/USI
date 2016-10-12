@@ -1,4 +1,4 @@
-CREATE TABLE tblUser (usr_id INT NOT NULL AUTO_INCREMENT, usr_email TINYTEXT, usr_fname TINYTEXT, usr_lname TINYTEXT, usr_picture MEDIUMTEXT, usr_admin TINYINT, usr_mgr_id INT, usr_graduate TINYINT, usr_onetimepass TINYINT, usr_pageview INT, usr_linkedin TINYTEXT, usr_phone TINYTEXT, PRIMARY KEY (usr_id));
+CREATE TABLE tblUser (usr_id INT NOT NULL AUTO_INCREMENT, usr_email TINYTEXT,usr_password TINYTEXT, usr_fname TINYTEXT, usr_lname TINYTEXT, usr_picture MEDIUMTEXT, usr_admin TINYINT, usr_mgr_id INT, usr_graduate TINYINT, usr_onetimepass TINYINT, usr_pageview INT, usr_linkedin TINYTEXT, usr_phone TINYTEXT, PRIMARY KEY (usr_id));
 CREATE TABLE tblRole (rol_usr_id INT NOT NULL AUTO_INCREMENT, rol_pjt_id INT, rol_name TINYTEXT, CONSTRAINT rol_id PRIMARY KEY (rol_usr_id,rol_pjt_id));
 CREATE TABLE tblMajor (mgr_id INT NOT NULL AUTO_INCREMENT, mgr_name TINYTEXT, mgr_key_id INT, PRIMARY KEY (mgr_id));
 CREATE TABLE tblKeyword (kwd_id INT NOT NULL AUTO_INCREMENT, kwd_name TINYTEXT, PRIMARY KEY (kwd_id));
