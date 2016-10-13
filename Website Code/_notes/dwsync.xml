@@ -6,10 +6,10 @@
 <file name="Search.php" server="C:/wamp64/www/USI/" local="131201491361931988" remote="131201491360000000" Dst="2" />
 <file name="Database.php" server="C:/wamp64/www/USI/" local="131206219022959538" remote="131206219020000000" Dst="2" />
 <file name="foundation2.css" server="C:/wamp64/www/USI/" local="131203546410822136" remote="131203546410000000" Dst="2" />
-<file name="EarlyBindingFunctions.js" server="C:/wamp64/www/USI/" local="131203664672700304" remote="131203664670000000" Dst="2" />
+<file name="EarlyBindingFunctions.js" server="C:/wamp64/www/USI/" local="131203664672700304" remote="131207890010000000" Dst="2" />
 <file name="LateBindingFunctions.js" server="C:/wamp64/www/USI/" local="131203437011431118" remote="131203437010000000" Dst="2" />
 <file name="Body.php" server="C:/wamp64/www/USI/" local="131203665503893071" remote="131203665500000000" Dst="2" />
-<file name="GetLoginLinks.php" server="C:/wamp64/www/USI/" local="131203699162367553" remote="131203699160000000" Dst="2" />
+<file name="GetLoginLinks.php" server="C:/wamp64/www/USI/" local="131207890684428875" remote="131207890680000000" Dst="2" />
 <file name="Index.html" server="C:/wamp64/www/USI/" local="131201848060496480" remote="131201848060000000" Dst="2" />
 <file name="EditProject.php" server="C:/wamp64/www/USI" local="131203279329319830" remote="131203279320000000" Dst="2" />
 <file name="Search.php" server="C:/wamp64/www/USI" local="131201491361931988" remote="131201491360000000" Dst="2" />
@@ -34,4 +34,6 @@
 <file name="SidePanel.php" server="C:/wamp64/www/USI/" local="131206274800426099" remote="131206274800000000" Dst="2" />
 <file name="SidePanel.php" server="C:/wamp64/www/USI" local="131206273910472535" remote="131206273910000000" Dst="2" />
 <file name="Project.php" server="C:/wamp64/www/USI" local="131206226521769714" remote="131206226520000000" Dst="2" />
+<file name="go-pear.phar" server="C:/wamp64/www/USI/" local="131201491362422326" remote="131201491360000000" Dst="2" />
+<file name="go-pear.php" server="C:/wamp64/www/USI/" local="131201491362852611" remote="131201491360000000" Dst="2" />
 </dwsync>

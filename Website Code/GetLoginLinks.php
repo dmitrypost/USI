@@ -4,7 +4,8 @@
 		session_start(); //required to get session_id 
 		if (!empty(session_id()))
 		{
-			include 'Database.php';
+			include_once 'Database.php';
+			$con = open();
 			$query = "SELECT usr_fname, usr_id FROM tblUser INNER JOIN tblSession ON tblUser.usr_id = tblSession.ses_usr_id WHERE ses_session = '".session_id()."' AND ISNULL(ses_expired)";
 			if ($result = mysqli_query($con, $query))
 			{
