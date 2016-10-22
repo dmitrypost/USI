@@ -1,4 +1,5 @@
 <?php
+	include_once 'Functions.php'; //include_once 'Database.php'; //database.php is already included within the functions.php
 	if (isLoggedIn())
 	{
 		$uid = getUID();
