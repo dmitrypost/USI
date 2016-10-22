@@ -1,5 +1,4 @@
 <?php
-	include_once 'Functions.php'; include_once 'Database.php';
 	if (isLoggedIn())
 	{
 		$uid = getUID();

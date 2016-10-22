@@ -1,10 +1,10 @@
 <?php
+	include_once 'Database.php';
 	function isLoggedIn()
 	{
 		if (session_status() == PHP_SESSION_NONE) {
     		session_start();
 		}	
-		include_once 'Database.php';
 		$con = Open();
 		$query = "SELECT ses_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
 		$loggedin = false;
@@ -22,7 +22,6 @@
 		if (session_status() == PHP_SESSION_NONE) {
     		session_start();
 		}
-		include_once 'Database.php';
 		$con = Open();
 		$query = "SELECT ses_usr_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
 		$uid = 0;

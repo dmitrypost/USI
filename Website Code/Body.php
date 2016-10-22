@@ -22,19 +22,19 @@
 			{
 				case 'euid':
 					echo "edit profile";	
-					include 'EditProfile.php';		
+					include 'PHP/EditProfile.php';		
 					break;	
 				case 'uid':
 					//echo "profile";
-					include 'Profile.php';
+					include 'PHP/Profile.php';
 					break;
 				case 'epid':
 					echo "edit project";
-					include 'EditProject.php';
+					include 'PHP/EditProject.php';
 					break;
 				case 'pid';
 					echo "project";
-					include 'Project.php';
+					include 'PHP/Project.php';
 					break;
 				case 's';
 					echo "search";
@@ -42,16 +42,19 @@
 					break;
 				case 'pjs':
 					echo "user projects page";
-					include 'Projects.php';
+					include 'PHP/Projects.php';
 					break;	
 				case 'logout':
-					include 'Logout.php';
+					include 'PHP/Logout.php';
 					break;		
 				case 'register':
-					include 'Register.php';
+					include 'PHP/Register.php';
 					break;		
+				case 'registerForm':
+					include 'PHP/ProcessRegistration.php';
+					break;
 			}
-			
+			break;//only process first submitted variable
 		}
 		if ($defaultPage)
 		{

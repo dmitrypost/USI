@@ -7,11 +7,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://www.usi.edu/f4/css/foundation.css">
-    <link rel="stylesheet" type="text/css" href="foundation2.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/foundation2.css">
 </head>
 <body>
 <?php
-    include_once 'database.php'; include_once 'Functions.php';
+    include_once 'Database.php'; include_once 'Functions.php';
 	$con = Open();
 	//set uid to 2 for testing purposes if a uid is not posted to the page (only possible in testing)
 	if (!isset($_POST['uid'])) { $uid = 2; }

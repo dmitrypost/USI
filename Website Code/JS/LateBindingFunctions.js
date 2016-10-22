@@ -1,5 +1,4 @@
 // JavaScript Document
-//jshint unused:false
 
 //clears out the text "search" from the search box on first focus
 $('#ComboSearch').focus(function () { "use strict"; //jshint unused:false
