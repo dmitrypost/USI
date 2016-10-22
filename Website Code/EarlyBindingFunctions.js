@@ -70,7 +70,8 @@ function getBody()
 {
 	"use strict"; //jshint unused:false
     //window.location.search is only the ?= ... part
-    var request = $.ajax({ url: "Body.php", type: "post", data: window.location.search });
+	var variables = window.location.search;
+    var request = $.ajax({ url: "Body.php", type: "post", data: variables.substring(1) });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
     });
@@ -150,6 +151,21 @@ function Logout()
 	var request = $.ajax({url:"Body.php",type: "post", data: "logout" });
     request.done(function (response, textStatus, jqXHR) {
     	getRegisterLoginUserLinks();
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;		
+}
+
+/* exported showRegister */
+function showRegister()
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "post", data: "register" });
+    request.done(function (response, textStatus, jqXHR) {
+    	replaceHtml('BodyPanel',response);
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {

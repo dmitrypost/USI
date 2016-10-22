@@ -8,7 +8,7 @@
     margin: 10px;
     border: 2px solid rgba(255,50,50,0.80);
     position: absolute;
-    right: 10%;
+    right: 30%;
 	background:rgba(0,0,0,0.65);
 	-moz-border-radius: 8px;
     -webkit-border-radius: 8px;
@@ -73,3 +73,25 @@ div.staffAndFacultyList div.row {
 	padding: 15px 5px;
 	font-size: 11px;
 }
+
+button, .button {
+  /* border-style: solid; */
+  /* border-width: 1px; */
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 1;
+  /* margin: 0 0 1.53846em; */
+  /* position: relative; */
+  text-decoration: none;
+  /* text-align: center; */
+  display: inline-block;
+  padding-top: 0.5em;
+  padding-right: 1.82em;
+  padding-bottom: 0.5em;
+  padding-left: 1.82em;
+  font-size: 1.23077em;
+  background-color: #002856;
+  border-color: #001023;
+  color: white;
+  }

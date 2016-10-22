@@ -47,6 +47,9 @@
 				case 'logout':
 					include 'Logout.php';
 					break;		
+				case 'register':
+					include 'Register.php';
+					break;		
 			}
 			
 		}
