@@ -12,7 +12,7 @@
 <body>
     <div class="row">
         <div class="small-12 columns" style="padding-right:0">
-            <h1 id="page-name">Name</h1>
+            <h1 id="page-name">Edit Profile Page</h1>
         </div>
     </div>
 </body>

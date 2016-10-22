@@ -28,7 +28,7 @@
 					break;
 				case 's';
 					echo "search";
-					include '../Search.php';
+					include 'Search.php';
 					break;
 				case 'pjs':
 					echo "user projects page";

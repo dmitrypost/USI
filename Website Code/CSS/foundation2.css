@@ -34,7 +34,9 @@ input {
 }#ComboSearch {
 }
 
-
+#BgContainer {
+	background-image:url("http://www.usi.edu/css/images/blue-bkgd.jpg");
+}
 
 div.staffList div.row:nth-child(odd) {
 	background-color: #E6E6E6;
