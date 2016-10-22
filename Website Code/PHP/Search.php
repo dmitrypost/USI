@@ -127,7 +127,7 @@
 //MAJORS
 	//MAJORS BY NAME
 		$NoMajors = true;
-		$query = "SELECT mgr_id FROM tblMajor WHERE mgr_name LIKE '%$Search%'";
+		$query = "SELECT mgr_id, mgr_name FROM tblMajor WHERE mgr_name LIKE '%$Search%'";
 		echo "<div>";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;
@@ -144,7 +144,7 @@
 		} else {echo 'error';}
 	
 	//MAJORS BY KEYWORD
-		$query = "SELECT mgr_id FROM tblMajor INNER JOIN tblKeywordAssociation ON tblMajor.mgr_key_id = tblKeywordAssociation.key_id INNER JOIN tblKeyword ON tblKeywordAssociation.key_kwd_id = tblKeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
+		$query = "SELECT mgr_id, mgr_name FROM tblMajor INNER JOIN tblKeywordAssociation ON tblMajor.mgr_key_id = tblKeywordAssociation.key_id INNER JOIN tblKeyword ON tblKeywordAssociation.key_kwd_id = tblKeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
 		echo "<div>";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;
