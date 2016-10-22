@@ -173,3 +173,34 @@ function showRegister()
     });
 	return false;		
 }
+
+
+/* exported showMajor */
+function showMajor(mid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "post", data: "mid=" + mid });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;		
+}
+
+/* exported showCollege */
+function showCollege(cid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "post", data: "cid=" + cid });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;		
+}

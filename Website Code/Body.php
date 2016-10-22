@@ -49,6 +49,12 @@
 				case 'registerForm':
 					include 'PHP/ProcessRegistration.php';
 					break;
+				case 'cid':
+					include 'PHP/College.php';
+					break;
+				case 'mid':
+					include 'PHP/Major.php';
+					break;
 			}
 			break;//only process first submitted variable
 		}
