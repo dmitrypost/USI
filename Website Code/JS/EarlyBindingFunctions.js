@@ -33,7 +33,7 @@ function getRegisterLoginUserLinks()
     var request;
 	var serializedData = "" ;
 	request = $.ajax({
-		url: "GetLoginLinks.php",
+		url: "PHP/GetLoginLinks.php",
 		type: "post",
 		data: serializedData
 	});
