@@ -51,7 +51,7 @@
 		<br>
 		<div class='row'>
 	";
-	$query2 = "SELECT rol_name, pjt_name, pjt_description, clg_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id INNER JOIN tblcollege ON tblproject.pjt_clg_id = tblcollege.clg_id WHERE usr_id = ". $uid;
+	$query2 = "SELECT rol_name, pjt_name, pjt_description, clg_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id LEFT JOIN tblcollege ON tblproject.pjt_clg_id = tblcollege.clg_id WHERE usr_id = ". $uid;
 	if ($result2 = mysqli_query($con, $query2)){if (mysqli_num_rows($result2) > 0){
 		echo "<div class='center'>Projects ".$row['usr_fname']." participated in</div><br>";
 		while($row2 = mysqli_fetch_assoc( $result2)) {

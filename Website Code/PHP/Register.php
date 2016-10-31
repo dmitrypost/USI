@@ -21,26 +21,36 @@
         </tr>
         <tr>
         	<td>
-                <select name="college">
-					<?php
-						include_once 'Database.php';
-						$con = open();
-						$query = "SELECT clg_name FROM tblCollege";
-						
-                    ?>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-
-			    </select>
+               
 			</td>
+        </tr>
+        <tr><td></td>
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td><input class="button" type="button" value="Submit" onClick="ProcessRegistration()"></td>
+          <td></td>
         </tr>
       </tbody>
     </table>
-
+    
+	<select name="college" onchange="UpdateMajorList(this.value)">
+		<?php
+            include_once 'Database.php';
+            $con = open();
+            $query = "SELECT clg_name FROM tblCollege";
+            if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
+            while($row = mysqli_fetch_assoc( $result)) {
+                echo "<option value=".$row['clg_name'].">".$row['clg_name']."</option>";
+            }
+            } else { /*no results found*/ }
+            } else {echo 'error';}
+			mysqli_close($con);
+        ?>
+	</select>
+    <br>
+    <select name="major" id="slt_major">
+    
+    </select>
+                
+	<br><input class="button" type="button" value="Submit" onClick="ProcessRegistration()">
 </form>

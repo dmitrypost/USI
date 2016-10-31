@@ -204,3 +204,11 @@ function showCollege(cid)
     });
 	return false;		
 }
+
+/* exported UpdateMajorList */
+function UpdateMajorList(cid)
+{
+	"use strict"; //jshint unused:false
+	
+	return false;
+}
