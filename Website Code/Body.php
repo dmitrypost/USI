@@ -55,6 +55,15 @@
 				case 'mid':
 					include 'PHP/Major.php';
 					break;
+				case 'GetMajorsByCollege':
+					include 'PHP/Functions.php';
+					echo $_POST['GetMajorsByCollege'];
+					echo strip_tags($_POST['GetMajorsByCollege']);
+					echo trim(strip_tags($_POST['GetMajorsByCollege']));
+					echo GetMajorsByCollege(strip_tags($_POST['GetMajorsByCollege']));
+					echo "\n";
+					echo StringArrayToHTMLSelectOptions(GetMajorsByCollege(trim(strip_tags($_POST['GetMajorsByCollege']))));
+					break;
 			}
 			break;//only process first submitted variable
 		}

@@ -1,5 +1,8 @@
 @charset "utf-8";
 /* CSS Document */
+#registerForm > select {
+	width: 380px;
+}
 
 #loginDiv {
 	display: inline-block;

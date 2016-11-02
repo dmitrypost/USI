@@ -32,24 +32,34 @@
         </tr>
       </tbody>
     </table>
-    
-	<select name="college" onchange="UpdateMajorList(this.value)">
+    College<br>
+	<select id ="slt_college" name="slt_college" onchange="UpdateMajorList()">
 		<?php
             include_once 'Database.php';
             $con = open();
-            $query = "SELECT clg_name FROM tblCollege";
+            $query = "SELECT clg_id, clg_name FROM tblCollege ";
             if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc( $result)) {
-                echo "<option value=".$row['clg_name'].">".$row['clg_name']."</option>";
+                echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
             }
             } else { /*no results found*/ }
             } else {echo 'error';}
 			mysqli_close($con);
         ?>
 	</select>
-    <br>
-    <select name="major" id="slt_major">
-    
+    <br>Major<br>
+    <select name="slt_major" id="slt_major">
+    	<?php
+			include_once 'Database.php';
+			$con = open();
+			$query = "SELECT mgr_clg_id, mgr_name FROM tblMajor";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0 ) { while($row = mysqli_fetch_assoc($result)){
+				echo "<option value=".$row['mgr_clg_id'].">".$row['mgr_name']."</option>";
+			}
+			} else { /*no results found */ }
+			} else { echo 'error';}
+			mysqli_close($con);
+		?>
     </select>
                 
 	<br><input class="button" type="button" value="Submit" onClick="ProcessRegistration()">

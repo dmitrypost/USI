@@ -1,5 +1,31 @@
 <?php
 	include_once 'Database.php';
+
+	//returns the HTML select options version of the given string array
+	function StringArrayToHTMLSelectOptions($Array)
+	{
+		$HTML ; $x;
+		do
+		{
+			$HTML = $HTML . "<option value=" . $Array[$x] . ">" . $Array[$x] . "</option>";
+		} while ($x < count($Array));
+		return $HTML;
+	}
+	
+	//returns an array of type string containing major names
+	function GetMajorsByCollege($College)
+	{
+		$con = Open();			
+		$college = mysqli_real_escape_string($con,trim(strip_tags($College)));
+		$query = "SELECT mgr_id, mgr_name FROM tblMajor INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE clg_name = '".$college."'";
+		$delimitedString = ""; $array = array();
+		if ($result = mysqli_query($con, $query)) { if (mysqli_num_rows($result) > 0) { while ($row = mysqli_fetch_assoc($result)) {
+			array_push($array, $row['mgr_name']);
+		}}}
+		mysqli_close($con);
+		return array($delimitedString);
+	}
+	
 	function isLoggedIn()
 	{
 		if (session_status() == PHP_SESSION_NONE) {
