@@ -33,7 +33,7 @@
       </tbody>
     </table>
     College<br>
-	<select id ="slt_college" name="slt_college" onchange="UpdateMajorList()">
+	<select id ="slt_college" name="slt_college" >
 		<?php
             include_once 'Database.php';
             $con = open();
@@ -63,4 +63,6 @@
     </select>
                 
 	<br><input class="button" type="button" value="Submit" onClick="ProcessRegistration()">
+    <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="RegistrationFormLoaded()" width="0" height="0">
+
 </form>

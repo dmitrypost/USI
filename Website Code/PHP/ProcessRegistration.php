@@ -1,10 +1,15 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Untitled Document</title>
-</head>
 post registration posting
-<body>
-</body>
-</html>
+<?php
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		echo "data recieved";
+		foreach ($_POST as $key => $val) {
+		  echo '<p>'.$key.'</p>:'.$_POST[$key];
+		}
+		if (isset($_POST['s'])) 
+		{ 
+			$Search = mysqli_real_escape_string($con,trim(strip_tags($_POST['s']))); 
+			echo $_POST['s'];
+		}
+		
+	}
+?>
