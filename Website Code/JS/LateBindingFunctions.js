@@ -29,7 +29,7 @@ $("#loginForm").submit(function(event)
 		$inputs.prop("disabled", true);
 		// Fire off the request to /form.php
 		request = $.ajax({
-			url: "login.php",
+			url: "php/login.php",
 			type: "post",
 			data: serializedData
 		});
@@ -56,7 +56,7 @@ $("#loginForm").submit(function(event)
 		});
 		document.getElementById('loginDiv').style.visibility='hidden';
 });
-	
+
 // 	calls the function to change the links html
 getRegisterLoginUserLinks.call();
 
