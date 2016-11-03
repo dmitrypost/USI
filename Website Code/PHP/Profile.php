@@ -17,7 +17,7 @@
 	if (!isset($_POST['uid'])) { $uid = 2; }
 	else{ $uid = mysqli_real_escape_string($con,trim(strip_tags($_POST['uid']))); }
 	//query
-	$query = "SELECT usr_fname , usr_lname, usr_email, usr_picture, mgr_name, usr_graduate, usr_pageview, usr_phone, usr_linkedin FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id =".$uid;
+	$query = "SELECT usr_fname , usr_lname, usr_email, usr_picture, mgr_name, usr_graduate, usr_pageview, usr_phone, usr_linkedin, usr_id FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id =".$uid;
 	//echo $query;
 	if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 	//user info found
@@ -74,7 +74,7 @@
 		</div>
 	</div>
 	<div class='bottom'>pageviews for this user: ".$row['usr_pageview']."</div>
-	";
+	<div>URL:<a>localhost/?uid=".$row['usr_id']."</a></div>";
 	//increment pageview
 	QuickQuery("UPDATE tblUser SET usr_pageview = usr_pageview +1 WHERE usr_id=".$uid);
 	}
