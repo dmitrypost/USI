@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="http://www.usi.edu/css/departments.css">
     <link rel="stylesheet" type="text/css" href="CSS/foundation2.css">
 	<script src="http://www.usi.edu/f4/js/foundation.min.js"></script>
-	<script src="JS/EarlyBindingFunctions.js"></script>    
+	<script src="JS/EarlyBindingFunctions.js"></script>
     <script src="JS/ProcessRegister.js"></script>
     <style>
 	.descrTitles, #homePage_title{
@@ -24,7 +24,7 @@
 		margin:0px;
 	}
 	#homeHeaderImg{
-		
+
 	}
 	#leftpics{
 		float:left;
@@ -38,7 +38,7 @@
 		float:left;
 		clear:both;
 		/*border-style:solid;*/
-		
+
 	}
 	</style>
 </head>
@@ -47,6 +47,9 @@
     <h1 id ="homePage_title">Project Repository</h1>
     <p>Welcome to University of Southern Indiana Project Repository.  Here, you can find projects completed by students inside and outside of the classroom.</p>
      <!---------------------------------------------------------->
+
+    <h3 class="descrTitles">Our Featured Projects</h3>
+
     <div id ="homeHeaderImg">
     	<?php
         include_once 'Database.php';
@@ -60,7 +63,7 @@
         <h5 class="descrTitles">Our 2016 Alberta Energy Challenge Team</h5>
         <p>We cou't be more proud of ourr 2016 Alberta Energy Challenge team and faculty advisors Jeanette Maier-Lytle and Dr. Brandon Field! Check out the impressive statistics of the case teams that have represented USI Romain College nationally and internationally. </p>
     </div>
-    
+
     <div id ="smallpics">
     <!---------------------------------------------------------->
         <div id = "leftpics">
