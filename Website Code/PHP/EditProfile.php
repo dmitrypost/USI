@@ -42,5 +42,8 @@
     Email: <input type="text" name="Email" value="account@service.com" maxlength="30" size="30">
     <br>
 
+    <br><input class="button" type="button" value="Submit" onClick="ProcessProfileChanges()">
+      <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ProfileChangesLoaded()" width="0" height="0">
+
 </body>
 </html>
