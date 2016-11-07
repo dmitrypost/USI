@@ -29,6 +29,9 @@
 	#leftpics{
 		float:left;
 		width:50%;
+		border-style: solid;
+		border-color:red;
+		margin:0px, 15px;
 	}
 	#rightpics{
 		float:left;
@@ -71,7 +74,6 @@
                  <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
             </div>
             <div id = "homeImg2_Row3">
-                <img src="" alt="picture">
                 <h5 class="descrTitles">Title Here</h5>
                  <p>Description of cool senior project here!</p>
             </div>
@@ -87,7 +89,6 @@
                  <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
             </div>
             <div id = "homeImg2_Row3">
-                <img src="" alt="picture">
                 <h5 class="descrTitles">Title Here</h5>
                  <p>Description of cool senior project here!</p>
             </div>
