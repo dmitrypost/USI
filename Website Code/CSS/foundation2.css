@@ -4,6 +4,11 @@
 	width: 380px;
 }
 
+#SidePanel {
+	height: 100%;	
+	min-height:760px;
+}
+
 #loginDiv {
 	display: inline-block;
     width: 240px;

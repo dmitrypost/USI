@@ -15,7 +15,7 @@
  </head>
  <body>
  <!--this page url is http://localhost/?pid=1-->
- <?php
+ 		<?php
 	        include_once 'Functions.php';
 			GetImage(1);
 		?>
