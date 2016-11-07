@@ -136,6 +136,22 @@ function showProject(pid)
 	var request = $.ajax({url:"Body.php",type: "post", data: "pid=" + pid });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		SPProject(pid);
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;		
+}
+
+/* exported SPProject */
+function SPProject(pid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"SidePanel.php",type: "post", data: "pid=" + pid });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
