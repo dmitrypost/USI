@@ -8,6 +8,7 @@ CREATE TABLE tblCollege (clg_id INT NOT NULL AUTO_INCREMENT, clg_name TINYTEXT, 
 CREATE TABLE tblFile (fle_id INT NOT NULL AUTO_INCREMENT, fle_path TINYTEXT, fle_deleted TINYINT, fle_usr_id INT, fle_pjt_id INT, fle_name TINYTEXT, PRIMARY KEY (fle_id));
 CREATE TABLE tblProjectHistory (pjh_id INT NOT NULL AUTO_INCREMENT, pjh_description TINYTEXT, pjh_body LONGTEXT, pjh_modified DATETIME, pjh_approved TINYINT, pjh_usr_id INT, pjh_pjt_id INT, PRIMARY KEY (pjh_id));
 CREATE TABLE tblSession (ses_id INT NOT NULL AUTO_INCREMENT, ses_session TINYTEXT, ses_usr_id INT, ses_date DATETIME, ses_expired TINYINT, PRIMARY KEY (ses_id));
+CREATE TABLE tblImages (img_id INT NOT NULL AUTO_INCREMENT, img_image MEDIUMTEXT, PRIMARY KEY (img_id));
 ALTER TABLE tblUser ADD FOREIGN KEY (usr_mgr_id) REFERENCES tblMajor(mgr_id);
 ALTER TABLE tblRole ADD FOREIGN KEY (rol_pjt_id) REFERENCES tblProject(pjt_id);
 ALTER TABLE tblMajor ADD FOREIGN KEY (mgr_key_id) REFERENCES tblKeywordAssociation(key_id);
