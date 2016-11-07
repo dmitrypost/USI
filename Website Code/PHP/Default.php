@@ -52,13 +52,8 @@
 
     <div id ="homeHeaderImg">
     	<?php
-        include_once 'Database.php';
-		$con = Open();
-		$query = "SELECT img_image FROM tblImage WHERE img_id = 1";
-		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
-			echo "<img src=".$row['img_image']." alt=".">";
-		}	} else { /*no results found*/ }	} else {echo 'error';}
-		mysqli_close($con);
+	        include_once 'Functions.php';
+			GetImage(1);
 		?>
         <h5 class="descrTitles">Our 2016 Alberta Energy Challenge Team</h5>
         <p>We cou't be more proud of ourr 2016 Alberta Energy Challenge team and faculty advisors Jeanette Maier-Lytle and Dr. Brandon Field! Check out the impressive statistics of the case teams that have represented USI Romain College nationally and internationally. </p>
@@ -69,13 +64,8 @@
         <div id = "leftpics">
             <div id = "homeImg1_Row2">
             	<?php
-					include_once 'Database.php';
-					$con = Open();
-					$query = "SELECT img_image FROM tblImage WHERE img_id = 2";
-					if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
-						echo "<img src=".$row['img_image']." alt=".">";
-					}	} else { /*no results found*/ }	} else {echo 'error';}
-					mysqli_close($con);
+					include_once 'Functions.php';
+					GetImage(2);
 				?>
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
                  <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
@@ -90,13 +80,8 @@
         <div id ="rightpics">
             <div id = "homeImg1_Row2">
                 <?php
-					include_once 'Database.php';
-					$con = Open();
-					$query = "SELECT img_image FROM tblImage WHERE img_id = 3";
-					if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
-						echo "<img src=".$row['img_image']." alt=".">";
-					}	} else { /*no results found*/ }	} else {echo 'error';}
-					mysqli_close($con);
+	        		include_once 'Functions.php';
+					GetImage(3);
 				?>
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
                  <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
