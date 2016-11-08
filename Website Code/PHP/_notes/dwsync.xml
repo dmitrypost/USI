@@ -8,7 +8,7 @@
 <file name="Login.php" server="C:/wamp64/www/" local="131226088633119268" remote="131226088630000000" Dst="1" />
 <file name="Register.php" server="C:/wamp64/www/" local="131226088633159299" remote="131226088630000000" Dst="1" />
 <file name="Projects.php" server="C:/wamp64/www/" local="131226088633159299" remote="131226088630000000" Dst="1" />
-<file name="Project.php" server="C:/wamp64/www/" local="131230358758252105" remote="131230358750000000" Dst="1" />
+<file name="Project.php" server="C:/wamp64/www/" local="131230401759051392" remote="131230401750000000" Dst="1" />
 <file name="EditProject.php" server="C:/wamp64/www/" local="131226088632929155" remote="131226088630000000" Dst="1" />
 <file name="GetLoginLinks.php" server="C:/wamp64/www/" local="131226088633109253" remote="131226088630000000" Dst="1" />
 <file name="EditProfile.php" server="C:/wamp64/www/" local="131230314099328139" remote="131230314090000000" Dst="1" />
@@ -48,5 +48,5 @@
 <file name="Major.php" server="C:/xampp/htdocs" local="131217967033344395" remote="131217967030000000" Dst="2" />
 <file name="Default.php" server="C:/xampp/htdocs" local="131226678633101357" remote="131226678630000000" Dst="2" />
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
-<file name="SidePanel.php" server="C:/wamp64/www/" local="131230349070000000" remote="131230349070000000" Dst="1" />
+<file name="SidePanel.php" server="C:/wamp64/www/" local="131230365593415290" remote="131230365590000000" Dst="1" />
 </dwsync>

@@ -3,9 +3,9 @@ CREATE TABLE tblRole (rol_usr_id INT NOT NULL AUTO_INCREMENT, rol_pjt_id INT, ro
 CREATE TABLE tblMajor (mgr_id INT NOT NULL AUTO_INCREMENT, mgr_name TINYTEXT, mgr_key_id INT, mgr_clg_id INT, PRIMARY KEY (mgr_id));
 CREATE TABLE tblKeyword (kwd_id INT NOT NULL AUTO_INCREMENT, kwd_name TINYTEXT, PRIMARY KEY (kwd_id));
 CREATE TABLE tblKeywordAssociation (key_id INT, key_kwd_id INT, PRIMARY KEY (key_id,key_kwd_id));
-CREATE TABLE tblProject (pjt_id INT NOT NULL AUTO_INCREMENT, pjt_name TINYTEXT, pjt_body LONGTEXT, pjt_description TINYTEXT, pjt_key_id INT, pjt_clg_id INT, pjt_pageview INT, pjt_year YEAR, PRIMARY KEY (pjt_id));
+CREATE TABLE tblProject (pjt_id INT NOT NULL AUTO_INCREMENT, pjt_name TINYTEXT, pjt_body LONGTEXT, pjt_description TINYTEXT, pjt_key_id INT, pjt_picture MEDIUMTEXT, pjt_clg_id INT, pjt_pageview INT, pjt_year YEAR, PRIMARY KEY (pjt_id));
 CREATE TABLE tblCollege (clg_id INT NOT NULL AUTO_INCREMENT, clg_name TINYTEXT, clg_key_id INT, clg_pageview INT, PRIMARY KEY (clg_id));
-CREATE TABLE tblFile (fle_id INT NOT NULL AUTO_INCREMENT, fle_path TINYTEXT, fle_deleted TINYINT, fle_usr_id INT, fle_pjt_id INT, fle_name TINYTEXT, PRIMARY KEY (fle_id));
+CREATE TABLE tblFile (fle_id INT NOT NULL AUTO_INCREMENT, fle_data MEDIUMTEXT, fle_deleted TINYINT, fle_usr_id INT, fle_pjt_id INT, fle_name TINYTEXT, PRIMARY KEY (fle_id));
 CREATE TABLE tblProjectHistory (pjh_id INT NOT NULL AUTO_INCREMENT, pjh_description TINYTEXT, pjh_body LONGTEXT, pjh_modified DATETIME, pjh_approved TINYINT, pjh_usr_id INT, pjh_pjt_id INT, PRIMARY KEY (pjh_id));
 CREATE TABLE tblSession (ses_id INT NOT NULL AUTO_INCREMENT, ses_session TINYTEXT, ses_usr_id INT, ses_date DATETIME, ses_expired TINYINT, PRIMARY KEY (ses_id));
 CREATE TABLE tblImage (img_id INT NOT NULL AUTO_INCREMENT, img_image MEDIUMTEXT, PRIMARY KEY (img_id));
