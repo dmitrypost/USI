@@ -11,7 +11,7 @@
 			{
 				
 				case 'pid';
-					include 'PHP/SidePanel/Project.php';
+					include 'PHP/SidePanel/Participants.php';
 					break;
 				case 'cid';
 					
