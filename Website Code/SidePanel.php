@@ -1,4 +1,5 @@
 <?php
+	echo "<p>";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     { 
 		$defaultPage = true;
@@ -7,9 +8,8 @@
 		  $defaultPage = false;
 		  switch ($key)
 			{
-
+				
 				case 'pid';
-					echo "project";
 					include 'PHP/SidePanel/Project.php';
 					break;
 

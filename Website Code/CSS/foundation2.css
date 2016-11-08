@@ -9,6 +9,14 @@
 	min-height:760px;
 }
 
+.Participant {
+height: 400px;	
+}
+.userPic {
+	border-radius: 50%;
+	height: 100px;
+	width:100px;
+}
 #loginDiv {
 	display: inline-block;
     width: 240px;
