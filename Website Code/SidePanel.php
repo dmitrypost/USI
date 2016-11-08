@@ -6,19 +6,26 @@
 		foreach ($_POST as $key => $val) {
 		  //echo '<p>'.$key.'</p>';
 		  $defaultPage = false;
+		 
 		  switch ($key)
 			{
 				
 				case 'pid';
 					include 'PHP/SidePanel/Project.php';
 					break;
-
+				case 'cid';
+					
+					include 'PHP/SidePanel/Default.php';
+					//only happens upon college select change
+					break;
 			}
 			
 		}
 		if ($defaultPage)
 		{
+			
 			include "PHP/SidePanel/Default.php";
 		}
 	}
+	
 ?>

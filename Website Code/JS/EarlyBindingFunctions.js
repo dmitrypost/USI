@@ -74,6 +74,7 @@ function getBody()
     var request = $.ajax({ url: "Body.php", type: "post", data: variables.substring(1) });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		getSidePanel();
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -268,4 +269,36 @@ function RegistrationFormLoaded()
 	$select1.on( 'change', function() {
 		$select2.html( $options.filter( '[value="' + this.value + '"]' ) );
 	} ).trigger('change');
+}
+
+/* exported getSidePanel */
+function getSidePanel()
+{
+	"use strict"; //jshint unused:false
+    //window.location.search is only the ?= ... part
+	var variables = window.location.search;
+    var request = $.ajax({ url: "SidePanel.php", type: "post", data: variables.substring(1) });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+    return false;
+}
+
+/* exported UpdateSPMajorList */
+function UpdateSPMajorList(cid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"SidePanel.php",type: "post", data: "cid=" + cid });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;	
 }
