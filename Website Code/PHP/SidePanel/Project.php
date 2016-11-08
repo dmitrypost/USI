@@ -13,12 +13,22 @@
 		$query = "SELECT usr_id, usr_picture, usr_fname, usr_lname, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id =".$projectID;
 		
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
-			echo "
-			<a onClick='showProfile(".$row['usr_id'].")'>
-				<img class='userPic' src='".$row['usr_picture']."' alt='No Profile Picture'>
-				<div>".$row['usr_fname']." ".$row['usr_lname']."</div>
-				<div>".$row['rol_name']."</div>			
+			echo "<p>
+			<row>
+			<a class='Participant' >
+				<table>
+					<tr>
+						<td>
+							<img class='userPic Left' src='".$row['usr_picture']."' alt='No Profile Picture'>
+						</td>
+						<td>
+							<a onClick='showProfile(".$row['usr_id'].")'>".$row['usr_fname']." ".$row['usr_lname']."
+							<br>".$row['rol_name']."</a>
+						</td>
+					</tr>
+				</table>
 			</a>
+			</row>
 			";
 		}	} else { 
 		/*no results found*/
