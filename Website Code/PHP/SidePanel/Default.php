@@ -4,11 +4,18 @@
 		echo "College:<select id='sp_slt_college' onChange='UpdateSPMajorList(this.value)' style='width:100%'>";
 	
         include_once '/../Database.php';
-        $con = open();
+        $con = open(); if (!isset($_POST['cid'])) { $collegeId = "0"; } else{ $collegeId = mysqli_real_escape_string($con,trim(strip_tags($_POST['cid'])));}
         $query = "SELECT clg_id, clg_name FROM tblCollege ";
         if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
         while($row = mysqli_fetch_assoc( $result)) {
-            echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
+			if ($row['clg_id'] == $collegeId)
+			{
+				echo "<option value=".$row['clg_id']." selected>".$row['clg_name']."</option>";
+			}
+			else
+			{
+            	echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
+			}
         }
         } else { /*no results found*/ }
         } else {echo 'error';}
@@ -18,7 +25,7 @@ echo "</select>";
 		
 		/* When the option is changed and makes the dropdown retrieve the majors in college */
 		include_once '/../Database.php';
-		$con = open(); if (!isset($_POST['cid'])) { $collegeId = "1"; } else{ $collegeId = mysqli_real_escape_string($con,trim(strip_tags($_POST['cid'])));}
+		$con = open(); //if (!isset($_POST['cid'])) { $collegeId = "1"; } else{ $collegeId = mysqli_real_escape_string($con,trim(strip_tags($_POST['cid'])));}
 		$query= "SELECT mgr_id, mgr_name FROM tblMajor WHERE mgr_clg_id =".$collegeId;
 		
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
