@@ -18,7 +18,7 @@
 		}
 		if ($defaultPage)
 		{
-			include "PHP/SidePanel/Deafault.php";
+			include "PHP/SidePanel/Default.php";
 		}
 	}
 ?>
