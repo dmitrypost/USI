@@ -230,17 +230,12 @@ function ProcessRegistration()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	$('#firstname');
-	$('#lastname');
-	$('#email');
-	$('#password');
-	$('#firstname');
-	$('#firstname');
+	var data = "registerForm&firstname=" + $('#firstname').val() + "&lastname=" + $('#lastname').val() + "&email=" + $('#email').val() + "&password=" + $('#password').val() + "&college=" + $("#slt_college option:selected").text() + "&major=" + $('#slt_major option:selected').text();
 	
 	request = $.ajax({
 		url: "Body.php",
 		type: "post",
-		data: ""
+		data: data
 	});
 	// Callback handler that will be called on success
 	request.done(function (response, textStatus, jqXHR){

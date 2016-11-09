@@ -5,19 +5,19 @@
       <tbody>
         <tr>
           <td>First Name</td>
-          <td><input type="text" name="firstname"></td>
+          <td><input type="text" id="firstname"></td>
         </tr>
         <tr>
           <td>Last Name</td>
-          <td><input type="text" name="lastname"></td>
+          <td><input type="text" id="lastname"></td>
         </tr>
         <tr> 
           <td>Email</td>
-          <td><input type="email" name="email"></td>
+          <td><input type="email" id="email"></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type="password" name="password"></td>
+          <td><input type="password" id="password"></td>
         </tr>
         <tr>
         	<td>
