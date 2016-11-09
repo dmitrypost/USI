@@ -49,8 +49,7 @@
 <file name="Default.php" server="C:/xampp/htdocs" local="131226678633101357" remote="131226678630000000" Dst="2" />
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
 <file name="RunSQL.php" server="C:/wamp64/www/" local="131232040591487721" remote="131232040590000000" Dst="1" />
-<file name="admin_editHomepage.php" server="C:/wamp64/www/" local="131232040591662855" remote="131232040590000000" Dst="1" />
-<file name="admin_editProfile.php" server="C:/wamp64/www/" local="131232040591722877" remote="131232040590000000" Dst="1" />
-<file name="admin_editProjects.php" server="C:/wamp64/www/" local="131232040591777914" remote="131232040590000000" Dst="1" />
 <file name="AlterCollegeMajor.php" server="C:/wamp64/www/" local="131232047895792679" remote="131232047890000000" Dst="1" />
+<file name="Profiles.php" server="C:/wamp64/www/" local="131232040591722877" remote="131232040590000000" Dst="1" />
+<file name="AlterHomePage.php" server="C:/wamp64/www/" local="131232040591662855" remote="131232040590000000" Dst="1" />
 </dwsync>

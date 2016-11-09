@@ -22,8 +22,11 @@
 						case 'Projects':
 							include 'PHP/Projects.php';
 							break;
-						case 'EditHomePage':
-							include 'PHP/EditHomePage.php';
+						case 'Profiles':
+							include 'PHP/Profiles.php';
+							break;
+						case 'AlterHomePage':
+							include 'PHP/AlterHomePage.php';
 							break;
 						case 'AlterCollegeMajor':
 							include 'PHP/AlterCollegeMajor.php';

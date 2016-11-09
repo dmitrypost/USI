@@ -7,7 +7,7 @@
 <file name="Mail.php" server="C:/wamp64/www/USI/" local="131201491361921999" remote="131201491360000000" Dst="2" />
 <file name="go-pear.phar" server="C:/wamp64/www/USI/" local="131201491362422326" remote="131201491360000000" Dst="2" />
 <file name="go-pear.php" server="C:/wamp64/www/USI/" local="131201491362852611" remote="131201491360000000" Dst="2" />
-<file name="admin.php" server="C:/wamp64/www/" local="131232046720128811" remote="131232046720000000" Dst="1" />
+<file name="admin.php" server="C:/wamp64/www/" local="131232056233137332" remote="131232056230000000" Dst="1" />
 <file name="Body.php" server="C:/wamp64/www/" local="131226088632558901" remote="131226088630000000" Dst="1" />
 <file name="go-pear.phar" server="C:/wamp64/www/" local="131226088639542007" remote="131226088630000000" Dst="2" />
 <file name="go-pear.php" server="C:/wamp64/www/" local="131226088663908136" remote="131226088660000000" Dst="2" />
@@ -20,5 +20,5 @@
 <file name="Body.php" server="C:/xampp/htdocs" local="131226045726227112" remote="131226045720000000" Dst="2" />
 <file name="Index.html" server="C:/xampp/htdocs" local="131226063834932108" remote="131226063830000000" Dst="2" />
 <file name="SidePanel.php" server="C:/wamp64/www/" local="131231163157973912" remote="131231163150000000" Dst="1" />
-<file name="admin.html" server="C:/wamp64/www/" local="131232046055521610" remote="131232046050000000" Dst="1" />
+<file name="admin.html" server="C:/wamp64/www/" local="131232057395225063" remote="131232057390000000" Dst="1" />
 </dwsync>
