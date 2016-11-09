@@ -48,17 +48,9 @@
 <file name="Major.php" server="C:/xampp/htdocs" local="131217967033344395" remote="131217967030000000" Dst="2" />
 <file name="Default.php" server="C:/xampp/htdocs" local="131226678633101357" remote="131226678630000000" Dst="2" />
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
-<<<<<<< HEAD
-<file name="admin_editHomepage.php" server="C:/xampp/htdocs/" local="131231841911539001" remote="131231841910000000" Dst="1" />
-<file name="admin_editProfile.php" server="C:/xampp/htdocs/" local="131231854220833631" remote="131231854220000000" Dst="1" />
-<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/xampp/htdocs/" local="131232045623051146" remote="131232045620000000" Dst="1" />
-<file name="admin_editProjects.php" server="C:/xampp/htdocs/" local="131231854395453899" remote="131231854390000000" Dst="1" />
-<file name="RunSQL.php" server="C:/xampp/htdocs/" local="131232030806844629" remote="131232030800000000" Dst="1" />
-=======
 <file name="RunSQL.php" server="C:/wamp64/www/" local="131232040591487721" remote="131232040590000000" Dst="1" />
-<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/wamp64/www/" local="131232040591627814" remote="131232040590000000" Dst="1" />
 <file name="admin_editHomepage.php" server="C:/wamp64/www/" local="131232040591662855" remote="131232040590000000" Dst="1" />
 <file name="admin_editProfile.php" server="C:/wamp64/www/" local="131232040591722877" remote="131232040590000000" Dst="1" />
 <file name="admin_editProjects.php" server="C:/wamp64/www/" local="131232040591777914" remote="131232040590000000" Dst="1" />
->>>>>>> origin/master
+<file name="AlterCollegeMajor.php" server="C:/wamp64/www/" local="131232047895792679" remote="131232047890000000" Dst="1" />
 </dwsync>
