@@ -5,6 +5,7 @@
 <title>Admin Page: Edit Profile</title>
 </head>
 <!--copy html and php exactly?-->
+profiles page
 <body>
 </body>
 </html>
