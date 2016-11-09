@@ -173,3 +173,38 @@ width: 200px;
 		/*border-style:solid;*/
 
 	}
+
+	#editprojecttitle {
+	width: 300px;
+	}
+
+	#editprojectimage {
+	}
+
+	#editprojectdesc {
+	width: 200px;
+	height: 100px;
+	line-height: 100px;
+	}
+
+	#editprojectbody {
+	width: 300px;
+	}
+
+	#editprojectyear {
+	width: 55px;
+	}
+
+	#editprojectcollege > select {
+	width: 300px;
+	height: 35px;
+	line-height: 35px;
+	}
+
+	#editprojectparticipants {
+	width: 300px;
+	}
+
+	#editprojectupload {
+	width: 300px;
+	}
