@@ -130,8 +130,6 @@ button, .button {
 	#leftpics{
 		float:left;
 		width:50%;
-		border-style: solid;
-		border-color:red;
 		margin:0px, 15px;
 		padding:7px;
 	}
