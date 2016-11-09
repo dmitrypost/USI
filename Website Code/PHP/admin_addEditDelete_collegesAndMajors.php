@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Admin Page: Edit Colleges and Majors</title>
-<link rel="stylesheet" type="text/css" href="CSS/foundation2.css">
+<link rel="stylesheet" type="text/css" href="/../foundation2.css">
 <script >
 	function toggle_visibility(id) {
 	"use strict";
