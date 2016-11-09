@@ -32,7 +32,6 @@
         <h5 class="descrTitles">Our 2016 Alberta Energy Challenge Team</h5>
         <p>We cou't be more proud of ourr 2016 Alberta Energy Challenge team and faculty advisors Jeanette Maier-Lytle and Dr. Brandon Field! Check out the impressive statistics of the case teams that have represented USI Romain College nationally and internationally. </p>
     </div>
-
     <div id ="smallpics">
     <!---------------------------------------------------------->
         <div id = "leftpics">
