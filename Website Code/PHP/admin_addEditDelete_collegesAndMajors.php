@@ -58,7 +58,21 @@
 </div>
 <div class ="answer" hidden id ="two">
 	<div>
-	drop down
+	<div id="editprojectcollege">
+					<select id ="slt_college" name="slt_college" >
+						<?php
+										include_once 'Database.php';
+										$con = open();
+										$query = "SELECT clg_id, clg_name FROM tblCollege ";
+										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
+										while($row = mysqli_fetch_assoc( $result)) {
+												echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
+										}
+										} else { /*no results found*/ }
+										} else {echo 'error';}
+							mysqli_close($con);
+								?>
+	</div>
 	<input type="text"  value="Edit College" maxlength="200";>
 	<button class="adminbtns">Edit College</button>
 	</div>
@@ -73,7 +87,21 @@
 </div>
 <div class ="answer" hidden id="three">
 	<div>
-	drop down
+	<div id="editprojectcollege">
+					<select id ="slt_college" name="slt_college" >
+						<?php
+										include_once 'Database.php';
+										$con = open();
+										$query = "SELECT clg_id, clg_name FROM tblCollege ";
+										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
+										while($row = mysqli_fetch_assoc( $result)) {
+												echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
+										}
+										} else { /*no results found*/ }
+										} else {echo 'error';}
+							mysqli_close($con);
+								?>
+	</div>
 	<button class="adminbtns">Delete College</button>
 	</div>
 	<div>
