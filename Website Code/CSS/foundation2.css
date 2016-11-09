@@ -133,10 +133,12 @@ button, .button {
 		border-style: solid;
 		border-color:red;
 		margin:0px, 15px;
+		padding:7px;
 	}
 	#rightpics{
 		float:left;
 		width:50%;
+		padding:7px;
 	}
 	#smallpics{
 		float:left;
