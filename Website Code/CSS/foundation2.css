@@ -151,3 +151,34 @@ width: 150px;
 #editlinkedin {
 width: 200px;
 }
+
+  .descrTitles, #homePage_title{
+		color:red;
+	}
+	p{
+		font-size: 16px;
+		margin:0px;
+	}
+	#homePage_title{
+		margin:0px;
+	}
+	#homeHeaderImg{
+
+	}
+	#leftpics{
+		float:left;
+		width:50%;
+		margin:0px, 15px;
+		padding:7px;
+	}
+	#rightpics{
+		float:left;
+		width:50%;
+		padding:7px;
+	}
+	#smallpics{
+		float:left;
+		clear:both;
+		/*border-style:solid;*/
+
+	}

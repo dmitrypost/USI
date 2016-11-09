@@ -13,36 +13,7 @@
 	<script src="JS/EarlyBindingFunctions.js"></script>
     <script src="JS/ProcessRegister.js"></script>
     <style>
-	.descrTitles, #homePage_title{
-		color:red;
-	}
-	p{
-		font-size: 16px;
-		margin:0px;
-	}
-	#homePage_title{
-		margin:0px;
-	}
-	#homeHeaderImg{
-
-	}
-	#leftpics{
-		float:left;
-		width:50%;
-		border-style: solid;
-		border-color:red;
-		margin:0px, 15px;
-	}
-	#rightpics{
-		float:left;
-		width:50%;
-	}
-	#smallpics{
-		float:left;
-		clear:both;
-		/*border-style:solid;*/
-
-	}
+	
 	</style>
 </head>
 <body>
