@@ -19,7 +19,15 @@
 						case 'RunSQL':
 							include 'PHP/RunSQL.php';		
 							break;	
-						
+						case 'Projects':
+							include 'PHP/Projects.php';
+							break;
+						case 'EditHomePage':
+							include 'PHP/EditHomePage.php';
+							break;
+						case 'AlterCollegeMajor':
+							include 'PHP/AlterCollegeMajor.php';
+							break;
 					}
 					
 			}
