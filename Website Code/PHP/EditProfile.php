@@ -17,10 +17,8 @@
 
     <h5>Change Legal Name</h5>
     <div id=editprofilenames>
-      <form action="demo_form.asp">
-      First name: <input type="text"  value="John";><br>
-      Last name: <input type="text" name="LastName" value="Doe">
-      </form>
+      First name: <input type="text"  value="John" maxlength="20";><br>
+      Last name: <input type="text" name="LastName" value="Doe" maxlength="20">
     </div>
 
 <h5>Change Profile Picture</h5>
@@ -97,10 +95,10 @@
 
     <h5>Change Contact Information</h5>
       <div id=editphone>
-        Phone Number: <input type="text" name="PhoneNumber" value="812-123-4567"><br>
+        Phone Number: <input type="text" name="PhoneNumber" value="8121234567" maxlength="10"><br>
       </div>
       <div id=editemail>
-        Email: <input type="text" name="Email" value="account@service.com"><br>
+        Email: <input type="text" name="Email" value="account@service.com" maxlength="30"><br>
       </div>
       <div id=editlinkedin>
         LinkedIn: <input type="text" name="linkedin" value="account@linkedin.com"><br>
