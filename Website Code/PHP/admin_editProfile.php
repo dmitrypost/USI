@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>Admin Page: Edit Profile</title>
 </head>
-
+<!--copy html and php exactly?-->
 <body>
 </body>
 </html>

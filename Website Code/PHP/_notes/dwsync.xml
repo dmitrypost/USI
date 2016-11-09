@@ -18,12 +18,12 @@
 <file name="Major.php" server="C:/wamp64/www/" local="131226088633129270" remote="131226088630000000" Dst="1" />
 <file name="Database.php" server="C:/xampp/htdocs/" local="131217967031309232" remote="131217967030000000" Dst="1" />
 <file name="Functions.php" server="C:/xampp/htdocs/" local="131230329801014115" remote="131230329800000000" Dst="1" />
-<file name="EditProfile.php" server="C:/xampp/htdocs/" local="131231343264077235" remote="131231343260000000" Dst="1" />
+<file name="EditProfile.php" server="C:/xampp/htdocs/" local="131231356843933781" remote="131231356840000000" Dst="1" />
 <file name="Profile.php" server="C:/xampp/htdocs/" local="131226898594497916" remote="131226898590000000" Dst="1" />
-<file name="EditProject.php" server="C:/xampp/htdocs/" local="131217967031721914" remote="131217967030000000" Dst="1" />
+<file name="EditProject.php" server="C:/xampp/htdocs/" local="131231841906980083" remote="131231841900000000" Dst="1" />
 <file name="Project.php" server="C:/xampp/htdocs/" local="131231236213803302" remote="131231236210000000" Dst="1" />
 <file name="Search.php" server="C:/xampp/htdocs/" local="131217967034386992" remote="131217967030000000" Dst="1" />
-<file name="Projects.php" server="C:/xampp/htdocs/" local="131217967033716951" remote="131217967030000000" Dst="1" />
+<file name="Projects.php" server="C:/xampp/htdocs/" local="131231356844354074" remote="131231356840000000" Dst="1" />
 <file name="Logout.php" server="C:/xampp/htdocs/" local="131217967032970288" remote="131217967030000000" Dst="1" />
 <file name="Login.php" server="C:/xampp/htdocs/" local="131217967032496489" remote="131217967030000000" Dst="1" />
 <file name="Register.php" server="C:/xampp/htdocs/" local="131231244058824270" remote="131231244050000000" Dst="1" />
@@ -48,9 +48,9 @@
 <file name="Major.php" server="C:/xampp/htdocs" local="131217967033344395" remote="131217967030000000" Dst="2" />
 <file name="Default.php" server="C:/xampp/htdocs" local="131226678633101357" remote="131226678630000000" Dst="2" />
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
-<file name="admin_runSQL.php" server="C:/xampp/htdocs/" local="131231838785083460" remote="131231838780000000" Dst="1" />
-<file name="admin_editHomepage.php" server="C:/xampp/htdocs/" local="131231839420940660" remote="131231839420000000" Dst="1" />
-<file name="admin_editProfile.php" server="C:/xampp/htdocs/" local="131231840034814254" remote="131231840030000000" Dst="1" />
-<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/xampp/htdocs/" local="131231840776865297" remote="131231840770000000" Dst="1" />
-<file name="admin_editProjects.php" server="C:/xampp/htdocs/" local="131231841260196455" remote="131231841260000000" Dst="1" />
+<file name="admin_runSQL.php" server="C:/xampp/htdocs/" local="131231860741738414" remote="131231860740000000" Dst="1" />
+<file name="admin_editHomepage.php" server="C:/xampp/htdocs/" local="131231841911539001" remote="131231841910000000" Dst="1" />
+<file name="admin_editProfile.php" server="C:/xampp/htdocs/" local="131231854220833631" remote="131231854220000000" Dst="1" />
+<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/xampp/htdocs/" local="131231959761092206" remote="131231959760000000" Dst="1" />
+<file name="admin_editProjects.php" server="C:/xampp/htdocs/" local="131231854395453899" remote="131231854390000000" Dst="1" />
 </dwsync>
