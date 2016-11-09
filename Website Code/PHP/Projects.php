@@ -10,7 +10,7 @@
 			echo "";
 			echo "
 			<div class='project-preview'>
-				<h5><a href='javascript:void(0)' onClick='showProject(".$row['pjt_id'].")'>".$row['pjt_name']."</a> - ".$row['rol_name']."</h5> 
+				<h5><a href='javascript:void(0)' onClick='showProject(".$row['pjt_id'].")'>".$row['pjt_name']."</a> - ".$row['rol_name']."<a href='javascript:void(0)' onClick='editProject(".$row['pjt_id'].")'> Edit</a></h5> 
 				<br>".$row['pjt_description']."
 				<br>".$row['pjt_year']."
 				<br>
