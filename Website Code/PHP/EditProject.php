@@ -16,24 +16,24 @@
     </div>
 		<div>
 			<h5>Title:</h5>
-				<div id=editprojecttitle><input type="text"  value="Project Title";>
+				<div id="editprojecttitle"><input type="text"  value="Project Title";>
 			</div>
 			<h5>Image</h5>
-			<div id=editprojectimage><input class="button" type="button" value="Change" onClick="ProcessImageChanges()">
+			<div id="editprojectimage"><input class="button" type="button" value="Change" onClick="ProcessImageChanges()">
 			      <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ImageChangesLoaded()" width="0" height="0"><br>
 			</div>
 			<h5>Description:</h5>
-			<div id=editprojectdesc><input type="text"  value="A short description that is attached to the home page when you're project is featured." maxlength="200";>
+			<div id="editprojectdesc"><input type="text"  value="A short description that is attached to the home page when you're project is featured." maxlength="200";>
 			</div>
 			<h5>Body:</h5>
-			<div id=editprojectbody><input type="text"
+			<div id="editprojectbody"><input type="text"
 				value="A more detailed summary of your project. Explain the idea, method, and impacts.";>
 			</div>
 			<h5>Year:</h5>
-			<div id=editprojectyear><input type="text"  value="****" maxlength="4";>
+			<div id="editprojectyear"><input type="text"  value="****" maxlength="4";>
 			</div>
 			<h5>Change College</h5>
-				<div id=editprojectcollege>
+				<div id="editprojectcollege">
 					<select id ="slt_college" name="slt_college" >
 						<?php
 										include_once 'Database.php';
@@ -47,18 +47,27 @@
 										} else {echo 'error';}
 							mysqli_close($con);
 								?>
+            </select>
 				</div>
 
 			<h5>Change Participants:</h5>
-			<div id=editprojectparticipants><input type="text" value="John Doe";>
+			<div id="editprojectparticipants"><input class="button" type="button" value="Change Participants" onClick="ProcessParticipantChanges()">
+			      <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ParticipantChangesLoaded()" width="0" height="0";><br>
 			</div>
-			<h5>Upload Files</h5>
-			<div id=editprojectupload>
+      <div id="editprojectparticipantstext"><input type="text"
+				value="Participant's email address";>
 			</div>
+      <div id="addprojectparticipant"><input class="button" type="button" value="Add" onClick="ProcessAddParticipant()">
+            <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="AddParticipantLoaded()" width="0" height="0";>
+      </div>
+			<br><br><br><br><br>
+      <h5>Upload Files</h5>
+			<div id="editprojectupload";>
+			</div>
+      <div>
+      <br><input class="button" type="button" value="Submit" onClick="ProcessProjectChanges()">
+        <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ProjectChangesLoaded()" width="0" height="0";>
 		</div>
-
-		<br><input class="button" type="button" value="Submit" onClick="ProcessProjectChanges()">
-      <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ProjectChangesLoaded()" width="0" height="0">
 
 	</body>
 </html>
