@@ -16,7 +16,7 @@
     </div>
 
     <h5>Change Legal Name</h5>
-    <div id=editprofilenames>
+    <div id="editprofilenames">
       First name: <input type="text"  value="John" maxlength="20";><br>
       Last name: <input type="text" name="LastName" value="Doe" maxlength="20">
     </div>
@@ -66,12 +66,12 @@
 ?>
 
 <h5>Change Password</h5>
-  <div id=editpassword>
+  <div id="editpassword">
     <input type="text" name="password" value="********">
   </div>
 
     <h5>Change Major</h5>
-    <div id=editmajor>
+    <div id="editmajor">
       <select name="slt_major" id="slt_major">
         <?php
         include_once 'Database.php';
@@ -88,19 +88,19 @@
   </div>
 
   <h5>Change Academic Status</h5>
-  <div id=editstatus>
+  <div id="editstatus">
       <input type="radio" name="Undergraduate>" id="Undergraduate" value="Undergraduate"> Undergraduate<br>
       <input type="radio" name="Graduate>" id="Graduate" value="Graduate"> Graduate<br>
   </div>
 
     <h5>Change Contact Information</h5>
-      <div id=editphone>
+      <div id="editphone">
         Phone Number: <input type="text" name="PhoneNumber" value="8121234567" maxlength="10"><br>
       </div>
-      <div id=editemail>
+      <div id="editemail">
         Email: <input type="text" name="Email" value="account@service.com" maxlength="30"><br>
       </div>
-      <div id=editlinkedin>
+      <div id="editlinkedin">
         LinkedIn: <input type="text" name="linkedin" value="account@linkedin.com"><br>
       </div>
 
