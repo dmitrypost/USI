@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>Admin Page: Edit Colleges and Majors</title>
-<link rel="stylesheet" type="text/css" href="../CSS/foundation2.css">
+<link rel="stylesheet" type="text/css" href="CSS/foundation2.css">
 <script >
 	function toggle_visibility(id) {
 	"use strict";
@@ -18,55 +18,10 @@
 		  }
     }
 	</script>
-    <style>
-	.question{
-padding:10px;
-background-color: #98d4c6; 
-color:black;
-text-align:center;
-font-size:20px;
-border-bottom:black ridge;
-border-width:1px;
-}
-.answer{
-background-color:#f2f2f2;
-padding:10px;
-text-align:left;
-font-size: 25px;
-border-bottom:black ridge;
-border-width:1px;
-}
-
-#dropDownFAQs{
-	float:left;
-	width:100%;
-	text-align:center;
-	position:relative;
-	top:-15px;
-}
-#dropDownFAQs h3{
-	position:relative;
-	top:15px;
-	color:red;
-}
-/* .changeCollege{
-	
-	float:left;
-	border-style:solid;
-	border-color:red;
-}
-.changeMajor{
-	
-	float:left;
-	border-style:solid;
-	border-color:red;
-} */
-	</style>
 </head>
 
 <body>
 <section id ="dropDownFAQs">
-<h3>Title</h3>
 
 <div class="question"  onclick="toggle_visibility('one');">
 <p>Add</p>
@@ -74,7 +29,7 @@ border-width:1px;
 <div class ="answer" id ="one" hidden>
 	<div class = "changeCollege">
 	<input type="text"  value="Add College" maxlength="200";>
-	<button>Add College</button>
+	<button class="adminbtns">Add College</button>
 	</div>
 	<div class = "changeMajor">
 	<div id="editprojectcollege">
@@ -93,7 +48,7 @@ border-width:1px;
 								?>
 	</div>
 	<input type="text"  value="Add Major" maxlength="200";>
-	<button>Add Major</button>
+	<button class="adminbtns">Add Major</button>
 	</div>
 </div>
 
@@ -105,12 +60,12 @@ border-width:1px;
 	<div>
 	drop down
 	<input type="text"  value="Edit College" maxlength="200";>
-	<button>Edit College</button>
+	<button class="adminbtns">Edit College</button>
 	</div>
 	<div>
 	drop down
 	<input type="text"  value="Edit Major" maxlength="200";>
-	<button>Edit Major</button>
+	<button class="adminbtns">Edit Major</button>
 	</div>
 </div>
 <div class="question" onclick="toggle_visibility('three');">
@@ -119,11 +74,11 @@ border-width:1px;
 <div class ="answer" hidden id="three">
 	<div>
 	drop down
-	<button>Delete College</button>
+	<button class="adminbtns">Delete College</button>
 	</div>
 	<div>
 	drop down
-	<button>Delete Major</button>
+	<button class="adminbtns">Delete Major</button>
 	</div>
 </div>
 </section>

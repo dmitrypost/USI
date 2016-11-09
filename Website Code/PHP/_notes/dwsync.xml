@@ -30,7 +30,7 @@
 <file name="ProcessRegistration.php" server="C:/xampp/htdocs/" local="131231244058644142" remote="131231244050000000" Dst="1" />
 <file name="College.php" server="C:/xampp/htdocs/" local="131217967031109090" remote="131217967030000000" Dst="1" />
 <file name="Major.php" server="C:/xampp/htdocs/" local="131217967033344395" remote="131217967030000000" Dst="1" />
-<file name="Default.php" server="C:/xampp/htdocs/" local="131231342265891208" remote="131231342260000000" Dst="1" />
+<file name="Default.php" server="C:/xampp/htdocs/" local="131231968134229234" remote="131231968130000000" Dst="1" />
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs/" local="131217967032346547" remote="131217967030000000" Dst="1" />
 <file name="Database.php" server="C:/xampp/htdocs" local="131217967031309232" remote="131217967030000000" Dst="2" />
 <file name="Functions.php" server="C:/xampp/htdocs" local="131226045727896487" remote="131226045720000000" Dst="2" />
@@ -51,6 +51,6 @@
 <file name="admin_runSQL.php" server="C:/xampp/htdocs/" local="131231860741738414" remote="131231860740000000" Dst="1" />
 <file name="admin_editHomepage.php" server="C:/xampp/htdocs/" local="131231841911539001" remote="131231841910000000" Dst="1" />
 <file name="admin_editProfile.php" server="C:/xampp/htdocs/" local="131231854220833631" remote="131231854220000000" Dst="1" />
-<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/xampp/htdocs/" local="131231959761092206" remote="131231959760000000" Dst="1" />
+<file name="admin_addEditDelete_collegesAndMajors.php" server="C:/xampp/htdocs/" local="131231966078215022" remote="131231966070000000" Dst="1" />
 <file name="admin_editProjects.php" server="C:/xampp/htdocs/" local="131231854395453899" remote="131231854390000000" Dst="1" />
 </dwsync>

@@ -12,9 +12,6 @@
 	<script src="http://www.usi.edu/f4/js/foundation.min.js"></script>
 	<script src="JS/EarlyBindingFunctions.js"></script>
     <script src="JS/ProcessRegister.js"></script>
-    <style>
-	
-	</style>
 </head>
 <body>
 <div>
