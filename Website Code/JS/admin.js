@@ -28,3 +28,11 @@ function goToPage(page)
 	});	
 	return false;	
 }
+
+/*exported AlterCollegeMajorLoaded*/  
+  function AlterCollegeMajorLoaded(){
+	 "use strict";
+    $( "#accordion" ).accordion();
+  } 
+  
+ 
