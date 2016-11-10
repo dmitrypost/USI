@@ -89,8 +89,8 @@
 
   <h5>Change Academic Status</h5>
   <div id="editstatus">
-      <input type="radio" name="Undergraduate>" id="Undergraduate" value="Undergraduate"> Undergraduate<br>
-      <input type="radio" name="Graduate>" id="Graduate" value="Graduate"> Graduate<br>
+      <input type="radio" name="academicstatus>" value="Undergraduate"> Undergraduate<br>
+      <input type="radio" name="academicstatus>" value="Graduate"> Graduate<br>
   </div>
 
     <h5>Change Contact Information</h5>
