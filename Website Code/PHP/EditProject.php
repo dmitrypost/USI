@@ -23,11 +23,10 @@
 			      <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ImageChangesLoaded()" width="0" height="0"><br>
 			</div>
 			<h5>Description:</h5>
-			<div id="editprojectdesc"><input type="text"  value="A short description that is attached to the home page when you're project is featured." maxlength="200";>
-			</div>
+			<div id="editprojectdesc"><textarea maxlength="200">A short description that is attached to the home page when you're project is featured.</textarea>
+      </div>
 			<h5>Body:</h5>
-			<div id="editprojectbody"><input type="text"
-				value="A more detailed summary of your project. Explain the idea, method, and impacts.";>
+			<div id="editprojectbody"><textarea>A more detailed summary of your project. Explain the idea, method, and impacts.</textarea>
 			</div>
 			<h5>Year:</h5>
 			<div id="editprojectyear"><input type="text"  value="****" maxlength="4";>

@@ -182,13 +182,11 @@ width: 200px;
 	}
 
 	#editprojectdesc {
-	width: 200px;
-	height: 100px;
-	line-height: 100px;
+		width: 600px;
 	}
 
 	#editprojectbody {
-	width: 300px;
+	width: 600px;
 	}
 
 	#editprojectyear {
