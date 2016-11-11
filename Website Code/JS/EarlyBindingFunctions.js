@@ -266,6 +266,13 @@ function RegistrationFormLoaded()
 	} ).trigger('change');
 }
 
+/* exported ProfileEditLoaded */
+function ProfileEditLoaded()
+{
+	"use strict"; //jshint unused:false
+	  $( "#accordion" ).accordion();
+}
+
 /* exported getSidePanel */
 function getSidePanel()
 {

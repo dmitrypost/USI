@@ -29,6 +29,24 @@
 		return $loggedin;
 	}
 	
+	//gets the admin's uid if logged in if not returns 0
+	function AdminUID()
+	{
+		if (session_status() == PHP_SESSION_NONE) {
+    		session_start();
+		}	
+		$con = Open();
+		$query = "SELECT ses_id FROM tblSession INNER JOIN tblUser ON tblSession.ses_usr_id = tblUser.user_id WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired) AND usr_admin = true";
+		$loggedin = false;
+		if ($result = mysqli_query($con, $query))
+		{
+			if (mysqli_num_rows($result) > 0)
+			{ $loggedin= true; } else { $loggedin= false; }
+		}
+		mysqli_close($con);
+		return $loggedin;		
+	}
+	
 	function getUID()
 	{
 		if (session_status() == PHP_SESSION_NONE) {
