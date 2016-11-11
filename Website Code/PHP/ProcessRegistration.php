@@ -37,7 +37,7 @@
 					{
 						if (mysqli_num_rows($result) > 0) 
 						{ 
-							echo mysqli_fetch_assoc($result);
+
 							while($row = mysqli_fetch_assoc($result)) 
 							{
 								$mgrId = $row['mgr_id'];
