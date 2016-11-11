@@ -25,8 +25,8 @@
 		//name heading
     echo "<h1 id='page-name'>".$row['usr_fname']." ".$row['usr_lname']."</h1></div></div>";
 		//picture
-	if (!($row['usr_picture'] == ""))
-	{ $profilePic = $NoProfilePictureImage;	} else { $profilePic = $row['usr_picture']; }
+	if (!strlen($row['usr_picture']) > 0)
+	{ $profilePic = $NoProfilePictureImage; } else { $profilePic = $row['usr_picture']; }
 		//major
 	if (!($row['mgr_name']))
 	{ $major = "Major Not Set"; } else { $major = $row['mgr_name']; }
