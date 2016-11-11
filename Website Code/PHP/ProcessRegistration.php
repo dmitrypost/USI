@@ -31,19 +31,18 @@
 
 					//get the id of the major selected
 					$mgrId;
-					$query = "SELECT mgr_id FROM tblMajor INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE mgr_name = '".$major."' AND clg_name ='".$colle."'";
+					$query2 = "SELECT mgr_id FROM tblMajor INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE mgr_name = '".$major."' AND clg_name ='".$colle."'";
 					
-					if ($result = mysqli_query($con, $query)) 
+					if ($result2 = mysqli_query($con, $query2))
 					{
-						if (mysqli_num_rows($result) > 0) 
-						{ 
-
-							while($row = mysqli_fetch_assoc($result)) 
+						if (mysqli_num_rows($result2) > 0)
+						{
+							while($row2 = mysqli_fetch_assoc($result2)) 
 							{
-								$mgrId = $row['mgr_id'];
+								$mgrId = $row2['mgr_id'];
 								//now that we have everything we need we can go ahead and do an insert into tblUser for this newly registered user
-								$query = "INSERT INTO tblUser (usr_fname, usr_lname, usr_email, usr_password, usr_major)VALUES('$fname','$lname','$email','$passw',$mgrId)";
-								if ($result = mysqli_query($con, $query))
+								$query3 = "INSERT INTO tblUser (usr_fname, usr_lname, usr_email, usr_password, usr_mgr_id)VALUES('$fname','$lname','$email','$passw',$mgrId)";
+								if (mysqli_query($con, $query3))
 								{
 									//query ran properly
 									echo "<p class='information'>Registration completed successfully. You may now login with the registered email and password.";
@@ -51,7 +50,7 @@
 								else
 								{
 									//error occured trying to run insert query
-									echo "<p class='error'>There was an error retrieveing the major based on submitted data. Please try again.</p>";	
+									echo "<p class='error'>There was an error processing the submitted data. Please try again.</p>";	
 								}
 							}	
 						}
