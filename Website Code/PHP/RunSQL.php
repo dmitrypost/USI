@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="CSS/admin.css">
 <title>Admin Page: Run SQL</title>
 </head>
 
@@ -13,8 +14,9 @@
 			</div>
             <div id="resultSql">
             	Results:
-            	<input type="text"  value="SQL query result here." maxlength="200";>
+            	<textarea rows="6" cols="50" value ="SQL query resluts here."></textarea>
 			</div>
     </div>
 </body>
 </html>
+
