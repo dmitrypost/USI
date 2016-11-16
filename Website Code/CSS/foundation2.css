@@ -9,6 +9,10 @@
 	min-height:760px;
 }
 
+.w300 {
+	width:300px !important;
+}
+
 .Participant {
 height: 400px;
 }

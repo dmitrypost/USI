@@ -248,6 +248,84 @@ function ProcessRegistration()
 	});
 }
 
+/* exported ProcessProfileChanges */
+function ProcessProfileChanges()
+{
+	"use strict"; //jshint unused:false
+	var request;
+	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val() + "&password=" + $('#txt_password').val() + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val();
+	
+	request = $.ajax({
+		url: "Body.php",
+		type: "post",
+		data: data
+	});
+	// Callback handler that will be called on success
+	request.done(function (response, textStatus, jqXHR){
+		//replaceHtml('BodyPanel',response);
+		replaceHtml('BodyPanel',response);
+	});
+	// Callback handler that will be called on failure
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
+/* exported AjaxProfileChange */
+function AjaxProfileChange(control,action,optional)
+{
+	"use strict"; //jshint unused:false	
+	
+    var data = "Page=EditProfile&Action=" + action + "&Value=" + GetControlValue(control) + "&Optional=" + optional;
+	var request = $.ajax({
+		url: "Body.php",
+		type: "post",
+		data: data
+	});
+	request.done(function (response, textStatus, jqXHR) {
+		var res = response.split("|");
+		$(res[0]).append(res[1]);
+		//$(control).append(" <b class='Status'>&#10004;</b>");
+        $(".Status").fadeOut(1000,function() { $(".Status").remove(); });
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
+/* exported GoToPage */
+function GoToPage(page)
+{
+	"use strict"; //jshint unused:false	
+	var request = $.ajax({
+		url: "Body.php",
+		type: "post",
+		data: "Page="+page
+	});
+	request.done(function (response, textStatus, jqXHR) {
+		replaceHtml('BodyPanel',response);
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
+function GetControlValue(control)
+{
+	"use strict"; //jshint unused:false
+	if(control !== null)
+    { 
+		switch (control.type)
+		{
+			case 'text':	
+				return control.value;
+			case 'select':
+				return control.value;
+				
+		}
+		return "";
+	}
+}
 
 var $options = null;
 
@@ -270,7 +348,16 @@ function RegistrationFormLoaded()
 function ProfileEditLoaded()
 {
 	"use strict"; //jshint unused:false
-	  $( "#accordion" ).accordion();
+	$( "#accordion" ).accordion();
+}
+
+/* exported onEnter */
+function onEnter(event,control,action,optional)
+{
+	"use strict"; //jshint unused:false
+	if (event.keyCode === 13) {
+		AjaxProfileChange(control,action,optional);
+	}
 }
 
 /* exported getSidePanel */

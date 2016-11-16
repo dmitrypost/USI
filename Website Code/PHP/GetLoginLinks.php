@@ -18,7 +18,7 @@
 						echo('<ul class="dropdown" onMouseOut="$(\'li.has-dropdown\').removeClass(\'hover\')">');
 						echo('<li class="title back js-generated"><h5><a href="#">« Back</a></h5></li>');
 						echo('<li><a class="parent-link js-generated" href="javascript:void(0)" onClick="showProfile('.$row['usr_id'].')" title="View Profile">'.$row['usr_fname'].'</a></li>');
-						echo('<li class=""><a href="javascript:void(0)" onClick="editProfile(0)" title="Edit Profile">Edit Profile</a></li>');			
+						echo "<li class=''><a href='javascript:void(0)' onClick='GoToPage(\"EditProfile\")' title='Edit Profile'>Edit Profile</a></li>";			
 						echo('<li class=""><a href="javascript:void(0)" onClick="Logout()" title="Logout">Logout</a></li>');				
 						echo('</ul></li>');
 						echo('|');		
