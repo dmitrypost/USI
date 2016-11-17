@@ -1,6 +1,49 @@
 <?php
 	include_once 'Database.php';
 
+	function GetHashedString($input)
+	{
+		return hash('sha256', $input);	
+	}
+
+	//Generates a random string of characters
+	function GenerateSalt()
+	{
+		for ($x = 0; $x <= 10; $x++) {
+			$res[$x] = chr((rand(0,255)));
+		} 
+		return implode($res);
+	}
+	
+	function GetEncryptedPassword($HashedPassword,$Salt)
+	{
+		return crypt($HashedPassword, $Salt);	
+	}
+	
+	function GetMajorIdByName($majorName)
+	{
+		include_once 'Database.php';
+		$con = Open(); $mgr_id = 0;
+		$query = "SELECT mgr_id FROM tblMajor WHERE mgr_name = '".$majorName."'";	
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$mgr_id = $row['mgr_id'];
+		}	} else { /*no results found*/ }	} else {echo 'error';}
+		mysqli_close($con);
+		return $mgr_id;
+	}
+	
+	function GetUserIdByEmail($email)
+	{
+		include_once 'Database.php';
+		$con = Open(); $userId = 0;
+		$query = "SELECT usr_id FROM tblUser WHERE usr_email = '".$email."'";	
+		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$userId = $row['usr_id'];
+		}	} else { /*no results found*/ }	} else {echo 'error';}
+		mysqli_close($con);
+		return $userId;
+	}
+	
 	function GetImage($ImageId)
 	{
         include_once 'Database.php';

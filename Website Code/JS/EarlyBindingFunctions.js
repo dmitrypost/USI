@@ -253,7 +253,7 @@ function ProcessProfileChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val() + "&password=" + $('#txt_password').val() + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val();
+	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val() + "&password=" + $('#txt_password').val() + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
 	
 	request = $.ajax({
 		url: "Body.php",

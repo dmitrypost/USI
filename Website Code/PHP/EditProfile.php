@@ -36,6 +36,7 @@
 				
 					$query = "SELECT usr_id, usr_fname, usr_lname, usr_picture, usr_graduate, usr_mgr_id, usr_phone, usr_email, usr_linkedin, mgr_name FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id = ".getUID();
 					if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
+				echo "<input type='hidden' id='hdn_userid' value='".$row['usr_id']."'";
 				echo "
 				<div id='accordion'>
 					<h3>Basic Information</h3>
@@ -50,8 +51,8 @@
 						</div>
 					<h3>Login Information</h3>
 						<div>
-							<div id='editpassword'>
-								Password: <input type='password' class='w300' id='txt_password' value='********' data='UpdatePassword|".$row['usr_id']."'>
+							<div>
+								<input type='button' class='button' onClick='GoToPage(\"EditPassword\")' value='Change Passoword'>
 							</div>
 							<div id='editemail'>
 								Email: <input type='text' class='w300' id='txt_email' value=".$row['usr_email']." maxlength='30'><br>

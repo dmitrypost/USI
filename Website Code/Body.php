@@ -50,7 +50,7 @@
 					include 'PHP/ProcessRegistration.php';
 					break;
 				case 'processProfileEdits':
-					include 'PHP/ProcessProfileEdits';
+					include 'PHP/ProcessProfileEdits.php';
 					break;
 				case 'cid':
 					include 'PHP/College.php';
@@ -64,6 +64,9 @@
 							case 'EditProfile':
 								include 'PHP/EditProfile.php';
 								break;								
+							case 'EditPassword':
+								include 'PHP/EditPassword.php';
+								break;
 						}
 
 			}
