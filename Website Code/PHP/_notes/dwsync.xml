@@ -50,4 +50,5 @@
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
 <file name="RunSQL.php" server="C:/xampp/htdocs/" local="131234576378280358" remote="131234576370000000" Dst="1" />
 <file name="AlterCollegeMajor.php" server="C:/xampp/htdocs/" local="131232132065616437" remote="131232132060000000" Dst="1" />
+<file name="EditPassword.php" server="C:/xampp/htdocs/" local="131239018458881614" remote="131239018450000000" Dst="1" />
 </dwsync>
