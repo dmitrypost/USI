@@ -4,7 +4,7 @@
 	{
 		$uid = getUID();
 		$con = Open();
-		$query = "SELECT rol_name, pjt_name, pjt_description, clg_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id INNER JOIN tblcollege ON tblproject.pjt_clg_id = tblcollege.clg_id WHERE usr_id = ". $uid;
+		$query = "SELECT rol_name, pjt_name, pjt_description, mgr_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id INNER JOIN tblMajor ON tblproject.pjt_mgr_id = tblMajor.mgr_id WHERE usr_id = ". $uid;
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			while($row = mysqli_fetch_assoc( $result)) {
 			echo "";
