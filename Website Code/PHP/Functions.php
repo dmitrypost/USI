@@ -1,6 +1,100 @@
 <?php
 	include_once 'Database.php';
 
+	//updates the password for the given user to the new password
+	//userid needed for when administrator needs to set a new password for another user's account
+	//returns true if successful and false if failed
+	function SetPassword($newpassword,$userId)
+	{
+		$salt = GenerateSalt();
+		$hashedpassword = GetHashedString($newpassword);
+		$encryptedpassword = GetEncryptedPassword($hashedpassword,$salt);
+		//encode the strings to work with the database
+		$salt = mb_convert_encoding($salt, "utf8");
+		$encryptedpassword = mb_convert_encoding($encryptedpassword, "utf8");
+		//update the database to the new encrypted password and the new salt
+		include_once 'Database.php';
+		$con = Open();
+		mysqli_set_charset ( $con, 'utf8mb4' );
+		$query = "UPDATE tblUser SET usr_password = '".$encryptedpassword."',usr_salt = '".$salt."' WHERE usr_id =".$userId;	
+		echo "<br>salt:$salt <br>encPass:$encryptedpassword <br>";
+		if (mysqli_query($con,(string)$query)) //run the query
+		{	//query ran successfully
+			mysqli_close($con);
+			return true;			
+		}
+		else
+		{	//an error in the query occured
+			echo $query;
+			echo("Error description: " . mysqli_error($con));
+			var_dump(mysqli_get_charset($con));
+			mysqli_close($con);
+			
+			return false;	
+		}
+	}
+	
+	//evaluates if the current password in the database matches the logged in user's password
+	function isPasswordValid($password)
+	{
+		$userId = getUID();
+		$dbpassword; $dbsalt;
+		$con = Open();
+		if (($userId != 0) AND (strlen($password) > 0))
+		{
+			$query = "SELECT usr_password, usr_salt FROM tblUser WHERE usr_id =".$userId;
+			if ($result = mysqli_query($con, $query))
+			{
+				if (mysqli_num_rows($result) > 0)
+				{
+					while($row = mysqli_fetch_assoc( $result)) 
+					{
+						$dbpassword = $row['usr_password'];
+						$dbsalt = $row['usr_salt'];
+						
+						$hashedpassword = GetHashedString($password);
+						$encryptedpassword = GetEncryptedPassword($hashedpassword,$dbsalt);
+						
+						//encode it for comparison (db values are already encoded)
+						$encryptedpassword = mb_convert_encoding($encryptedpassword,"utf8");
+						
+						echo "<br>password: $password<br>dbpassword: ".$dbpassword." <br>dbsalt:".$dbsalt." <br>hashedcurrent:".$hashedpassword." <br>encryptedpassword:".$encryptedpassword;
+						
+						if (((string)$dbpassword==(string)$encryptedpassword))
+						{
+							mysqli_close($con);
+							echo "<br>valid";
+							return true;
+						}
+						else
+						{
+							mysqli_close($con);echo "<br>invalid";
+							return false;
+						}
+					}
+				}
+				else 
+				{ 
+					/*no results found*/ 
+					mysqli_close($con);
+					return false;
+				}	
+			} 
+			else 
+			{
+				/* error running query */
+				mysqli_close($con);
+				return false;
+			}
+		}
+		else
+		{
+			mysqli_close($con);
+			return false;
+		}
+		
+	}
+	
 	function GetHashedString($input)
 	{
 		return hash('sha256', $input);	

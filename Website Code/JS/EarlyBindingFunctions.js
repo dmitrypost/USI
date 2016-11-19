@@ -391,3 +391,18 @@ function UpdateSPMajorList(cid)
     });
 	return false;	
 }
+
+/* exported SubmitPasswordChanges */
+function SubmitPasswordChanges()
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "post", data: "Page=EditPassword&oldpassword=" + $("#pass_current").val() + "&newpassword=" + $("#pass_new").val() + "&repeatedpassword=" + $("#pass_confirm").val() });
+    request.done(function (response, textStatus, jqXHR) {
+        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+	return false;	
+}
