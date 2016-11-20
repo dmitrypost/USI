@@ -3,6 +3,10 @@
 //clears out the text "search" from the search box on first focus
 $('#ComboSearch').focus(function () { "use strict"; //jshint unused:false
 $(this).val(""); });
+
+$('#eml_email').focus(function () { "use strict"; //jshint unused:false
+$(this).val(""); });
+
 //Sending login info for processing
 
 	// Variable to hold request
@@ -37,6 +41,7 @@ $("#loginForm").submit(function(event)
 		request.done(function (response, textStatus, jqXHR){
 			// Log a message to the console
 			/* exported clearLogin */
+			console.log(response);
 			clearLogin.call();
 			getRegisterLoginUserLinks.call();
 		});

@@ -106,7 +106,7 @@
 		for ($x = 0; $x <= 10; $x++) {
 			$res[$x] = chr((rand(0,255)));
 		} 
-		return implode($res);
+		return mb_convert_encoding(implode($res),"utf8");
 	}
 	
 	function GetEncryptedPassword($HashedPassword,$Salt)

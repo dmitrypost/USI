@@ -9,6 +9,15 @@ function showLogin()
 	return false;	
 }
 
+//shows the login div containing the login form
+/* exported HideLogin */
+function HideLogin()
+{
+	"use strict";
+	document.getElementById('loginDiv').style.visibility='hidden';
+	return false;	
+}
+
 //variable for holding current page
 var uri = "/";
 
