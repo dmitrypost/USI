@@ -9,6 +9,16 @@ function showLogin()
 	return false;	
 }
 
+//variable for holding current page
+var uri = "/";
+
+function UpdateAddressBar(urlPath)
+{
+	"use strict";
+	uri = urlPath;
+	window.history.pushState({"html":"","pageTitle":""},"", urlPath);		
+}
+
 //clears login information
 /* exported clearLogin */
 function clearLogin()
@@ -90,6 +100,7 @@ function editProfile(euid)
     var request = $.ajax({url:"Body.php",type: "post", data: "euid=" + euid});
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		UpdateAddressBar("/euid="+euid);
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -122,6 +133,7 @@ function showProjects()
 	var request = $.ajax({url:"Body.php",type: "post", data: "pjs=" });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		UpdateAddressBar("/?pjs");
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -138,6 +150,7 @@ function showProject(pid)
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
 		SPProject(pid);
+		UpdateAddressBar("/?pid="+pid);
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -183,6 +196,7 @@ function showRegister()
 	var request = $.ajax({url:"Body.php",type: "post", data: "register" });
     request.done(function (response, textStatus, jqXHR) {
     	replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?register");
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -199,6 +213,7 @@ function showMajor(mid)
 	var request = $.ajax({url:"Body.php",type: "post", data: "mid=" + mid });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		UpdateAddressBar("/?mid="+mid);
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -214,6 +229,7 @@ function showCollege(cid)
 	var request = $.ajax({url:"Body.php",type: "post", data: "cid=" + cid });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
+		UpdateAddressBar("/?cid="+cid);
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {
@@ -241,6 +257,7 @@ function ProcessRegistration()
 	request.done(function (response, textStatus, jqXHR){
 		//replaceHtml('BodyPanel',response);
 		replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?registerForm=");
 	});
 	// Callback handler that will be called on failure
 	request.fail(function (jqXHR, textStatus, errorThrown){
@@ -264,6 +281,7 @@ function ProcessProfileChanges()
 	request.done(function (response, textStatus, jqXHR){
 		//replaceHtml('BodyPanel',response);
 		replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?processProfileEdits");
 	});
 	// Callback handler that will be called on failure
 	request.fail(function (jqXHR, textStatus, errorThrown){
@@ -304,6 +322,7 @@ function GoToPage(page)
 	});
 	request.done(function (response, textStatus, jqXHR) {
 		replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?Page="+page);
 	});
 	request.fail(function (jqXHR, textStatus, errorThrown){
 		console.error("The following error occurred: "+	textStatus, errorThrown	);

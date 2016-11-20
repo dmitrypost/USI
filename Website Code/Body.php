@@ -67,6 +67,9 @@
 							case 'EditPassword':
 								include 'PHP/EditPassword.php';
 								break;
+							case 'Projects':
+								include 'PHP/Projects.php';
+								break;	
 						}
 
 			}

@@ -22,7 +22,7 @@
 						echo('<li class=""><a href="javascript:void(0)" onClick="Logout()" title="Logout">Logout</a></li>');				
 						echo('</ul></li>');
 						echo('|');		
-						echo('<a href="javascript:void(0)" onClick="showProjects()" title="View Projects">Projects</a>');	
+						echo("<a href='javascript:void(0)' onClick='GoToPage(\"Projects\")' title='View Projects'>Projects</a>");	
 						break;	
 					}
 				}
