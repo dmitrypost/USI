@@ -1,35 +1,12 @@
-<style>
-#passwdChange{
-	
-	list-style-type: none;
-}
-</style>
-</head>
-
-<body>
-<ul id ="passwdChange">
-	<li>
-    <h1>Edit Password</h1>
-    </li>
-	Current Password:
-    <li>
-     <input type="password"  class="w300" id="pass_current" maxlength="50";>
-     </li>
-     <br>
-     New Password:
-     <li>
-     <input type="password" class="w300" id="pass_new" maxlength="50";>
-     </li>
-      <br>
-      Confirm New Password:
-      <li>
-     <input type="password"  class="w300" id="pass_confirm" maxlength="50";>
-     </li>
-      <br>
-      <li>
-      <button class="accordianbtns" onClick="SubmitPasswordChanges()">Submit</button>
-      </li>
-  </ul>
+<div class='row'><div class='small-12 columns' style='padding-right:0'>
+<h1 id='page-name'>Change Password</h1></div></div>
+Current Password:
+<input type="password"  class="w300" id="pass_current" maxlength="50";>
+New Password:
+<input type="password" class="w300" id="pass_new" maxlength="50";>
+Confirm New Password:
+<input type="password"  class="w300" id="pass_confirm" maxlength="50";>
+<button class="accordianbtns" onClick="SubmitPasswordChanges()">Submit</button> 
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
 	{
@@ -74,4 +51,3 @@
 		}
 	}
 ?>
-</body>

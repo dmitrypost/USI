@@ -17,7 +17,7 @@
 		$con = Open();
 		mysqli_set_charset ( $con, 'utf8mb4' );
 		$query = "UPDATE tblUser SET usr_password = '".$encryptedpassword."',usr_salt = '".$salt."' WHERE usr_id =".$userId;	
-		echo "<br>salt:$salt <br>encPass:$encryptedpassword <br>";
+		//echo "<br>salt:$salt <br>encPass:$encryptedpassword <br>";
 		if (mysqli_query($con,(string)$query)) //run the query
 		{	//query ran successfully
 			mysqli_close($con);
@@ -25,11 +25,10 @@
 		}
 		else
 		{	//an error in the query occured
-			echo $query;
-			echo("Error description: " . mysqli_error($con));
-			var_dump(mysqli_get_charset($con));
+			//echo $query;
+			//echo("Error description: " . mysqli_error($con));
+			//var_dump(mysqli_get_charset($con));
 			mysqli_close($con);
-			
 			return false;	
 		}
 	}
@@ -58,17 +57,17 @@
 						//encode it for comparison (db values are already encoded)
 						$encryptedpassword = mb_convert_encoding($encryptedpassword,"utf8");
 						
-						echo "<br>password: $password<br>dbpassword: ".$dbpassword." <br>dbsalt:".$dbsalt." <br>hashedcurrent:".$hashedpassword." <br>encryptedpassword:".$encryptedpassword;
+						//echo "<br>password: $password<br>dbpassword: ".$dbpassword." <br>dbsalt:".$dbsalt." <br>hashedcurrent:".$hashedpassword." <br>encryptedpassword:".$encryptedpassword;
 						
 						if (((string)$dbpassword==(string)$encryptedpassword))
 						{
 							mysqli_close($con);
-							echo "<br>valid";
+							//echo "<br>valid";
 							return true;
 						}
 						else
 						{
-							mysqli_close($con);echo "<br>invalid";
+							mysqli_close($con);//echo "<br>invalid";
 							return false;
 						}
 					}

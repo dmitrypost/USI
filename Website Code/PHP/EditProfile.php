@@ -27,11 +27,10 @@
 		//echo "ProfileId: ".$ProfileId." Usr_Id: ".$usr_id." Admin_Id: ".$admin_id;
 		if (!isset($_POST['Action']))
 		{
-			echo "<div class='row'>
-					<div class='small-12 columns' style='padding-right:0'>
-						<h1 id='page-name'>Edit Profile Page</h1>
-					</div>
-				</div>";
+			echo "
+				<div class='row'><div class='small-12 columns' style='padding-right:0'>
+   					<h1 id='page-name'>Edit Profile</h1></div></div>
+				";
 				
 				
 					$query = "SELECT usr_id, usr_fname, usr_lname, usr_picture, usr_graduate, usr_mgr_id, usr_phone, usr_email, usr_linkedin, mgr_name FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id = ".getUID();

@@ -1,4 +1,5 @@
-<h3>search </h3>
+<div class='row'><div class='small-12 columns' style='padding-right:0'>
+<h1 id='page-name'>Search</h1></div></div>
 <div>
 <?php
 
@@ -28,7 +29,7 @@
 			";
 			
 		}
-		} else { /*no users found*/ }
+		} else { /*no users found*/ } 
 		} else {echo 'error';}
 		
 	
