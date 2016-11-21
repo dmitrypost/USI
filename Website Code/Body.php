@@ -70,6 +70,12 @@
 							case 'Projects':
 								include 'PHP/Projects.php';
 								break;	
+							case 'Project':
+								include 'PHP/Project.php';
+								break;
+							case 'EditProject':
+								include 'PHP/EditProject.php';
+								break;
 						}
 
 			}

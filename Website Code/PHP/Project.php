@@ -1,11 +1,13 @@
-
- <!--this page url is http://localhost/?pid=1-->
 <?php
 	include_once 'Functions.php';
-		
-	$con = Open(); $pageview = 0;
-	if (!isset($_POST['pid'])) { $projectID = 1; } else{ $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['pid']))); }
-	$query = "SELECT pjt_id, pjt_picture, pjt_name, pjt_body, pjt_description, pjt_pageview, pjt_year, clg_name, pjt_pageview FROM tblProject INNER JOIN tblcollege ON tblProject.pjt_clg_id = tblcollege.clg_id WHERE pjt_id =".$projectID;
+	/*
+		foreach ($_POST as $key => $val) {
+		  echo '<p>'.$key.':'.$_POST[$key].'</p>';
+	}*/
+	$con = open();
+	if (!isset($_POST['pid'])) { $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); } else{ $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['pid']))); }
+	
+	$query = "SELECT pjt_id, pjt_picture, pjt_name, pjt_body, pjt_description, pjt_pageview, pjt_year, mgr_name, pjt_pageview FROM tblProject INNER JOIN tblmajor ON tblProject.pjt_mgr_id = tblmajor.mgr_id WHERE pjt_id =".$projectID;
 	
 	if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 		echo "<img src='".$row['pjt_picture']."'>";
@@ -33,9 +35,10 @@
 	
 	
 	echo "<p>
-	<p>Project views: $pageview
+	<p class='view-count'>Project views: $pageview</p>
 	";
 	mysqli_close($con);
 	QuickQuery("UPDATE tblProject SET pjt_pageview = pjt_pageview +1 WHERE pjt_id=".$projectID."");
+	
 ?>
  

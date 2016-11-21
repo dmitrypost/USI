@@ -24,29 +24,34 @@ Confirm New Password:
 				{
 					if ($userId != 0) //if not 0 then you got a uid of a logged in user...
 					{
-						
-						if (SetPassword($newPass,$userId))
+						if (strlen($newPass)<4)
 						{
-							echo "<p class='success'>The new password has been set.</p>";		
+							echo "<p class='alert-box error'>Password has to be 4 characters long.</p>";
 						}
 						else
 						{
-							echo "<p class='error'>There was an issue updating the password. Please try again.</p>";
+						if (SetPassword($newPass,$userId))
+						{
+							echo "<p class='alert-box success'>The new password has been set.</p>";		
 						}
+						else
+						{
+							echo "<p class='alert-box error'>There was an issue updating the password. Please try again.</p>";
+						}}
 					}
 					else
 					{
-						echo "<p class='error'>You must be logged in to do the action requested. Please log in and try again.</p>";	
+						echo "<p class='alert-box error'>You must be logged in to do the action requested. Please log in and try again.</p>";	
 					}
 				}
 				else
 				{
-					echo "<p class='warrning'>The password does not match the confirm password. Please try again.</p>";
+					echo "<p class='alert-box warning'>The password does not match the confirm password. Please try again.</p>";
 				}
 			}
 			else
 			{
-				echo "<p class='error'>The current password is incorrect. Please try again.</p>";	
+				echo "<p class='alert-box error'>The current password is incorrect. Please try again.</p>";	
 			}
 		}
 	}

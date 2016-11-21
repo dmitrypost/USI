@@ -338,6 +338,24 @@ function GoToPage(page)
 	});
 }
 
+/* exported GoToPage */
+function GoToPage(page,action,value,optional)
+{
+	"use strict"; //jshint unused:false	
+	var request = $.ajax({
+		url: "Body.php",
+		type: "post",
+		data: "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional
+	});
+	request.done(function (response, textStatus, jqXHR) {
+		replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?Page="+page+"&Action="+action);
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
 function GetControlValue(control)
 {
 	"use strict"; //jshint unused:false

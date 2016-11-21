@@ -1,6 +1,27 @@
 <?php
 	include_once 'Database.php';
 
+	function FormattedProjectPreview($projectTitle,$projectDescription,$projectyear,$projectId,$edit)
+	{
+		echo "
+		<div class='project-preview' >
+            <section>
+		  		<h4><a onClick='GoToPage(\"Project\",\"\",$projectId)'><u>$projectTitle</u> $projectyear</a>"; 
+				if ($edit) { echo "<a class='edit' href='javascript:GoToPage(\"EditProject\",\"\",$projectId)' onClick='GoToPage(\"EditProject\",\"\",$projectId)'>Edit</a>"; }
+	    echo "  		
+				</h4>
+			</section>
+			<p class='project-description'>$projectDescription</p>
+		</div>
+		";	
+	}
+
+	function PageTitle($title)
+	{
+		echo "<div class='row'><div class='small-12 columns' style='padding-right:0'>
+		<h1 id='page-name'>$title</h1></div></div>	";
+	}
+
 	//updates the password for the given user to the new password
 	//userid needed for when administrator needs to set a new password for another user's account
 	//returns true if successful and false if failed
@@ -123,6 +144,18 @@
 		}	} else { /*no results found*/ }	} else {echo 'error';}
 		mysqli_close($con);
 		return $mgr_id;
+	}
+	
+	function GetMajorNameById($majorId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $mgr_name = "";
+		$query = "SELECT mgr_name FROM tblMajor WHERE mgr_id = $majorId";	
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$mgr_name = $row['mgr_name'];
+		}	} else { /*no results found*/ }	} else {echo 'error';}
+		mysqli_close($con);
+		return $mgr_name;
 	}
 	
 	function GetUserIdByEmail($email)
