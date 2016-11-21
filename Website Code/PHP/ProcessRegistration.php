@@ -7,7 +7,7 @@
 		  echo '<br>'.$key.':'.$_POST[$key];
 		}	*/
 		
-		include_once 'Database.php';
+		include_once 'Functions.php';
 		$con = open();
 		if (isset($_POST['firstname']) AND isset($_POST['lastname']) AND isset($_POST['email']) AND isset($_POST['password']) AND isset($_POST['college']) AND isset($_POST['major'])) 
 		{ 
@@ -41,23 +41,30 @@
 							{
 								$mgrId = $row2['mgr_id'];
 								//now that we have everything we need we can go ahead and do an insert into tblUser for this newly registered user
-								$query3 = "INSERT INTO tblUser (usr_fname, usr_lname, usr_email, usr_password, usr_mgr_id)VALUES('$fname','$lname','$email','$passw',$mgrId)";
+								$query3 = "INSERT INTO tblUser (usr_fname, usr_lname, usr_email, usr_mgr_id)VALUES('$fname','$lname','$email', $mgrId)";
 								if (mysqli_query($con, $query3))
 								{
 									//query ran properly
-									echo "<p class='information'>Registration completed successfully. You may now login with the registered email and password.";
+									if (SetPassword($passw,GetUserIdByEmail($email)))
+									{
+										echo "<p class='alert-box information'>Registration completed successfully. You may now login with the registered email and password.";
+									}
+									else
+									{
+										echo "<p class='alert-box error'>User has been created, however, password was not successfully set. Please contact an administrator for assitance.";
+									}
 								}
 								else
 								{
 									//error occured trying to run insert query
-									echo "<p class='error'>There was an error processing the submitted data. Please try again.</p>";	
+									echo "<p class='alert-box error'>There was an error processing the submitted data. Please try again.</p>";	
 								}
 							}	
 						}
 						else
 						{
 							//no results. Only possible if user used javascript to input a new major into the select list or submits a major that's not in the database
-							echo "<p class='warrning'>The major recieved is not one of the options given in that college. Please try again with an option from the dropdown.</p>";
+							echo "<p class='alert-box warning'>The major recieved is not one of the options given in that college. Please try again with an option from the dropdown.</p>";
 						}
 					}
 					else

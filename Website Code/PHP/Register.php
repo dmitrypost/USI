@@ -1,4 +1,4 @@
-
+<?php include_once 'Functions.php'; PageTitle("Register"); ?>
 <form id="registerForm">
 	<input type="hidden" name="registerForm"> 
 	<table width="300" border="0" cellpadding="0">
