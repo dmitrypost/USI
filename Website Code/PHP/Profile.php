@@ -62,7 +62,7 @@
 	echo "
 		</div>
 	</div>
-	<div class='bottom'>pageviews for this user: ".$row['usr_pageview']."</div>
+	<div class='view-count'>pageviews for this user: ".$row['usr_pageview']."</div>
 	<div>URL:<a>localhost/?uid=".$row['usr_id']."</a></div>";
 	//increment pageview
 	QuickQuery("UPDATE tblUser SET usr_pageview = usr_pageview +1 WHERE usr_id=".$uid);

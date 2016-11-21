@@ -1,14 +1,13 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Edit Project Document</title>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
-</head>
-	<body>
+<?php
+	include_once 'Functions.php';
+	PageTitle("Edit Project");
+	echo "
+	<div class='accordion'>
+		
+	
+	
+	";
+?>
 		<div class="row">
         <div class="small-12 columns" style="padding-right:0">
             <h1 id="page-name">Edit Project Page</h1>
@@ -68,5 +67,4 @@
         <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="ProjectChangesLoaded()" width="0" height="0";>
 		</div>
 
-	</body>
-</html>
+
