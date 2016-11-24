@@ -298,6 +298,30 @@ function ProcessProfileChanges()
 	});
 }
 
+/* exported ProcessProjectChanges */
+function ProcessProjectChanges()
+{
+	"use strict"; //jshint unused:false
+	var request;
+	var data = "ProcessProjectChanges&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
+	
+	request = $.ajax({
+		url: "Body.php",
+		type: "post",
+		data: data
+	});
+	// Callback handler that will be called on success
+	request.done(function (response, textStatus, jqXHR){
+		//replaceHtml('BodyPanel',response);
+		replaceHtml('BodyPanel',response);
+		UpdateAddressBar("/?ProcessProjectChanges&value=");
+	});
+	// Callback handler that will be called on failure
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
 /* exported AjaxProfileChange */
 function AjaxProfileChange(control,action,optional)
 {
@@ -392,6 +416,13 @@ function RegistrationFormLoaded()
 
 /* exported ProfileEditLoaded */
 function ProfileEditLoaded()
+{
+	"use strict"; //jshint unused:false
+	$( "#accordion" ).accordion();
+}
+
+/* exported EditProjectLoaded */
+function EditProjectLoaded()
 {
 	"use strict"; //jshint unused:false
 	$( "#accordion" ).accordion();

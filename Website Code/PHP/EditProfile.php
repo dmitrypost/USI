@@ -124,7 +124,7 @@
 							mysqli_close($con);
 						
 						echo "<br><input class='button' type='button' value='Submit' onClick='ProcessProfileChanges()'>
-						<img src='http://www.w3schools.com/jsref/w3javascript.gif' onload='ProfileEditLoaded()' width='0' height='0'>
+						<img src='/images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
 								";				
 				break;				
 			}
