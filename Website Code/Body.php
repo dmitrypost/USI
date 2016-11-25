@@ -58,6 +58,9 @@
 				case 'mid':
 					include 'PHP/Major.php';
 					break;
+				case 'FileDownload':
+					include 'PHP/FileDownload.php';
+					break;
 				case 'Page':
 					switch ($_POST['Page'])
 						{

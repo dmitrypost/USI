@@ -483,3 +483,17 @@ function SubmitPasswordChanges()
     });
 	return false;	
 }
+
+/* exported FileDownload */
+function FileDownload(fileid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "post", data: "FileDownload="+fileid});
+	request.done(function (response,textStatus,jqXHR) {
+		
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown) {
+		console.error("There was an error downloading the file: " + textStatus, errorThrown);
+	});
+	return false;
+}

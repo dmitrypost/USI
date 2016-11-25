@@ -1,5 +1,85 @@
 <?php
 	include_once 'Functions.php';
+	
+	$ParticipantsHTML = "";
+	function FormattedParticipant($ParticipantName,$ParticipantId,$ParticipantRole,$ParticipantPicture)
+	{
+		$ParticipantsHTML .= "
+		<div class='Participant'>
+			<table>
+				<tr>
+					<td>
+						<img class='userPic Left' src='$ParticipantPicture' alt='No Profile Picture'>
+					</td>
+					<td>
+						<a onClick='showProfile($ParticipantId)'>$ParticipantName
+						<br>$ParticipantRole</a>
+					</td>
+				</tr>
+			</table>
+		</div>";
+	}
+	
+	$FilesHTML = "";
+	function FormattedFiles($FileName,$FileId)
+	{
+		$FilesHTML .= "
+		<div class='File' onClick='FileDownload($FileId)'>
+			$FileName
+		</div>
+		";	
+	}
+	
+	function FormattedEditProjectPage($ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$FormattedParticipantsHTML,$FormattedFilesHTML)
+	{
+		echo "
+		<div id='accordion'>
+			<h3>Basic Information</h3>	
+				<div>
+					Title<input type='text' id='txt_title' value='$ProjectTitle'>
+					Major<select id='slt_major'>";
+					include_once 'Database.php';
+										$con = open();
+										$query = "SELECT mgr_id, mgr_name FROM tblMajor ";
+										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
+										while($row = mysqli_fetch_assoc( $result)) {
+												echo "<option value=".$row['mgr_id'].">".$row['mgr_name']."</option>";
+										}
+										} else { /*no results found*/ }
+										} else {echo 'error';}
+							mysqli_close($con); echo "
+					</select>
+				</div>
+			<h3>Description</h3>	
+				<div>
+					Description<input type='text' id='txt_description' value='$ProjectDescription'>
+					Project description will be submitted for approval by an administrator.
+				</div>
+			<h3>Body</h3>	
+				<div>
+					Body<textarea id='txt_body'>$ProjectBody</textarea>
+					Project body will be submitted for approval by an administrator.
+				</div>
+			<h3>Participants</h3>	
+				<div>
+					$FormattedParticipantsHTML
+					<button type='button' class='btn btn-default btn-sm' onClick=''>
+					  <span class='glyphicon glyphicon-plus'></span> Add
+					</button>
+					Removing project participants will require approval by an administrator.
+				</div>
+			<h3>Files</h3>	
+				<div>
+					$FormattedFilesHTML
+					<button type='button' class='btn btn-default btn-sm' onClick=''>
+					  <span class='glyphicon glyphicon-plus'></span> Add
+					</button>					
+				</div>
+		</div>
+		<img src='/images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>
+		";	
+	}
+	
 	PageTitle("Edit Project");
 	$con = Open();
 	if (!isset($_POST['value'])) 
@@ -54,47 +134,7 @@
 		{
 			echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";
 		}
-		echo "
-		<div id='accordion'>
-			<h3>Basic Information</h3>	
-				<div>
-					Title<input type='text' id='txt_title' value='$projectTitle'>
-					Major<select id='slt_major'>";
-					include_once 'Database.php';
-										$con = open();
-										$query = "SELECT mgr_id, mgr_name FROM tblMajor ";
-										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
-										while($row = mysqli_fetch_assoc( $result)) {
-												echo "<option value=".$row['mgr_id'].">".$row['mgr_name']."</option>";
-										}
-										} else { /*no results found*/ }
-										} else {echo 'error';}
-							mysqli_close($con); echo "
-					</select>
-				</div>
-			<h3>Description</h3>	
-				<div>
-					Description<input type='text' id='txt_description' value='$proejectDescription'>
-					Project description will be submitted for approval by an administrator.
-				</div>
-			<h3>Body</h3>	
-				<div>
-					Body<textarea id='txt_body'>ffsafsd</textarea>
-					Project body will be submitted for approval by an administrator.
-				</div>
-			<h3>Participants</h3>	
-				<div>
-					<button type='button' class='btn btn-default btn-sm' onClick=''>
-					  <span class='glyphicon glyphicon-plus'></span> Add
-					</button>
-					Removing project participants will require approval by an administrator.
-				</div>
-			<h3>Files</h3>	
-				<div>
-				</div>
-		</div>
-		<img src='/images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>
-		";
+		
 	}
 ?>
 		
