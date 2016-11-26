@@ -3,7 +3,7 @@
 
 /* Edit Project Page */
 .File{
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 textarea#txt_body {
@@ -123,7 +123,7 @@ width: 200px;
 }
 
   .descrTitles, #homePage_title{
-		color:red;
+		color:#CF102D;
 	}
 	p{
 		font-size: 16px;
@@ -209,8 +209,8 @@ width: 200px;
     border-radius: 50%;
 	border:2px solid #cfdcec;
     overflow:hidden;
-    
-    background: #f00; 
+
+    background: #f00;
     box-shadow: 0 0 3px gray;
 }
 .round-button-circle:hover {
@@ -242,7 +242,7 @@ width: 200px;
 }
 
 .alink {
-	padding: 2px;	
+	padding: 2px;
 }
 .alink:hover {
 	 text-decoration: underline;
@@ -281,7 +281,7 @@ width: 200px;
 .project-preview:hover {
 	padding-left: 20px;
 	background: #F5F5F5;
-	
+
 }
 
 /* alter boxes */
