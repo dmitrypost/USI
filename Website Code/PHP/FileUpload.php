@@ -1,7 +1,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-$uploaddir = './';
+$uploaddir = '../../Uploaded Files/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
 echo '<pre>';
@@ -17,6 +17,8 @@ if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 
 echo 'Here is some more debugging info:';
 print_r($_FILES);
+
+echo realpath($uploadfile);
 
 print "</pre>";
 }
