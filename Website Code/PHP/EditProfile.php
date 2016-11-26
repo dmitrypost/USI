@@ -8,13 +8,13 @@
 		$ProfileId = mysqli_real_escape_string($con,trim(strip_tags($_POST['Optional'])));
 		if (!is_numeric($ProfileId))
 		{
-			$ProfileId = 0;		
+			$ProfileId = 0;
 		}
 	} //submitted profile to be edited; only needed if admin is logged in
-	
+
 	if ($ProfileId == 0)
 	{ $ProfileId = getUID(); }//if the owner is logged in and doing the edits to their profile
-	
+
 	if (!isLoggedIn() & !isAdmin())
 	{
 		//access denied
@@ -23,23 +23,23 @@
 	}
 	else
 	{
-		
+
 		//echo "ProfileId: ".$ProfileId." Usr_Id: ".$usr_id." Admin_Id: ".$admin_id;
 		if (isset($_POST['Action']))
 		{
 			switch ($_POST['Action'])
 			{
 				default:
-				
-				
+
+
 				case 'View':
-								
+
 					echo "
 						<div class='row'><div class='small-12 columns' style='padding-right:0'>
 							<h1 id='page-name'>Edit Profile</h1></div></div>
 						";
-						
-						
+
+
 							$query = "SELECT usr_id, usr_fname, usr_lname, usr_picture, usr_graduate, usr_mgr_id, usr_phone, usr_email, usr_linkedin, mgr_name FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id = ".$ProfileId;
 							if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 						echo "<input type='hidden' id='hdn_userid' value='".$row['usr_id']."'
@@ -66,13 +66,13 @@
 								<div>
 										<input type='button' class='button' onClick='GoToPage(\"EditPassword\")' value='Change Password'><br>
 										Email: <input type='text' class='w300' id='txt_email' value=".$row['usr_email']." maxlength='30'><br>
-								</div>		
+								</div>
 							<h3>Academic Status</h3>
 								<div>
 									Major: ".$row['mgr_name']."
-									
+
 										<div id='editmajor'>
-											<select class='w300' id='slt_major'>";		
+											<select class='w300' id='slt_major'>";
 												$con2 = open(); $mgrid = $row['usr_mgr_id'];
 												$query2 = "SELECT mgr_clg_id, mgr_name, mgr_id FROM tblMajor";
 												if ($result2 = mysqli_query($con2, $query2)){if (mysqli_num_rows($result2) > 0 ) { while($row2 = mysqli_fetch_assoc($result2)){
@@ -94,14 +94,14 @@
 									if ($grad)
 									{
 										echo "
-										<input type='radio' name='academicstatus' value='0'>Undergraduate<br>
-										<input type='radio' name='academicstatus' value='1' checked>Graduate<br>";	
+										<input type='radio' name='academicstatus' value='0'> Undergraduate<br>
+										<input type='radio' name='academicstatus' value='1' checked> Graduate<br>";
 									}
 									else
 									{
 										echo "
-										<input type='radio' name='academicstatus' value='0' checked>Undergraduate<br>
-										<input type='radio' name='academicstatus' value='1'>Graduate<br>";	
+										<input type='radio' name='academicstatus' value='0' checked> Undergraduate<br>
+										<input type='radio' name='academicstatus' value='1'> Graduate<br>";	
 									}
 									echo "
 								</div>
@@ -112,27 +112,27 @@
 								</div>
 						</div></div>
 						";
-							}} 
-							else 
-							{ /* no results found */ 
+							}}
+							else
+							{ /* no results found */
 								echo "<p class='alert-box warning'>You must be logged in to do the action requested.</p>";
 							}}
-							else 
-							{ /* error */ 
+							else
+							{ /* error */
 								echo "<p class='alert-box error'>There was a problem processing the request. Please try again.</p>";
 							}
 							mysqli_close($con);
-						
+
 						echo "<br><input class='button' type='button' value='Submit' onClick='ProcessProfileChanges()'>
 						<img src='/images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
-								";				
-				break;				
+								";
+				break;
 			}
-			
+
 		}
 		else
 		{
-			
+
 		}
 	}
 ?>
