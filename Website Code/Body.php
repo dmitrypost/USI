@@ -32,6 +32,9 @@
 				case 'processProfileEdits':
 					include 'PHP/ProcessProfileEdits.php';
 					break;
+				case 'ProcessProjectChanges':
+					include 'PHP/ProcessProjectChanges.php';
+					break;
 				case 'FileDownload':
 					include 'PHP/FileDownload.php';
 					break;

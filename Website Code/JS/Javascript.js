@@ -225,7 +225,7 @@ function ProcessProjectChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	var data = "ProcessProjectChanges&title=" + $('txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $('#txt_description').text() + "&body=" + $('#txt_body').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
+	var data = "ProcessProjectChanges&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val();
 	
 	request = $.ajax({
 		url: "Body.php",
@@ -439,3 +439,4 @@ function FileDownload(fileid)
 	});
 	return false;
 }
+
