@@ -13,30 +13,10 @@
 		  $defaultPage = false;
 		  switch ($key)
 			{
-				case 'euid':
-					//echo "edit profile";	
-					include 'PHP/EditProfile.php';		
-					break;	
-				case 'uid':
-					//echo "profile";
-					include 'PHP/Profile.php';
-					break;
-				case 'epid':
-					//echo "edit project";
-					include 'PHP/EditProject.php';
-					break;
-				case 'pid';
-					//echo "project";
-					include 'PHP/Project.php';
-					break;
 				case 's';
 					//echo "search";
 					include 'PHP/Search.php';
 					break;
-				case 'pjs':
-					//echo "user projects page";
-					include 'PHP/Projects.php';
-					break;	
 				case 'logout':
 					include 'PHP/Logout.php';
 					break;
@@ -51,12 +31,6 @@
 					break;
 				case 'processProfileEdits':
 					include 'PHP/ProcessProfileEdits.php';
-					break;
-				case 'cid':
-					include 'PHP/College.php';
-					break;
-				case 'mid':
-					include 'PHP/Major.php';
 					break;
 				case 'FileDownload':
 					include 'PHP/FileDownload.php';
@@ -82,7 +56,17 @@
 							case 'Profile':
 								include 'PHP/Profile.php';
 								break;
+							case 'AdminPanel':
+								include 'PHP/AdminPanel.php';
+								break;
+							case 'College':
+								include 'PHP/College.php';
+								break;
+							case 'Major':
+								include 'PHP/Major.php';
+								break;
 						}
+					break; // case 'Page'
 
 			}
 			break;//only process first submitted variable

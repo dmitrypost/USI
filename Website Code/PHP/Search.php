@@ -1,11 +1,9 @@
-<div class='row'><div class='small-12 columns' style='padding-right:0'>
-<h1 id='page-name'>Search</h1></div></div>
-<div>
 <?php
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     {
-		include_once 'Database.php';
+		include_once 'Functions.php';
+		PageTitle("Search");
 		$con = Open();		
 		if (!isset($_POST['s'])) { $Search = "Test"; }
 		else{ $Search = mysqli_real_escape_string($con,trim(strip_tags($_POST['s']))); echo $_POST['s'];}
@@ -21,13 +19,7 @@
 			echo "<h4>Users</h4>";
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='user-link'>
-				<a href='javascript:void(0)' onClick='showProfile(".$row['usr_id'].")'>".$row['usr_fname']." ".$row['usr_lname']."</a>
-				<br>
-			</div>
-			";
-			
+			FormattedUserLink($row['usr_id'],$row['usr_fname']." ".$row['usr_lname']);			
 		}
 		} else { /*no users found*/ } 
 		} else {echo 'error';}
@@ -42,12 +34,7 @@
 			echo "<h4>Projects</h4>"; $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='project-link'>
-				<a href='javascript:void(0)' onClick='showProject(".$row['pjt_id'].")'>".$row['pjt_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
 		}
 		} else { /*no projects found*/ }
 		} else {echo 'error';}
@@ -59,12 +46,7 @@
 			if ($NoProjects) {echo "<h4>Projects</h4>"; } $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='project-link'>
-				<a href='javascript:void(0)' onClick='showProject(".$row['pjt_id'].")'>".$row['pjt_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
 		}
 		} else { /*no projects found*/ }
 		} else {echo 'error';}
@@ -76,12 +58,7 @@
 			if ($NoProjects) {echo "<h4>Projects</h4>"; } $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='project-link'>
-				<a href='javascript:void(0)' onClick='showProject(".$row['pjt_id'].")'>".$row['pjt_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
 		}
 		} else { /*no projects found*/ }
 		} else {echo 'error';}
@@ -97,12 +74,7 @@
 			if ($NoColleges) {echo "<h4>Colleges</h4>"; } $NoColleges = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='college-link'>
-				<a href='javascript:void(0)' onClick='showCollege(".$row['clg_id'].")'>".$row['clg_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedCollegeLink($row['clg_id'],$row['clg_name']);
 		}
 		} else { /*no colleges found*/ }
 		} else {echo 'error';}
@@ -114,12 +86,7 @@
 			if ($NoColleges) {echo "<h4>Colleges</h4>"; } $NoColleges = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='college-link'>
-				<a href='javascript:void(0)' onClick='showCollege(".$row['clg_id'].")'>".$row['clg_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedCollegeLink($row['clg_id'],$row['clg_name']);
 		}
 		} else { /*no colleges found*/ }
 		} else {echo 'error';}
@@ -134,12 +101,7 @@
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='major-link'>
-				<a href='javascript:void(0)' onClick='showMajor(".$row['mgr_id'].")'>".$row['mgr_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedMajorLink($row['mgr_id'],$row['mgr_name']);
 		}
 		} else { /*no colleges found*/ }
 		} else {echo 'error';}
@@ -151,12 +113,7 @@
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;
 			while($row = mysqli_fetch_assoc( $result)) {
 			$ResultCount = $ResultCount + 1;
-			echo "
-			<div class='major-link'>
-				<a href='javascript:void(0)' onClick='showMajor(".$row['mgr_id'].")'>".$row['mgr_name']."</a>
-				<br>
-			</div>
-			";
+			FormattedMajorLink($row['mgr_id'],$row['mgr_name']);
 		}
 		} else { /*no colleges found*/ }
 		} else {echo 'error';}
@@ -164,11 +121,11 @@
 	
 //No results 
 		if ($ResultCount == 0){
-			echo '<h7>No Results Found</7>';	
+			echo "<div class='view-count'>No Results Found</div>";	
 		}elseif($ResultCount == 1){
-			echo "<h7>".$ResultCount." Result Found</h7>";
+			echo "<div class='view-count'>$ResultCount Result Found</div>";
 		}else{
-			echo "<h7>".$ResultCount." Results Found</h7>";
+			echo "<div class='view-count'>$ResultCount Results Found</div>";
 		}
 		
 		mysqli_close($con);

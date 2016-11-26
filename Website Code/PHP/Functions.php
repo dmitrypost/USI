@@ -1,6 +1,43 @@
 <?php
 	include_once 'Database.php';
-
+	
+	function FormattedUserLink($userId,$usersName)
+	{
+		echo "
+			<div class='user-link'>
+				<a href='javascript:void(0)' onClick='GoToPage(\"Profile\",\"\",$userId,\"\")' >$usersName</a>
+				<br>
+			</div>
+		";	
+	}
+	function FormattedMajorLink($majorId,$majorName)
+	{
+		echo "
+			<div class='major-link'>
+				<a href='javascript:void(0)' onClick='GoToPage(\"Major\",\"\",$majorId,\"\")' >$majorName</a>
+				<br>
+			</div>
+		";	
+	}
+	function FormattedCollegeLink($collegeId,$collegeName)
+	{
+		echo "
+			<div class='collage-link'>
+				<a href='javascript:void(0)' onClick='GoToPage(\"College\",\"\",$collegeId,\"\")' >$collegeName</a>
+				<br>
+			</div>
+		";	
+	}
+	function FormattedProjectLink($projectId,$projectName)
+	{
+		echo "
+			<div class='user-link'>
+				<a href='javascript:void(0)' onClick='GoToPage(\"Project\",\"\",$projectId,\"\")' >$projectName</a>
+				<br>
+			</div>
+		";	
+	}
+	
 	function FormattedProjectPreview($projectTitle,$projectDescription,$projectyear,$projectId,$edit)
 	{
 		echo "
@@ -156,6 +193,18 @@
 		}	} else { /*no results found*/ }	} else {echo 'error';}
 		mysqli_close($con);
 		return $mgr_name;
+	}
+	
+	function GetCollegeNameById($collegeId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $clg_name = "";
+		$query = "SELECT clg_name FROM tblCollege WHERE clg_id = $collegeId";	
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$clg_name = $row['clg_name'];
+		}	} else { /*no results found*/ }	} else {echo 'error';}
+		mysqli_close($con);
+		return $clg_name;
 	}
 	
 	function GetUserIdByEmail($email)
