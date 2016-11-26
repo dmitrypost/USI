@@ -6,7 +6,7 @@
 		foreach ($_POST as $key => $val) {
 		  echo '<p>'.$key.':'.$_POST[$key].'</p>';
 		  $defaultPage = false;
-		 
+
 		  switch ($key)
 			{
 				case 'Page':
@@ -20,6 +20,9 @@
 								break;
 							case 'Profile':
 								//include 'PHP/Profile.php';
+								break;
+							case 'AdminPanel':
+								include 'PHP/SidePanel/AdminLinks.php';
 								break;
 						}
 					break;

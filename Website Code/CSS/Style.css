@@ -11,25 +11,6 @@ textarea#txt_body {
 }
 
 /* Main Page */
-.has-dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
-    z-index: 1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 #registerForm > select {
 	width: 380px;
 }
@@ -53,6 +34,7 @@ textarea#txt_body {
 	height: 100px;
 	width:100px;
 }
+
 #loginDiv {
 	display: inline-block;
     width: 240px;
@@ -86,45 +68,7 @@ input {
 }
 
 #BgContainer {
-	background-image:url("http://www.usi.edu/css/images/blue-bkgd.jpg");
-}
-
-div.staffList div.row:nth-child(odd) {
-	background-color: #E6E6E6;
-}
-
-div.staffList div.row:nth-child(even) {
-	border-right: 1px solid #E6E6E6;
-	border-left: 1px solid #E6E6E6;
-}
-
-div.facultyList div.row:nth-child(even) {
-	background-color: #E6E6E6;
-}
-
-div.facultyList div.row:nth-child(odd) {
-	background-color: #EFEFEF;
-	border-right: 1px solid #E6E6E6;
-	border-left: 1px solid #E6E6E6;
-}
-
-div.facultyList div.row {
-	padding: 15px 5px;
-	font-size: 11px;
-}
-
-div.staffAndFacultyList div.row:nth-child(odd) {
-	background-color: #E6E6E6;
-}
-
-div.staffAndFacultyList div.row:nth-child(even) {
-	border-right: 1px solid #E6E6E6;
-	border-left: 1px solid #E6E6E6;
-}
-
-div.staffAndFacultyList div.row {
-	padding: 15px 5px;
-	font-size: 11px;
+	background-image:url("/images/blue-bkgd.jpg");
 }
 
 button, .button {
@@ -294,6 +238,13 @@ width: 200px;
 	padding: 2px;
 }
 .major-link:hover {
+	 text-decoration: underline;
+}
+
+.alink {
+	padding: 2px;	
+}
+.alink:hover {
 	 text-decoration: underline;
 }
 

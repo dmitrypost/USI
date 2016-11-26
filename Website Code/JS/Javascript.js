@@ -1,5 +1,15 @@
 // JavaScript Document
-
+window.addEventListener('popstate', function(event) {
+    // The popstate event is fired each time when the current history entry changes.
+	"use strict"; //jshint unused:false
+    //console.log("TEST");
+	//console.log("uri"+uri+"|search"+window.location.search+"|hash"+window.location.hash);
+    if (uri !== window.location.search)
+	{
+		getBody(); //tells the page to reload 
+	}
+}, false);
+  
 //dropdown menu's
 /* exported ToggleDropdown */
 function ToggleDropdown(dropdown){
@@ -40,12 +50,12 @@ function HideLogin()
 
 //variable for holding current page
 var uri = "/";
-
 function UpdateAddressBar(urlPath)
 {
 	"use strict";
 	uri = urlPath;
-	window.history.pushState({"html":"","pageTitle":""},"", urlPath);		
+	window.history.pushState({"html":"","pageTitle":""},"", urlPath);	
+	//window.location.hash = urlPath;
 }
 
 //clears login information
@@ -89,20 +99,7 @@ function getRegisterLoginUserLinks()
 	return false;	
 }
 
-/* exported showProfile , textStatus */
-function showProfile(uid)
-{
-	"use strict"; //jshint unused:false
-    var request = $.ajax({url:"Body.php",type: "post", data: "uid=" + uid });
-    request.done(function (response, textStatus, jqXHR) { 
-		replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-    return false;
-}
+
 
 /* exported getBody */
 function getBody()
@@ -122,21 +119,6 @@ function getBody()
     return false;
 }
 
-/* exported editProfile */
-function editProfile(euid)
-{
-	"use strict"; //jshint unused:false
-    var request = $.ajax({url:"Body.php",type: "post", data: "euid=" + euid});
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-		UpdateAddressBar("/euid="+euid);
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-    return false;
-}
 
 /* exported editProject */
 function editProject(epid)
@@ -154,54 +136,6 @@ function editProject(epid)
 	return false;	
 }
 
-// different than showProject by this link will be to show only the logged in user's projects with the links to edit added
-/* exported showProjects */
-function showProjects()
-{
-	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "pjs=" });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-		UpdateAddressBar("/?pjs");
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;		
-}
-
-/* exported showProject */
-function showProject(pid)
-{
-	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "pid=" + pid });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-		SPProject(pid);
-		UpdateAddressBar("/?pid="+pid);
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;		
-}
-
-/* exported SPProject */
-function SPProject(pid)
-{
-	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"SidePanel.php",type: "post", data: "pid=" + pid });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;		
-}
 
 /* exported Logout */
 function Logout()
@@ -234,38 +168,6 @@ function showRegister()
 	return false;		
 }
 
-
-/* exported showMajor */
-function showMajor(mid)
-{
-	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "mid=" + mid });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-		UpdateAddressBar("/?mid="+mid);
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;		
-}
-
-/* exported showCollege */
-function showCollege(cid)
-{
-	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "cid=" + cid });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-		UpdateAddressBar("/?cid="+cid);
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;		
-}
 
 
 

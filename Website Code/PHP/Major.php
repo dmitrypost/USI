@@ -15,8 +15,18 @@
 				FormattedUserLink($row['usr_id'],$row['usr_fname']." ".$row['usr_lname']);
 				}
 			} else { echo "no users found with this major";/*no users found*/ }
-			} else {echo 'error';}
+			} else { echo 'error';}
+			echo "<br>";
 			//projects that belong to this major
+			$query = "SELECT pjt_id, pjt_name FROM tblProject WHERE pjt_mgr_id = $MajorId";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
+				echo "<h6>Projects with this major:</h6>";
+				while($row = mysqli_fetch_assoc( $result)) 
+				{
+				FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
+				}
+			} else { echo "no projects found with this major";/*no users found*/ }
+			} else { echo 'error';}
 		}
 	}
 ?>
