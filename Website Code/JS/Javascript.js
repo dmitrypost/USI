@@ -1,5 +1,25 @@
 // JavaScript Document
 
+//dropdown menu's
+/* exported ToggleDropdown */
+function ToggleDropdown(dropdown){
+	"use strict";
+	//$('li.has-dropdown').addClass('hover');
+	if (hasClass(dropdown,'hover'))
+	{
+		$(dropdown).removeClass('hover');
+	}
+	else
+	{
+		$(dropdown).addClass('hover');
+	}
+}
+
+function hasClass(element, cls) {
+	"use strict";
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
 //shows the login div containing the login form
 /* exported showLogin */
 function showLogin()
@@ -279,7 +299,7 @@ function ProcessProfileChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
+	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('input[name=academicstatus]:checked').val() + "&phone=" + $('#txt_phone').val() + "&linkedin=" + $('#txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
 	
 	request = $.ajax({
 		url: "Body.php",
@@ -303,7 +323,7 @@ function ProcessProjectChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	var data = "ProcessProjectChanges&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('#rdo_graduate input:radio:checked').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
+	var data = "ProcessProjectChanges&title=" + $('txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $('#txt_description').text() + "&body=" + $('#txt_body').val() + "&phone=" + $('txt_phone').val() + "&linkedin=" + $('txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
 	
 	request = $.ajax({
 		url: "Body.php",
@@ -366,19 +386,39 @@ function GoToPage(page)
 function GoToPage(page,action,value,optional)
 {
 	"use strict"; //jshint unused:false	
+	var data = "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional;
 	var request = $.ajax({
 		url: "Body.php",
 		type: "post",
-		data: "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional
+		data: data
 	});
+	SidePanelPage(data);
 	request.done(function (response, textStatus, jqXHR) {
 		replaceHtml('BodyPanel',response);
-		UpdateAddressBar("/?Page="+page+"&Action="+action);
+		UpdateAddressBar("/?Page="+page+"&Action="+action+"&value="+value);
 	});
 	request.fail(function (jqXHR, textStatus, errorThrown){
 		console.error("The following error occurred: "+	textStatus, errorThrown	);
 	});
 }
+
+/* exported SidePanelPage */
+function SidePanelPage(data)
+{
+	"use strict"; //jshint unused:false	
+	var request = $.ajax({
+		url: "SidePanel.php",
+		type: "post",
+		data: data
+	});
+	request.done(function (response, textStatus, jqXHR) {
+		replaceHtml('SidePanel',response);
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});
+}
+
 
 function GetControlValue(control)
 {
@@ -490,7 +530,7 @@ function FileDownload(fileid)
 	"use strict"; //jshint unused:false
 	var request = $.ajax({url:"Body.php",type: "post", data: "FileDownload="+fileid});
 	request.done(function (response,textStatus,jqXHR) {
-		
+		console.log(response);
 	});
 	request.fail(function (jqXHR, textStatus, errorThrown) {
 		console.error("There was an error downloading the file: " + textStatus, errorThrown);

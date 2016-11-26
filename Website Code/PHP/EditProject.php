@@ -2,22 +2,15 @@
 	include_once 'Functions.php';
 	
 	//helper functions for easier formatting of the page
-	function FormattedParticipant($ParticipantName,$ParticipantId,$ParticipantRole,$ParticipantPicture)
+	function FormattedParticipant($ParticipantName,$ParticipantId,$ParticipantRole,$ParticipantEmail)
 	{
 		return "
 		<div class='Participant'>
-			<table>
-				<tr>
-					<td>
-						<img class='userPic Left' src='$ParticipantPicture' alt='No Profile Picture'>
-					</td>
-					<td>
-						<a onClick='showProfile($ParticipantId)'>$ParticipantName
-						<br>$ParticipantRole</a>
-					</td>
-				</tr>
-			</table>
-		</div>";
+			$ParticipantName -- $ParticipantRole<br>
+			<a href='mailto:$ParticipantEmail'>$ParticipantEmail</a>
+			<a onClick='showProfile($ParticipantId)'>
+			</a>
+		</div><br>";
 	}
 	
 	function FormattedFile($FileName,$FileId)
@@ -74,7 +67,7 @@
 					<hr>
 					<button type='button' class='btn btn-default btn-sm' onClick=''>
 					  <span class='glyphicon glyphicon-plus'></span> Add
-					</button>
+					</button><br>
 					Removing project participants will require approval by an administrator.
 				</div>
 			<h3>Files</h3>	
@@ -94,13 +87,13 @@
 	function FormatParticipants($ProjectID)
 	{
 		$con = Open();
-		$query = "SELECT usr_fname, usr_lname, usr_id, usr_picture, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id = $ProjectID";
+		$query = "SELECT usr_fname, usr_lname, usr_id, usr_email, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id = $ProjectID";
 		$ParticipantsHTML = "";
 		if ($result = mysqli_query($con,$query))
 		{ if(mysqli_num_rows($result) > 0)
 			{while ($row = mysqli_fetch_assoc($result))
 				{
-					$ParticipantsHTML .= FormattedParticipant($row['usr_fname']." ".$row['usr_lname'],$row['usr_id'],$row['rol_name'],$row['usr_picture']);	
+					$ParticipantsHTML .= FormattedParticipant($row['usr_fname']." ".$row['usr_lname'],$row['usr_id'],$row['rol_name'],$row['usr_email']);	
 				}
 			}
 		}

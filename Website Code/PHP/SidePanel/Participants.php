@@ -8,8 +8,8 @@
 		
 		include_once '/../Functions.php';
 		
-		$con = Open(); $pageview = 0;
-		if (!isset($_POST['pid'])) { $projectID = 1; } else{ $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['pid']))); }
+		$con = Open();
+		if (!isset($_POST['value'])) { $projectID = 1; } else{ $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); }
 		$query = "SELECT usr_id, usr_picture, usr_fname, usr_lname, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id =".$projectID;
 		
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {

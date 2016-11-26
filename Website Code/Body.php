@@ -79,6 +79,9 @@
 							case 'EditProject':
 								include 'PHP/EditProject.php';
 								break;
+							case 'Profile':
+								include 'PHP/Profile.php';
+								break;
 						}
 
 			}

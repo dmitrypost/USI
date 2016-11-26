@@ -3,8 +3,8 @@
     include_once 'Database.php'; include_once 'Functions.php';
 	$con = Open();
 	//set uid to 2 for testing purposes if a uid is not posted to the page (only possible in testing)
-	if (!isset($_POST['uid'])) { $uid = 2; }
-	else{ $uid = mysqli_real_escape_string($con,trim(strip_tags($_POST['uid']))); }
+	if (!isset($_POST['value'])) { $uid = 2; }
+	else{ $uid = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); }
 	//query
 	$query = "SELECT usr_fname , usr_lname, usr_email, usr_picture, mgr_name, usr_graduate, usr_pageview, usr_phone, usr_linkedin, usr_id FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id =".$uid;
 	//echo $query;
@@ -62,7 +62,7 @@
 	echo "
 		</div>
 	</div>
-	<div class='view-count'>pageviews for this user: ".$row['usr_pageview']."</div>
+	<div class='view-count'>Profile views: ".$row['usr_pageview']."</div>
 	<div>URL:<a>localhost/?uid=".$row['usr_id']."</a></div>";
 	//increment pageview
 	QuickQuery("UPDATE tblUser SET usr_pageview = usr_pageview +1 WHERE usr_id=".$uid);

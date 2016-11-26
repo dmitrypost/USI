@@ -7,7 +7,8 @@
 		$query = "SELECT fle_data, fle_name FROM tblFile WHERE fle_id=$FileId";
 		if ($result = mysqli_query($con, $query))
 		{ if (mysqli_num_rows($result) > 0)
-			{
+			{ if ($row = mysqli_fetch_assoc($result))
+				{
 				$data = $row['fle_data'];
 				$filename = $row['fle_name'];
 				mysqli_close($con);
@@ -24,8 +25,8 @@
 				header('Pragma: public');
 				header('Content-Length: ' . filesize($filename));
 				readfile($filename);
-				echo "transfer complete";	
 				exit;
+				}
 			}
 			else
 			{
