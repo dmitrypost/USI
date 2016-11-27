@@ -23,7 +23,14 @@
 				elseif($Value == "All")
 				{
 					
-						$query = "SELECT rol_name, pjt_name, pjt_description, pjt_year, pjt_id FROM tblProject LEFT JOIN tblrole ON tblrole.rol_pjt_id = tblproject.pjt_id WHERE rol_usr_id = $uid";
+						$query = "SELECT * FROM
+								(
+								SELECT rol_name, pjt_name, pjt_description, pjt_year, pjt_id FROM tblProject INNER JOIN tblrole ON tblrole.rol_pjt_id = tblproject.pjt_id WHERE rol_usr_id = $uid 
+								UNION ALL
+								SELECT '' as rol_name , pjt_name, pjt_description, pjt_year, pjt_id FROM tblProject
+								) as t
+								GROUP BY
+								pjt_id";
 						if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 							
 							FormattedProjectPreview($row['pjt_name'],$row['pjt_description'],$row['pjt_year'],$row['pjt_id'],strlen($row['rol_name'])>0);
