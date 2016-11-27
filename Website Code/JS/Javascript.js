@@ -423,3 +423,37 @@ function FileDownload(fileid)
 	return false;
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/* exported SelectDropdown */
+function SelectDropdown()
+{	"use strict";
+	ToggleList();
+	replaceHtml("slt_SelectedUser","");
+}
+/* exported TableItemSelected */
+function TableItemSelected(id,elem)
+{	"use strict";
+	replaceHtml("slt_SelectedUser","<option value='item' selected>"+$(elem).find("td:first").text()+" "+$(elem).find("td:nth-child(2)").text()+"</select>");
+	$("#hdn_SelectedUserId").val(id);
+	//console.log($(elem).find("td:first").text()+" "+$(elem).find("td:nth-child(2)").text());
+	ToggleList();
+}
+function ToggleList()
+{	"use strict";
+	$('.itemconfiguration').toggle();
+}
+/* exported SetPassword */
+function SetPassword()
+{	"use strict";//jshint unused:false
+	var id = $("#hdn_SelectedUserId").val();
+	var pass = $("#pwd_newpassword").val();
+	var request = $.ajax({url:"Body.php",type: "post", data: "Action=SetPassword&Id="+id+"&Pass="+pass});
+	request.done(function (response,textStatus,jqXHR) {
+		//console.log(response);
+		replaceHtml('status',response);
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown) {
+		console.error("There was an error downloading the file: " + textStatus, errorThrown);
+	});
+	return false;
+}
