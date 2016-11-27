@@ -22,7 +22,7 @@
 							<img class='userPic Left' src='".$row['usr_picture']."' alt='No Profile Picture'>
 						</td>
 						<td>
-							<a onClick='showProfile(".$row['usr_id'].")'>".$row['usr_fname']." ".$row['usr_lname']."
+							<a onClick='GoToPage(\"Profile\",\"\",".$row['usr_id'].",\"\")'>".$row['usr_fname']." ".$row['usr_lname']."
 							<br>".$row['rol_name']."</a>
 						</td>
 					</tr>

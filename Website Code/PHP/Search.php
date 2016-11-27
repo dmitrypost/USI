@@ -6,7 +6,11 @@
 		PageTitle("Search");
 		$con = Open();		
 		if (!isset($_POST['s'])) { $Search = "Test"; }
-		else{ $Search = mysqli_real_escape_string($con,trim(strip_tags($_POST['s']))); echo $_POST['s'];}
+		else
+		{
+			 $Search = mysqli_real_escape_string($con,trim(strip_tags($_POST['s']))); 
+			 echo "<h5>Search term: ".$_POST['s']."</h5>";
+		}
 		$ResultCount = 0; //change if results come up
 			
 

@@ -119,24 +119,6 @@ function getBody()
     return false;
 }
 
-
-/* exported editProject */
-function editProject(epid)
-{
-	"use strict"; //jshint unused:false
-	var data = "epid=" + epid;
-	var request = $.ajax({url:"Body.php",type: "post", data: data });
-    request.done(function (response, textStatus, jqXHR) {
-        replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
-    });
-    // Callback handler that will be called on failure
-    request.fail(function (jqXHR, textStatus, errorThrown) {
-        console.error("The following error occurred: " + textStatus, errorThrown);
-    });
-	return false;	
-}
-
-
 /* exported Logout */
 function Logout()
 {
@@ -167,10 +149,6 @@ function showRegister()
     });
 	return false;		
 }
-
-
-
-
 
 /* exported ProcessRegistration */
 function ProcessRegistration()
@@ -288,7 +266,12 @@ function GoToPage(page)
 function GoToPage(page,action,value,optional)
 {
 	"use strict"; //jshint unused:false	
-	var data = "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional;
+	var data = "";
+	if ((page !== null) && (page !== "")) {data = data + "Page="+page; }
+	if ((action !== null) && (action !== "")) {data = data + "&Action="+action; }
+	if ((value !== null) && (value !== "")) {data = data + "&value="+value; }
+	if ((optional !== null) && (optional !== "")) {data = data + "&optional="+optional; }
+	//var data = "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional;
 	var request = $.ajax({
 		url: "Body.php",
 		type: "post",
@@ -297,7 +280,7 @@ function GoToPage(page,action,value,optional)
 	SidePanelPage(data);
 	request.done(function (response, textStatus, jqXHR) {
 		replaceHtml('BodyPanel',response);
-		UpdateAddressBar("/?Page="+page+"&Action="+action+"&value="+value);
+		UpdateAddressBar("/?"+data);
 	});
 	request.fail(function (jqXHR, textStatus, errorThrown){
 		console.error("The following error occurred: "+	textStatus, errorThrown	);
@@ -397,10 +380,10 @@ function getSidePanel()
 }
 
 /* exported UpdateSPMajorList */
-function UpdateSPMajorList(cid)
+function UpdateSPMajorList(collgeid)
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"SidePanel.php",type: "post", data: "cid=" + cid });
+	var request = $.ajax({url:"SidePanel.php",type: "post", data: "value=" + collgeid });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
     });

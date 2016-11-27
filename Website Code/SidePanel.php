@@ -5,8 +5,10 @@
 		$defaultPage = true;
 		foreach ($_POST as $key => $val) {
 		  echo '<p>'.$key.':'.$_POST[$key].'</p>';
+		}
+		
+		foreach ($_POST as $key => $val) {
 		  $defaultPage = false;
-
 		  switch ($key)
 			{
 				case 'Page':
@@ -26,12 +28,12 @@
 								break;
 						}
 					break;
-				case 'cid';
+				case 'value';
 					include 'PHP/SidePanel/Default.php';
 					//only happens upon college select change
 					break;
 			}
-			
+			break;
 		}
 		if ($defaultPage)
 		{
