@@ -1,6 +1,26 @@
 <?php
 	include_once 'Database.php';
 	
+	function GetPath($path,$delimitor = "|")
+	{
+		$slash = DIRECTORY_SEPARATOR;
+		if ($delimitor == "|")
+		{
+			if ($slash == "/") //linux based environment
+			{
+				return str_replace("\\",$slash,$path);					
+			}
+			else //windows based environment
+			{
+				return str_replace("/",$slash,$path);			
+			}
+		}
+		else //delimitor was passed 
+		{		
+			return str_replace($delimitor,$slash,$path);
+		}
+	}
+	
 	function FormattedUserLink($userId,$usersName)
 	{
 		echo "

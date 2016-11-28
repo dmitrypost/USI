@@ -71,6 +71,9 @@
 						case 'PasswordManagement':
 							include 'PHP/PasswordManagement.php';
 							break;
+						case 'AlterHomePage':
+							include 'PHP/AlterHomePage.php';
+							break;
 					}
 					break; // case 'Page'
 					case 'Action':
