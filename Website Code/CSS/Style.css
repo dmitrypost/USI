@@ -250,6 +250,10 @@ width: 200px;
 
 }
 
+.project-preview h5:hover {
+	text-decoration: underline;
+}
+
 /* alter boxes */
 .alert-box {
 		color:#555;
@@ -283,7 +287,7 @@ width: 200px;
 .itemconfiguration{
 	height:200px;
 	display:none;
-	background-color:white;		
+	background-color:white;
 	overflow-y:auto;
 	float:left;
 	position:absolute;
@@ -305,5 +309,5 @@ table tr:hover {
 }
 th { background:#A3A3A3 !important }
 #slt_SelectedUser{	width:300px; }
-	
+
 .in-line {	display:inline-flex;	}

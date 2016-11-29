@@ -30,11 +30,11 @@
 				<img src='".$profilePic."' alt='".$NoProfilePictureImage."'>
 			</div>
 			<div class='small-12 large-5 columns info left'>
-				<h5>Major: ".$major."</h5>
-				Academic Status: ".$grad." student
-				<br>Contact: <a href='tel:".$row['usr_phone']."' title='call number'>".$row['usr_phone']."</a>
-				<br>Email: <a href='mailto:".$row['usr_email']."' >".$row['usr_email']."</a>
-				<br>LinkedIn: <a href='".$row['usr_linkedin']."' >".$row['usr_linkedin']."</a>
+				<b>Major:</b> ".$major."
+				<br><b>Academic Status:</b> ".$grad."
+				<br><b>Contact:</b> <a href='tel:".$row['usr_phone']."' title='call number'>".$row['usr_phone']."</a>
+				<br><b>Email:</b> <a href='mailto:".$row['usr_email']."' >".$row['usr_email']."</a>
+				<br><b>LinkedIn:</b> <a href='".$row['usr_linkedin']."' >".$row['usr_linkedin']."</a>
 			</div>
 		</div>
 		<br>
@@ -42,13 +42,13 @@
 	";
 	$query2 = "SELECT rol_name, pjt_name, pjt_description, mgr_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id LEFT JOIN tblMajor ON tblproject.pjt_mgr_id = tblMajor.mgr_id WHERE usr_id = ". $uid;
 	if ($result2 = mysqli_query($con, $query2)){if (mysqli_num_rows($result2) > 0){
-		echo "<div class='center'><h4>Projects ".$row['usr_fname']." has participated in:</h4></div><br>";
+		echo "<div class='center'><h4>Projects ".$row['usr_fname']." has participated in:</h4></div>";
 		while($row2 = mysqli_fetch_assoc( $result2)) {
 		echo "
 		<div class='project-preview'>
-			<h5><a href='javascript:void(0)' onClick='showProject(".$row2['pjt_id'].")'>".$row2['pjt_name']."</a> - ".$row2['rol_name']."</h5>
-			<br>".$row2['pjt_description']."
-			<br><br><h6>Year: ".$row2['pjt_year']."</h6>
+			<h5><a href='javascript:void(0)' onClick='GoToPage(\"Project\",\"\",".$row2['pjt_id'].",\"\")'>".$row2['pjt_name']."</a> - ".$row2['rol_name']."</h5>
+			".$row2['pjt_description']."
+			<br><h6>Year: ".$row2['pjt_year']."</h6>
 			<br>
 		</div>
 		";
