@@ -49,15 +49,11 @@
 									<table width='100%' border='0' cellpadding='2'>
 									  <tbody>
 										<tr>
-											<td>
 												First name: <input type='text' class='w300' id='txt_firstName' value=".$row['usr_fname']." maxlength='20'>
 												Last name: <input type='text' class='w300' id='txt_lastName' value=".$row['usr_lname']." maxlength='20'>
-											</td>
-											<td>
 												<a class='ProfilePic' >
 													<img class='userPic Left' src='".$row['usr_picture']."' alt='No Profile Picture'>
 												</a>
-											</td>
 										</tr>
 									  </tbody>
 									</table>
@@ -101,7 +97,7 @@
 									{
 										echo "
 										<input type='radio' name='academicstatus' value='0' checked> Undergraduate<br>
-										<input type='radio' name='academicstatus' value='1'> Graduate<br>";	
+										<input type='radio' name='academicstatus' value='1'> Graduate<br>";
 									}
 									echo "
 								</div>

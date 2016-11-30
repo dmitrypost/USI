@@ -26,8 +26,8 @@
 	        include_once 'Functions.php';
 			GetImage(1);
 		?>
-        <h5 class="descrTitles">Our 2016 Alberta Energy Challenge Team</h5>
-        <p>We cou't be more proud of ourr 2016 Alberta Energy Challenge team and faculty advisors Jeanette Maier-Lytle and Dr. Brandon Field! Check out the impressive statistics of the case teams that have represented USI Romain College nationally and internationally. </p>
+        <h5 class="descrTitles">2016 Alberta Energy Challenge Team</h5>
+        <p>We couldn't be more proud of our 2016 Alberta Energy Challenge team and faculty advisors Jeanette Maier-Lytle and Dr. Brandon Field! Check out the impressive statistics of the case teams that have represented USI Romain College nationally and internationally. </p>
     </div>
     <div id ="smallpics">
     <!---------------------------------------------------------->
@@ -38,7 +38,7 @@
 					GetImage(2);
 				?>
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
-                 <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
+                 <p>Three USI Speaking Eagles club officers earn Toastmasters certifications.</p>
             </div>
             <div id = "homeImg2_Row3">
                 <h5 class="descrTitles">Title Here</h5>
@@ -53,7 +53,7 @@
 					GetImage(3);
 				?>
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
-                 <p>Three USI Speaking EAgles club officers earn Toastmasters certifications.</p>
+                 <p>Three USI Speaking Eagles club officers earn Toastmasters certifications.</p>
             </div>
             <div id = "homeImg2_Row3">
                 <h5 class="descrTitles">Title Here</h5>
