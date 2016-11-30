@@ -245,32 +245,14 @@ function AjaxProfileChange(control,action,optional)
 }
 
 /* exported GoToPage */
-function GoToPage(page)
-{
-	"use strict"; //jshint unused:false	
-	var request = $.ajax({
-		url: "Body.php",
-		type: "post",
-		data: "Page="+page
-	});
-	request.done(function (response, textStatus, jqXHR) {
-		replaceHtml('BodyPanel',response);
-		UpdateAddressBar("/?Page="+page);
-	});
-	request.fail(function (jqXHR, textStatus, errorThrown){
-		console.error("The following error occurred: "+	textStatus, errorThrown	);
-	});
-}
-
-/* exported GoToPage */
 function GoToPage(page,action,value,optional)
 {
 	"use strict"; //jshint unused:false	
 	var data = "";
-	if ((page !== null) && (page !== "")) {data = data + "Page="+page; }
-	if ((action !== null) && (action !== "")) {data = data + "&Action="+action; }
-	if ((value !== null) && (value !== "")) {data = data + "&value="+value; }
-	if ((optional !== null) && (optional !== "")) {data = data + "&optional="+optional; }
+	if ((page !== null) && (page !== "") && (page !== undefined)) {data = data + "Page="+page; }
+    if ((action !== null) && (action !== "") && (action !== undefined)) {data = data + "&Action="+action; }
+    if ((value !== null) && (value !== "") && (value !== undefined)) {data = data + "&value="+value; }
+    if ((optional !== null) && (optional !== "") && (optional !== undefined)) {data = data + "&optional="+optional; }
 	//var data = "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional;
 	var request = $.ajax({
 		url: "Body.php",

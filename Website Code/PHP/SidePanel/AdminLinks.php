@@ -8,7 +8,7 @@
             <button class='alink' href='javascript:void(0)' onClick='GoToPage(\"RunSQL\")' title='Run SQL query upon database'>Run SQL</button><br>
 			<button class='alink' href='javascript:void(0)' onClick='GoToPage(\"ProjectApprovals\")' title='Approve pending changes to projects'>Project Approvals</button><br>
 			<button class='alink' href='javascript:void(0)' onClick='GoToPage(\"PasswordManagement\")' title='Change password of users'>Password Management</button><br>
-			
+			<button class='alink' href='javascript:void(0)' onClick='GoToPage(\"UserManagement\")' title='Manage users\' profiles'>User Management</button><br>
 			";	
 	}
 ?>
