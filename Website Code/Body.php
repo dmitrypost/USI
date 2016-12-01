@@ -15,64 +15,64 @@
 			{
 				case 's';
 					//echo "search";
-					include 'PHP/Search.php';
+					include './PHP/Search.php';
 					break;
 				case 'logout':
-					include 'PHP/Logout.php';
+					include './PHP/Logout.php';
 					break;
 				case 'login':
-					include 'PHP/Login.php';
+					include './PHP/Login.php';
 					break;
 				case 'register':
-					include 'PHP/Register.php';
+					include './PHP/Register.php';
 					break;		
 				case 'registerForm':
-					include 'PHP/ProcessRegistration.php';
+					include './PHP/ProcessRegistration.php';
 					break;
 				case 'processProfileEdits':
-					include 'PHP/ProcessProfileEdits.php';
+					include './PHP/ProcessProfileEdits.php';
 					break;
 				case 'ProcessProjectChanges':
-					include 'PHP/ProcessProjectChanges.php';
+					include './PHP/ProcessProjectChanges.php';
 					break;
 				case 'FileDownload':
-					include 'PHP/FileDownload.php';
+					include './PHP/FileDownload.php';
 					break;
 				case 'Page':
 					switch ($_POST['Page'])
 					{
 						case 'EditProfile':
-							include 'PHP/EditProfile.php';
+							include './PHP/EditProfile.php';
 							break;								
 						case 'EditPassword':
-							include 'PHP/EditPassword.php';
+							include './PHP/EditPassword.php';
 							break;
 						case 'Projects':
-							include 'PHP/Projects.php';
+							include './PHP/Projects.php';
 							break;	
 						case 'Project':
-							include 'PHP/Project.php';
+							include './PHP/Project.php';
 							break;
-						case 'EditProject':
-							include 'PHP/EditProject.php';
+						case './EditProject':
+							include './PHP/EditProject.php';
 							break;
 						case 'Profile':
-							include 'PHP/Profile.php';
+							include './PHP/Profile.php';
 							break;
 						case 'AdminPanel':
-							include 'PHP/AdminPanel.php';
+							include './PHP/AdminPanel.php';
 							break;
 						case 'College':
-							include 'PHP/College.php';
+							include './PHP/College.php';
 							break;
 						case 'Major':
-							include 'PHP/Major.php';
+							include './PHP/Major.php';
 							break;
 						case 'PasswordManagement':
-							include 'PHP/PasswordManagement.php';
+							include './PHP/PasswordManagement.php';
 							break;
 						case 'AlterHomePage':
-							include 'PHP/AlterHomePage.php';
+							include './PHP/AlterHomePage.php';
 							break;
 					}
 					break; // case 'Page'
@@ -80,7 +80,7 @@
 						switch ($_POST['Action'])
 						{
 							case 'SetPassword':
-								include 'PHP/PasswordManagement.php';
+								include './PHP/PasswordManagement.php';
 								break;	
 						}
 						break; // case 'Action'
@@ -90,7 +90,7 @@
 		}
 		if ($defaultPage)
 		{
-			include 'PHP/Default.php';
+			include './PHP/Default.php';
 		}
 	}
 ?>

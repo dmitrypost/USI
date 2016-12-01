@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /* Edit Project Page */
@@ -68,7 +68,7 @@ input {
 }
 
 #BgContainer {
-	background-image:url("/images/blue-bkgd.jpg");
+	background-image:url("./Images/blue-bkgd.jpg");
 }
 
 button, .button {
