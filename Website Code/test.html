@@ -3,34 +3,7 @@
 <head>
 <meta charset="utf-8">
 <style>
-.itemconfiguration{
-	height:200px;
-		display:none;
-		background-color:white;		
-        overflow-y:auto;
-		float:left;
-		position:absolute;
-	}
-	table th, td {
-		
-		padding:3px;
-		padding-top:-8px;
-		/*margin:3px;*/
-    border: 1px solid #A9A9A9;
-
-}
-table td {
-padding:5px;	
-}
-table tr:hover {
-	
-background:#709BFF !important;
-border:1px solid black;-moz-box-shadow:    inset 0 0 10px #000000;
-   -webkit-box-shadow: inset 0 0 10px #000000;
-   box-shadow:         inset 0 0 10px #000000;}
-th{background:#A3A3A3 !important}
-#slt_SelectedUser{
-	width:300px;}
+#participant { display:none; }
 </style>
 <script>
 
@@ -38,24 +11,17 @@ function replaceHtml(element,html) {
 	"use strict";
     document.getElementById(element).innerHTML = html;
 }
-function SelectDropdown()
-{
-	ToggleList();
-	replaceHtml("slt_SelectedUser","");
-}
-function TableItemSelected(id,elem)
-{"use strict";
-	replaceHtml("slt_SelectedUser","<option value='item' selected>"+$(elem).find("td:first").text()+" "+$(elem).find("td:nth-child(2)").text()+"</select>");
-	$("#hdn_SelectedUserId").val(id);
-	console.log($(elem).find("td:first").text()+" "+$(elem).find("td:nth-child(2)").text());
-	ToggleList();
-}
-function ToggleList()
-{
-	"use strict";
-	$('.itemconfiguration').toggle();
-}
 
+function addParticipantRow()
+{
+	var s = document.getElementById("participant").innerHTML; // HTML string
+	var div = document.createElement('div');
+	div.innerHTML = s;
+	document.getElementById("hdn_AddingParticipantCount").value = parseInt(document.getElementById("hdn_AddingParticipantCount").value) + 1;
+	div.id = document.getElementById("hdn_AddingParticipantCount").value;
+	document.getElementById("participants").appendChild(div);
+	
+}
 </script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -63,63 +29,17 @@ function ToggleList()
 <title>Untitled Document</title>
 </head>
 <body>
-<div class="dropdownsearch"><select id="slt_SelectedUser" onClick="SelectDropdown()"></select></div>
-<div class="itemconfiguration"><input type="hidden" id="hdn_SelectedUserId" value="">
-<table  cellpadding="15">
-  <tbody>
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Admin</th>
-    </tr>
-    <tr onClick="TableItemSelected(1,this)">
-      <td>Dmitry</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    <tr onClick="TableItemSelected(2,this)">
-      <td>Dmitry2</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    <tr onClick="TableItemSelected(3,this)">
-      <td>Dmitry3</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    <tr onClick="TableItemSelected(4,this)">
-      <td>Dmitry4</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    <tr onClick="TableItemSelected(5,this)">
-      <td>Dmitry5</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    <tr onClick="TableItemSelected(6,this)">
-      <td>Dmitry6</td>
-      <td>Post</td>
-      <td>dpost@eagles.usi.edu</td>
-      <td>8122978492</td>
-      <td>True</td>
-    </tr>
-    
-  </tbody>
-</table>
+<div id="participants">
 
+</div>
+<button onClick="addParticipantRow()" value="Add">Add</button>
+<input type='hidden' id='hdn_AddingParticipantCount' value='0'>
+
+<div id='participant'>
+	<input type="text" class="participant-fname"><br>
+    <input type="text" class="participant-lname"><br>
+    <input type="text" class="participant-email"><br>
+    <input type="text" class="participant-role"><br>
 </div>
 
 </body>

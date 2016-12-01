@@ -53,7 +53,7 @@
 						case 'Project':
 							include './PHP/Project.php';
 							break;
-						case './EditProject':
+						case 'EditProject':
 							include './PHP/EditProject.php';
 							break;
 						case 'Profile':

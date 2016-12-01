@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="ProcessRegistration.php" server="C:/wamp64/www/" local="131233870610017298" remote="131233870610000000" Dst="1" />
-<file name="Database.php" server="C:/wamp64/www/" local="131216232105378484" remote="131216232100000000" Dst="1" />
-<file name="Functions.php" server="C:/wamp64/www/" local="131241799594088274" remote="131241799590000000" Dst="1" />
-<file name="Profile.php" server="C:/wamp64/www/" local="131241396827540132" remote="131241396820000000" Dst="1" />
-<file name="Logout.php" server="C:/wamp64/www/" local="131216232105438639" remote="131216232100000000" Dst="1" />
-<file name="Login.php" server="C:/wamp64/www/" local="131241396827489995" remote="131241396820000000" Dst="1" />
-<file name="Register.php" server="C:/wamp64/www/" local="131231811250618463" remote="131231811250000000" Dst="1" />
-<file name="Projects.php" server="C:/wamp64/www/" local="131241795828538087" remote="131241795820000000" Dst="1" />
-<file name="Project.php" server="C:/wamp64/www/" local="131241790216815120" remote="131241790210000000" Dst="1" />
-<file name="EditProject.php" server="C:/wamp64/www/" local="131241396827409784" remote="131241396820000000" Dst="1" />
-<file name="GetLoginLinks.php" server="C:/wamp64/www/" local="131241796694397179" remote="131241796690000000" Dst="1" />
-<file name="EditProfile.php" server="C:/wamp64/www/" local="131241781237425681" remote="131241781230000000" Dst="1" />
-<file name="Search.php" server="C:/wamp64/www/" local="131241396827590262" remote="131241396820000000" Dst="1" />
-<file name="Default.php" server="C:/wamp64/www/" local="131232279330456451" remote="131232279330000000" Dst="1" />
-<file name="College.php" server="C:/wamp64/www/" local="131233080262668209" remote="131233080260000000" Dst="1" />
-<file name="Major.php" server="C:/wamp64/www/" local="131241452073038458" remote="131241452070000000" Dst="1" />
+<file name="ProcessRegistration.php" server="C:/wamp64/www/" local="131242179230171733" remote="131242179230000000" Dst="1" />
+<file name="Database.php" server="C:/wamp64/www/" local="131250207567729359" remote="131250207560000000" Dst="1" />
+<file name="Functions.php" server="C:/wamp64/www/" local="131248273979149491" remote="131248273970000000" Dst="1" />
+<file name="Profile.php" server="C:/wamp64/www/" local="131248664659911001" remote="131248664650000000" Dst="1" />
+<file name="Logout.php" server="C:/wamp64/www/" local="131226088633129270" remote="131226088630000000" Dst="1" />
+<file name="Login.php" server="C:/wamp64/www/" local="131240814056082240" remote="131240814050000000" Dst="1" />
+<file name="Register.php" server="C:/wamp64/www/" local="131242176231208236" remote="131242176230000000" Dst="1" />
+<file name="Projects.php" server="C:/wamp64/www/" local="131247207025234687" remote="131247207020000000" Dst="1" />
+<file name="Project.php" server="C:/wamp64/www/" local="131245995010000000" remote="131245995010000000" Dst="1" />
+<file name="EditProject.php" server="C:/wamp64/www/" local="131250282082999098" remote="131250282080000000" Dst="1" />
+<file name="GetLoginLinks.php" server="C:/wamp64/www/" local="131250105519635018" remote="131250105510000000" Dst="1" />
+<file name="EditProfile.php" server="C:/wamp64/www/" local="131249971336983616" remote="131249971330000000" Dst="1" />
+<file name="Search.php" server="C:/wamp64/www/" local="131246804065318618" remote="131246804060000000" Dst="1" />
+<file name="Default.php" server="C:/wamp64/www/" local="131249971336816680" remote="131249971330000000" Dst="1" />
+<file name="College.php" server="C:/wamp64/www/" local="131246125084173914" remote="131246125080000000" Dst="1" />
+<file name="Major.php" server="C:/wamp64/www/" local="131246130226528279" remote="131246130220000000" Dst="1" />
 <file name="Database.php" server="C:/xampp/htdocs/" local="131217967031309232" remote="131217967030000000" Dst="1" />
 <file name="Functions.php" server="C:/xampp/htdocs/" local="131230329801014115" remote="131230329800000000" Dst="1" />
 <file name="EditProfile.php" server="C:/xampp/htdocs/" local="131232030836791145" remote="131232030830000000" Dst="1" />
@@ -50,7 +50,15 @@
 <file name="GetLoginLinks.php" server="C:/xampp/htdocs" local="131217967032346547" remote="131217967030000000" Dst="2" />
 <file name="RunSQL.php" server="C:/xampp/htdocs/" local="131234576378280358" remote="131234576370000000" Dst="1" />
 <file name="AlterCollegeMajor.php" server="C:/xampp/htdocs/" local="131232132065616437" remote="131232132060000000" Dst="1" />
-<file name="ProcessProfileEdits.php" server="C:/wamp64/www/" local="131239840171530629" remote="131239840170000000" Dst="1" />
-<file name="RunSQL.php" server="C:/wamp64/www/" local="131234649336983545" remote="131234649330000000" Dst="1" />
-<file name="EditPassword.php" server="C:/wamp64/www/" local="131241784607729113" remote="131241784600000000" Dst="1" />
+<file name="ProcessProfileEdits.php" server="C:/wamp64/www/" local="131246100703573507" remote="131246100700000000" Dst="1" />
+<file name="RunSQL.php" server="C:/wamp64/www/" local="131237852165327713" remote="131237852160000000" Dst="1" />
+<file name="EditPassword.php" server="C:/wamp64/www/" local="131242155096778086" remote="131242155090000000" Dst="1" />
+<file name="AdminPanel.php" server="C:/wamp64/www/" local="131246131897987571" remote="131246131890000000" Dst="1" />
+<file name="AlterCollegeMajor.php" server="C:/wamp64/www/" local="131233508894400038" remote="131233508890000000" Dst="1" />
+<file name="AlterHomePage.php" server="C:/wamp64/www/" local="131247724177228294" remote="131247724170000000" Dst="1" />
+<file name="FileDownload.php" server="C:/wamp64/www/" local="131245968503167464" remote="131245968500000000" Dst="1" />
+<file name="FileUpload.php" server="C:/wamp64/www/" local="131248286859512417" remote="131248286850000000" Dst="1" />
+<file name="PasswordManagement.php" server="C:/wamp64/www/" local="131247189229011790" remote="131247189220000000" Dst="1" />
+<file name="ProcessProjectChanges.php" server="C:/wamp64/www/" local="131246666911385637" remote="131246666910000000" Dst="1" />
+<file name="Profiles.php" server="C:/wamp64/www/" local="131232065992409384" remote="131232065990000000" Dst="1" />
 </dwsync>

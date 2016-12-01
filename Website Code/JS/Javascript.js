@@ -405,6 +405,17 @@ function FileDownload(fileid)
 	return false;
 }
 
+/* exported addParticipantRow */
+function addParticipantRow()
+{	"use strict";
+	var s = document.getElementById("participant").innerHTML; // HTML string
+	var div = document.createElement('div');
+	div.innerHTML = s;
+	document.getElementById("hdn_AddingParticipantCount").value = parseInt(document.getElementById("hdn_AddingParticipantCount").value) + 1;
+	div.id = document.getElementById("hdn_AddingParticipantCount").value;
+	document.getElementById("participants").appendChild(div);
+}
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 /* exported SelectDropdown */
 function SelectDropdown()
@@ -439,3 +450,4 @@ function SetPassword()
 	});
 	return false;
 }
+

@@ -65,7 +65,17 @@
 				<div>
 					$FormattedParticipantsHTML
 					<hr>
-					<button type='button' class='btn btn-default btn-sm' onClick=''>
+					<div id='participants'>
+
+					</div>
+					<input type='hidden' id='hdn_AddingParticipantCount' value='0'>
+					<div id='participant' class='hidden'>
+						First name<input type='text' class='participant-fname w300'>
+						Last name<input type='text' class='participant-lname w300'>
+						Email<input type='text' class='participant-email w300'>
+						Role<input type='text' class='participant-role w300'>
+					</div>
+					<button type='button' class='btn btn-default btn-sm' onClick='addParticipantRow()'>
 					  <span class='glyphicon glyphicon-plus'></span> Add
 					</button><br>
 					Removing project participants will require approval by an administrator.
