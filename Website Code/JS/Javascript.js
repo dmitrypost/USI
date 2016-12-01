@@ -203,7 +203,7 @@ function ProcessProjectChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-	var data = "ProcessProjectChanges&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val();
+    var data = "ProcessProjectChanges&projectid=" + $("#hdn_ProjectId").val() + "&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val();
 	
 	request = $.ajax({
 		url: "Body.php",
@@ -414,6 +414,21 @@ function addParticipantRow()
 	document.getElementById("hdn_AddingParticipantCount").value = parseInt(document.getElementById("hdn_AddingParticipantCount").value) + 1;
 	div.id = document.getElementById("hdn_AddingParticipantCount").value;
 	document.getElementById("participants").appendChild(div);
+}
+
+/* exported getParticipantAdditions */
+function getParticipantAdditions()
+{
+    var Participants = "";
+    for (i = 1; i <= parseInt(document.getElementById("hdn_AddingParticipantCount").value); i++) {
+        var fname = $("#participants #" + i + " input.participant-fname").val();
+        var lname = $("#participants #" + i + " input.participant-lname").val();
+        var email = $("#participants #" + i + " input.participant-email").val();
+        var role = $("#participants #" + i + " input.participant-role").val();
+        Participants = Participants + '["' + fname + '","' + lname + '","' + email + '","' + role + '",' + $("#hdn_ProjectId").val() +']'
+    }
+        
+    return Participants;
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

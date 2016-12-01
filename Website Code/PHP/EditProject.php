@@ -22,9 +22,10 @@
 		";	
 	}
 	
-	function FormattedEditProjectPage($ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML)
+	function FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML)
 	{
 		echo "
+		<input type='hidden' id='hdn_ProjectId' value='$ProjectId'>
 		<div id='accordion'>
 			<h3>Basic Information</h3>	
 				<div>
@@ -72,7 +73,7 @@
 					<div id='participant' class='hidden'>
 						First name<input type='text' class='participant-fname w300'>
 						Last name<input type='text' class='participant-lname w300'>
-						Email<input type='text' class='participant-email w300'>
+						Email<input type='email' class='participant-email w300'>
 						Role<input type='text' class='participant-role w300'>
 					</div>
 					<button type='button' class='btn btn-default btn-sm' onClick='addParticipantRow()'>
@@ -160,7 +161,7 @@
 							$ProjectTitle = $row2['pjt_name'];
 							$ProjectMajorId = $row2['pjt_mgr_id'];
 							$ProjectYear = $row2['pjt_year'];
-							FormattedEditProjectPage($ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
+							FormattedEditProjectPage($ProjectId, $ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
 						}
 					}
 					else
@@ -182,7 +183,7 @@
 					{ while ($row = mysqli_fetch_assoc($result))
 						{	
 							$ProjectTitle = $row['pjt_name']; $ProjectBody = $row['pjt_body']; $ProjectDescription = $row['pjt_description']; $ProjectMajorId = $row['pjt_mgr_id']; $ProjectYear = $row['pjt_year'];
-							FormattedEditProjectPage($ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
+							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
 						}						
 					}
 					else

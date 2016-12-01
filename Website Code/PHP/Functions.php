@@ -1,6 +1,26 @@
 <?php
 	include_once 'Database.php';
 	
+	function AddParticipant($firstName,$lastName,$email,$role,$projectId)
+	{
+		$randomPassword = uniqid();
+		$con = Open();
+		$query = "INSERT INTO tblUser (usr_fname,usr_lname,usr_email)VALUES('$firstName','$lastName','$email')";
+		QuickQuery($query);
+		$UserId = GetUserIdByEmail($email);
+		$query = "INSERT INTO tblRole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,$role,SELECT rst_name FROM tblRoleState WHERE rst_name = 'NORMAL')";
+		QuickQuery($query);
+		SetPassword($randomPassword,$UserId);
+		$emailMessage = "You have been added as a project participant, thus we have created a password for you to allow you to login and make changes to your profile and edit details about the project. Your login information is Email: $email Password: $randomPassword";
+		Email($email,"USI Project Repository - You have been added to a project as a participant",$emailMessage); 	
+	}
+	
+	
+	function Email($destinationAddress, $subject, $message)
+	{
+		mail($destinationAddress,$subject,$message);	
+	}
+	
 	function GetPath($path,$delimitor = "|")
 	{
 		$slash = DIRECTORY_SEPARATOR;
