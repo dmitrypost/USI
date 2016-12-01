@@ -9,7 +9,7 @@
 			$ParticipantName -- $ParticipantRole<br>
 			<a href='mailto:$ParticipantEmail'>$ParticipantEmail</a>
 			<a onClick='showProfile($ParticipantId)'>
-			</a>
+			</a><input type='hidden' value='$ParticipantId'>
 		</div><br>";
 	}
 	

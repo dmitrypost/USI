@@ -6,6 +6,15 @@
 	cursor: pointer;
 }
 
+#participants div:nth-child(odd) {
+	border-left: solid red;
+    padding-left: 10px;
+}
+#participants div:nth-child(even) {
+	border-left: solid blue;
+    padding-left: 10px;
+}
+
 textarea#txt_body {
 	height: 350px;
 }
