@@ -72,10 +72,15 @@
 		echo "
 			  </tbody>
 			</table>
-		</div>New Password
+		</div>
+		<div id='actions'>
+		New Password
 		<br>
-		<section class='in-line'><input type='password' id='pwd_newpassword'><button onClick='SetPassword()'>Set</button></section>
+		<section class='in-line no-wrap'><input type='password' id='pwd_newpassword'><button onClick='SetPassword()'>Set</button>
+		<button onClick='GoToPage(\"EditProfile\",\"\",$(\"#hdn_SelectedUserId\").val(),\"\")'>Edit Profile</button></section>
 		<div id='status'></div>
+		
+		</div>
 		";
 		
 		mysqli_close($con);

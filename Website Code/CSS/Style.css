@@ -1,5 +1,4 @@
-﻿@charset "utf-8";
-/* CSS Document */
+﻿/* CSS Document */
 
 /* Edit Project Page */
 .File{
@@ -291,3 +290,4 @@ button, .button {
 #slt_SelectedUser{	width:300px; }
 
 .in-line {	display:inline-flex;	}
+.no-wrap { 	white-space:nowrap;	}

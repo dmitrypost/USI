@@ -3,9 +3,9 @@
 	include_once 'functions.php';
 	$con = Open();
 	$ProfileId = 0;
-	if (isset($_POST['Optional']))
+	if (isset($_POST['value']))
 	{
-		$ProfileId = mysqli_real_escape_string($con,trim(strip_tags($_POST['Optional'])));
+		$ProfileId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));
 		if (!is_numeric($ProfileId))
 		{
 			$ProfileId = 0;
@@ -23,17 +23,7 @@
 	}
 	else
 	{
-
-		//echo "ProfileId: ".$ProfileId." Usr_Id: ".$usr_id." Admin_Id: ".$admin_id;
-		if (isset($_POST['Action']))
-		{
-			switch ($_POST['Action'])
-			{
-				default:
-
-
-				case 'View':
-
+			
 					echo "
 						<div class='row'><div class='small-12 columns' style='padding-right:0'>
 							<h1 id='page-name'>Edit Profile</h1></div></div>
@@ -122,13 +112,6 @@
 						echo "<br><input class='button' type='button' value='Submit' onClick='ProcessProfileChanges()'>
 						<img src='/images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
 								";
-				break;
-			}
-
-		}
-		else
-		{
-
-		}
+			
 	}
 ?>

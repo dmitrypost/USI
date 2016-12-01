@@ -68,11 +68,14 @@
 						case 'Major':
 							include './PHP/Major.php';
 							break;
-						case 'PasswordManagement':
-							include './PHP/PasswordManagement.php';
+						case 'UserManagement':
+							include './PHP/UserManagement.php';
 							break;
 						case 'AlterHomePage':
 							include './PHP/AlterHomePage.php';
+							break;
+						case 'RunSQL':
+							include '/PHP/RunSQL.php';
 							break;
 					}
 					break; // case 'Page'
@@ -80,7 +83,7 @@
 						switch ($_POST['Action'])
 						{
 							case 'SetPassword':
-								include './PHP/PasswordManagement.php';
+								include 'PHP/UserManagement.php';
 								break;	
 						}
 						break; // case 'Action'
