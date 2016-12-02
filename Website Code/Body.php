@@ -1,12 +1,12 @@
 <?php
 /*
 	php which uses the first posted key as a determinant on what page to retrieve
-	
+
 	add to history upon ajax change of page
 	http://stackoverflow.com/questions/824349/modify-the-url-without-reloading-the-page
 */
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
-    { 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    {
 		$defaultPage = true;
 		foreach ($_POST as $key => $val) {
 		  //echo '<p>'.$key.'</p>';
@@ -25,7 +25,7 @@
 					break;
 				case 'register':
 					include './PHP/Register.php';
-					break;		
+					break;
 				case 'registerForm':
 					include './PHP/ProcessRegistration.php';
 					break;
@@ -43,13 +43,13 @@
 					{
 						case 'EditProfile':
 							include './PHP/EditProfile.php';
-							break;								
+							break;
 						case 'EditPassword':
 							include './PHP/EditPassword.php';
 							break;
 						case 'Projects':
 							include './PHP/Projects.php';
-							break;	
+							break;
 						case 'Project':
 							include './PHP/Project.php';
 							break;
@@ -77,6 +77,12 @@
 						case 'RunSQL':
 							include '/PHP/RunSQL.php';
 							break;
+						case 'AlterCollegeMajor':
+							include '/PHP/AlterCollegeMajor.php';
+							break;
+						case 'ProjectApprovals':
+							include '/PHP/ProjectApprovals.php';
+							break;
 					}
 					break; // case 'Page'
 					case 'Action':
@@ -84,7 +90,7 @@
 						{
 							case 'SetPassword':
 								include 'PHP/UserManagement.php';
-								break;	
+								break;
 						}
 						break; // case 'Action'
 

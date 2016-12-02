@@ -6,10 +6,10 @@ window.addEventListener('popstate', function(event) {
 	//console.log("uri"+uri+"|search"+window.location.search+"|hash"+window.location.hash);
     if (uri !== window.location.search)
 	{
-		getBody(); //tells the page to reload 
+		getBody(); //tells the page to reload
 	}
 }, false);
-  
+
 //dropdown menu's
 /* exported ToggleDropdown */
 function ToggleDropdown(dropdown){
@@ -36,7 +36,7 @@ function showLogin()
 {
 	"use strict";
 	document.getElementById('loginDiv').style.visibility='visible';
-	return false;	
+	return false;
 }
 
 //shows the login div containing the login form
@@ -45,7 +45,7 @@ function HideLogin()
 {
 	"use strict";
 	document.getElementById('loginDiv').style.visibility='hidden';
-	return false;	
+	return false;
 }
 
 //variable for holding current page
@@ -54,7 +54,7 @@ function UpdateAddressBar(urlPath)
 {
 	"use strict";
 	uri = urlPath;
-	window.history.pushState({"html":"","pageTitle":""},"", urlPath);	
+	window.history.pushState({"html":"","pageTitle":""},"", urlPath);
 	//window.location.hash = urlPath;
 }
 
@@ -64,7 +64,7 @@ function clearLogin()
 {
 	"use strict";
 	document.getElementById("loginForm").reset();
-	return false;	
+	return false;
 }
 
 // This is a function constructor:
@@ -95,8 +95,8 @@ function getRegisterLoginUserLinks()
 	// Callback handler that will be called on failure
 	request.fail(function (jqXHR, textStatus, errorThrown){
 		console.error("The following error occurred: "+textStatus, errorThrown);
-	});	
-	return false;	
+	});
+	return false;
 }
 
 
@@ -131,7 +131,7 @@ function Logout()
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.error("The following error occurred: " + textStatus, errorThrown);
     });
-	return false;		
+	return false;
 }
 
 /* exported showRegister */
@@ -147,7 +147,7 @@ function showRegister()
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.error("The following error occurred: " + textStatus, errorThrown);
     });
-	return false;		
+	return false;
 }
 
 /* exported ProcessRegistration */
@@ -156,7 +156,7 @@ function ProcessRegistration()
 	"use strict"; //jshint unused:false
 	var request;
 	var data = "registerForm&firstname=" + $('#firstname').val() + "&lastname=" + $('#lastname').val() + "&email=" + $('#email').val() + "&password=" + $('#password').val() + "&college=" + $("#slt_college option:selected").text() + "&major=" + $('#slt_major option:selected').text();
-	
+
 	request = $.ajax({
 		url: "Body.php",
 		type: "post",
@@ -180,7 +180,7 @@ function ProcessProfileChanges()
 	"use strict"; //jshint unused:false
 	var request;
 	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('input[name=academicstatus]:checked').val() + "&phone=" + $('#txt_phone').val() + "&linkedin=" + $('#txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
-	
+
 	request = $.ajax({
 		url: "Body.php",
 		type: "post",
@@ -204,7 +204,7 @@ function ProcessProjectChanges()
 	"use strict"; //jshint unused:false
 	var request;
     var data = "ProcessProjectChanges&projectid=" + $("#hdn_ProjectId").val() + "&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions();
-	
+
 	request = $.ajax({
 		url: "Body.php",
 		type: "post",
@@ -225,8 +225,8 @@ function ProcessProjectChanges()
 /* exported AjaxProfileChange */
 function AjaxProfileChange(control,action,optional)
 {
-	"use strict"; //jshint unused:false	
-	
+	"use strict"; //jshint unused:false
+
     var data = "Page=EditProfile&Action=" + action + "&Value=" + GetControlValue(control) + "&Optional=" + optional;
 	var request = $.ajax({
 		url: "Body.php",
@@ -247,7 +247,7 @@ function AjaxProfileChange(control,action,optional)
 /* exported GoToPage */
 function GoToPage(page,action,value,optional)
 {
-	"use strict"; //jshint unused:false	
+	"use strict"; //jshint unused:false
 	var data = "";
 	if ((page !== null) && (page !== "") && (page !== undefined)) {data = data + "Page="+page; }
     if ((action !== null) && (action !== "") && (action !== undefined)) {data = data + "&Action="+action; }
@@ -272,7 +272,7 @@ function GoToPage(page,action,value,optional)
 /* exported SidePanelPage */
 function SidePanelPage(data)
 {
-	"use strict"; //jshint unused:false	
+	"use strict"; //jshint unused:false
 	var request = $.ajax({
 		url: "SidePanel.php",
 		type: "post",
@@ -291,14 +291,14 @@ function GetControlValue(control)
 {
 	"use strict"; //jshint unused:false
 	if(control !== null)
-    { 
+    {
 		switch (control.type)
 		{
-			case 'text':	
+			case 'text':
 				return control.value;
 			case 'select':
 				return control.value;
-				
+
 		}
 		return "";
 	}
@@ -315,7 +315,7 @@ function RegistrationFormLoaded()
 	if ($options === null) {
     	$options = $select2.find( 'option' );
 	}
-    
+
 	$select1.on( 'change', function() {
 		$select2.html( $options.filter( '[value="' + this.value + '"]' ) );
 	} ).trigger('change');
@@ -373,7 +373,7 @@ function UpdateSPMajorList(collgeid)
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.error("The following error occurred: " + textStatus, errorThrown);
     });
-	return false;	
+	return false;
 }
 
 /* exported SubmitPasswordChanges */
@@ -388,7 +388,7 @@ function SubmitPasswordChanges()
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.error("The following error occurred: " + textStatus, errorThrown);
     });
-	return false;	
+	return false;
 }
 
 /* exported FileDownload */
@@ -464,4 +464,3 @@ function SetPassword()
 	});
 	return false;
 }
-
