@@ -2,11 +2,11 @@
 <?php
 	include_once 'Functions.php';
 	$con = Open();
-	
+
 	if (isset($_POST['Action']) && isset($_POST['Id']) && isset($_POST['Pass']))
 	{
-		$UserId  = mysqli_real_escape_string($con,trim(strip_tags($_POST['Id']))); 
-		$Password  = mysqli_real_escape_string($con,trim(strip_tags($_POST['Pass']))); 
+		$UserId  = mysqli_real_escape_string($con,trim(strip_tags($_POST['Id'])));
+		$Password  = mysqli_real_escape_string($con,trim(strip_tags($_POST['Pass'])));
 		if (strlen($Password)<4)
 		{
 			echo "<p class='alert-box error'>Password has to be 4 characters long.</p>";
@@ -15,7 +15,7 @@
 		{
 			if (SetPassword($Password,$UserId))
 			{
-				echo "<p class='alert-box success'>The new password has been set.</p>";		
+				echo "<p class='alert-box success'>The new password has been set.</p>";
 			}
 			else
 			{
@@ -26,10 +26,10 @@
 	}
 	else
 	{
-		PageTitle("Password Management");
+		PageTitle("User Management");
 		if (!isAdmin())
 		{
-			echo "<p class='alert-box error'>Access Denied!</p>";	
+			echo "<p class='alert-box error'>Access Denied!</p>";
 			exit;
 		}
 		function FormattedTableUsers()
@@ -47,8 +47,8 @@
 							  <td>".$row['usr_email']."</td>
 							  <td>".$row['usr_phone']."</td>
 							  <td>".$row['usr_admin']."</td>
-							</tr>";			
-					}					
+							</tr>";
+					}
 				}
 			}
 			mysqli_close($con);
@@ -66,8 +66,8 @@
 				  <th scope='col'>Email</th>
 				  <th scope='col'>Phone</th>
 				  <th scope='col'>Admin</th>
-				</tr>";	
-				
+				</tr>";
+
 		echo FormattedTableUsers();
 		echo "
 			  </tbody>
@@ -79,10 +79,10 @@
 		<section class='in-line no-wrap'><input type='password' id='pwd_newpassword'><button onClick='SetPassword()'>Set</button>
 		<button onClick='GoToPage(\"EditProfile\",\"\",$(\"#hdn_SelectedUserId\").val(),\"\")'>Edit Profile</button></section>
 		<div id='status'></div>
-		
+
 		</div>
 		";
-		
+
 		mysqli_close($con);
 	}
 ?>
