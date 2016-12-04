@@ -1,6 +1,38 @@
 <?php
 	include_once 'Database.php';
 
+	function GetFileIdFromDatabase($path,$projectId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $fileId = 0;
+		$query = "SELECT fle_id FROM tblFile WHERE fle_data = '$path' AND fle_pjt_id = $projectId";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$fileId = $row['fle_id'];
+		}	} else { /*no results found*/ }	} else {/* error with query */}
+		mysqli_close($con);
+		return $fileId;
+	}
+	
+	function FileRead($path)
+	{
+		$file = fopen($path,"r");
+		$content = fread($file,filesize($path));
+		fclose($file);
+		return $content;	
+	}
+	
+	function FileDelete($path)
+	{
+		if (unlink($path))
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;	
+		}
+	}
+	
 	function FileWrite($path,$data)
 	{
 		$file = fopen($path,"w");

@@ -461,21 +461,21 @@ function ProcessProjectAddition()
     });
 }
 
-//this function will 
+//this function handles all actions for file operations
 /* exported FileAction */
-function FileAction(elem,type,page,action,value,optional)
+function FileAction(divelem,fileelem,type,page,action,value,optional)
 {
 	"use strict"; //jshint unused:false
 	var formData = new FormData();
 	formData.append("Page","FileAction");
 	formData.append("Type",type);
-	
+	if (fileelem === null ) { return; } //make sure this is passed
 		if ((page !== null) && (page !== "") && (page !== undefined)) {formData.append("UponPage",page); }
 		if ((action !== null) && (action !== "") && (action !== undefined)) {formData.append("Action",action); }
 		if ((value !== null) && (value !== "") && (value !== undefined)) {formData.append("value",value); }
 		if ((optional !== null) && (optional !== "") && (optional !== undefined)) {formData.append("optional",optional); }
 	var next = false;
-	var input = document.getElementById('fle_userfile');
+	var input = document.getElementById(fileelem);
     if (!input) {
       console.log("Um, couldn't find the fileinput element.");
 	  next = true;
@@ -501,7 +501,7 @@ function FileAction(elem,type,page,action,value,optional)
 			request.onreadystatechange = function() {
 				if (request.readyState === XMLHttpRequest.DONE) {
 					if (request.status === 200) {
-						replaceHtml(elem,request.responseText);
+						replaceHtml(divelem,request.responseText);
 					}
 				}
 				};
@@ -519,16 +519,11 @@ function FileAction(elem,type,page,action,value,optional)
 		request.onreadystatechange = function() {
 			if (request.readyState === XMLHttpRequest.DONE) {
 				if (request.status === 200) {
-					replaceHtml(elem,request.responseText);
+					replaceHtml(divelem,request.responseText);
 				}
 			}
 		};
 	}
-	//SidePanelPage(formData);
-	/*
-	request.fail(function (jqXHR, textStatus, errorThrown){
-		console.error("The following error occurred: "+	textStatus, errorThrown	);
-	});*/
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
