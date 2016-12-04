@@ -348,6 +348,7 @@ function ProfileEditLoaded()
 {
 	"use strict"; //jshint unused:false
 	$( "#accordion" ).accordion();
+	FileAction($('#div_profilepictureform'),'','Upload','Profile','ProfilePictureChange',$("#hdn_userid").val(),''); //tells the div_projectpictureform to change into project picture change form
 }
 
 /* exported EditProjectLoaded */
@@ -355,8 +356,8 @@ function EditProjectLoaded()
 {
 	"use strict"; //jshint unused:false
 	$( "#accordion" ).accordion();
-	FileAction($('#div_projectpictureform'),'','Upload','Profile','ProjectPictureChange',$("#hdn_ProjectId").val(),''); //tells the div_projectpictureform to change into project picture change form
-	FileAction($('#div_fileform'),'','Upload','Profile','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
+	FileAction($('#div_projectpictureform'),'','Upload','Project','ProjectPictureChange',$("#hdn_ProjectId").val(),''); //tells the div_projectpictureform to change into project picture change form
+	FileAction($('#div_fileform'),'','Upload','Project','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
 }
 
 /* exported onEnter */

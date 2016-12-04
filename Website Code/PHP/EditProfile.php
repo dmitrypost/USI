@@ -48,6 +48,9 @@
 													<img class='userPic Left' src='".$row['usr_picture']."' alt='No Profile Picture'>
 												</a>
 												</div>
+												<hr>Update Project Picture
+												<div id='div_profilepictureform' >
+												</div>
 										</tr>
 									  </tbody>
 									</table>

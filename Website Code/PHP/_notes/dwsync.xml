@@ -11,7 +11,7 @@
 <file name="Project.php" server="C:/wamp64/www/" local="131245995010000000" remote="131245995010000000" Dst="1" />
 <file name="EditProject.php" server="C:/wamp64/www/" local="131252928927981835" remote="131252928920000000" Dst="1" />
 <file name="GetLoginLinks.php" server="C:/wamp64/www/" local="131250105519635018" remote="131250105510000000" Dst="1" />
-<file name="EditProfile.php" server="C:/wamp64/www/" local="131252868033970483" remote="131252868030000000" Dst="1" />
+<file name="EditProfile.php" server="C:/wamp64/www/" local="131253215112723873" remote="131253215110000000" Dst="1" />
 <file name="Search.php" server="C:/wamp64/www/" local="131246804065318618" remote="131246804060000000" Dst="1" />
 <file name="Default.php" server="C:/wamp64/www/" local="131252884244054214" remote="131252884240000000" Dst="1" />
 <file name="College.php" server="C:/wamp64/www/" local="131246125084173914" remote="131246125080000000" Dst="1" />
@@ -57,7 +57,7 @@
 <file name="AlterCollegeMajor.php" server="C:/wamp64/www/" local="131252927739382209" remote="131252927730000000" Dst="1" />
 <file name="AlterHomePage.php" server="C:/wamp64/www/" local="131252927739462263" remote="131252927730000000" Dst="1" />
 <file name="FileDownload.php" server="C:/wamp64/www/" local="131245968503167464" remote="131245968500000000" Dst="1" />
-<file name="FileUpload.php" server="C:/wamp64/www/" local="131253213388159209" remote="131253213380000000" Dst="1" />
+<file name="FileUpload.php" server="C:/wamp64/www/" local="131253216627806364" remote="131253216620000000" Dst="1" />
 <file name="ProcessProjectChanges.php" server="C:/wamp64/www/" local="131246666911385637" remote="131246666910000000" Dst="1" />
 <file name="Profiles.php" server="C:/wamp64/www/" local="131232065992409384" remote="131232065990000000" Dst="1" />
 <file name="UserManagement.php" server="C:/wamp64/www/" local="131252908382567295" remote="131252908380000000" Dst="1" />

@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					//file does not exist so proceed with uploading
 					if (MoveUploadedFile($tempFilePath))
 					{
-						$query = "UPDATE tblProject SET pjt_picture = '".FileRead($tempFilePath)."' WHERE pjt_id = $ProjectId";
+						$query = "UPDATE tblUser SET usr_picture = '".FileRead($tempFilePath)."' WHERE usr_id = $ProfileId";
 						if (QuickQuery($query))
 						{
 							
