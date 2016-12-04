@@ -16,7 +16,7 @@
 <body>
 <div>
     <h1 id ="homePage_title">Project Repository</h1>
-    <p>Welcome to University of Southern Indiana Project Repository.  Here, you can find projects completed by students inside and outside of the classroom.</p>
+    <p>Welcome to the University of Southern Indiana Project Repository.  Here, you can find projects completed by students inside and outside of the classroom.</p>
      <!---------------------------------------------------------->
 
     <h3 class="descrTitles">Our Featured Projects</h3>
@@ -40,10 +40,10 @@
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
                  <p>Three USI Speaking Eagles club officers earn Toastmasters certifications.</p>
             </div>
-            <div id = "homeImg2_Row3">
+            <!--<div id = "homeImg2_Row3">
                 <h5 class="descrTitles">Title Here</h5>
                  <p>Description of cool senior project here!</p>
-            </div>
+            </div>-->
         </div>
          <!---------------------------------------------------------->
         <div id ="rightpics">
@@ -55,10 +55,10 @@
                 <h5 class="descrTitles">Three Earn Toastmasters Designations</h5>
                  <p>Three USI Speaking Eagles club officers earn Toastmasters certifications.</p>
             </div>
-            <div id = "homeImg2_Row3">
+            <!--<div id = "homeImg2_Row3">
                 <h5 class="descrTitles">Title Here</h5>
                  <p>Description of cool senior project here!</p>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
