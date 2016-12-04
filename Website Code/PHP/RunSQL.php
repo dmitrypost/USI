@@ -8,7 +8,7 @@
 	<body>
 		<div id='sqlBox'>
 					<div id='QuerySql'>
-						Query:<br>
+						<p class ='queryTitle'>Query:</p><br>
 						<textarea id='txt_query'>";
 		if (strlen($query) > 0) { echo $query; }
 		else { echo "Insert query here..."; }
@@ -20,7 +20,7 @@
 	});'>Run</button>
 					</div>
 					<div id='resultSql'>
-						Results:<br>
+						<p class ='queryTitle'>Results:</p><br>
 						<table  cellpadding='15'>
 			  				<tbody>
 				";

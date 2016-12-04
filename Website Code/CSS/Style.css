@@ -53,6 +53,10 @@ textarea#txt_body {
 	float:left;
 }
 
+/*.queryTitle{
+	font-weight:bold;
+}*/
+
 #loginDiv {
 	display: inline-block;
     width: 240px;
