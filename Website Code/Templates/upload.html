@@ -1,18 +1,8 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Upload Project</title>
-</head>
 <body>
-  <form id="frm_fileupload" enctype="multipart/form-data" action="/php/fileupload.php" method="POST">
-      <!-- MAX_FILE_SIZE must precede the file input field -->
-      <input type="hidden" name="MAX_FILE_SIZE" value="30000000000000000" />
-      <!-- Name of input element determines name in $_FILES array -->
-      Send this file: <input name="userfile" type="file" />
-      <input type="submit" value="Send File" />
-  </form>
-  <div>
-  </div>
+	<div id="div_fileform">
+    
+    </div>
+	<img src="/images/pixel.png" onload="FileAction($('#div_fileform'),'Upload','Profile','UploadForm','','')" width="0" height="0" alt="">
 </body>
-</html>
+//FileAction(elem,type,page,action,value,optional)

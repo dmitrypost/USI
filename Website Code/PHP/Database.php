@@ -16,11 +16,13 @@
 	{
 		$con = Open();
 		if (mysqli_query($con, $query)) {
-			echo "";
+			mysqli_close($con);
+			return TRUE;
 		} else {
-			echo "Error running query: " . mysqli_error($con);
+			//echo "Error running query: " . mysqli_error($con);
+			mysqli_close($con);
+			return FALSE;
 		}
-		mysqli_close($con);
 	}
 	
 

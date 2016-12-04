@@ -31,8 +31,8 @@
 				case 'ProcessProjectChanges':
 					include './PHP/ProcessProjectChanges.php';
 					break;
-				case 'FileDownload':
-					include './PHP/FileDownload.php';
+				case 'FileUpload':
+					include './Templates/upload.html';
 					break;
 				case 'Page':
 					switch ($_POST['Page'])
@@ -81,6 +81,22 @@
 							break;
 						case 'ProjectApprovals':
 							include '/PHP/ProjectApprovals.php';
+							break;
+						case 'FileAction':
+							$type = strip_tags($_POST['Type']);
+							if ($type == 'Upload')
+							{
+								include '/PHP/FileUpload.php';
+							}
+							elseif($type == 'Download')
+							{
+								include '/PHP/FileDownload.php';	
+							}
+							else
+							{
+								echo "<p class='alert-box error'>Unpermitted Action!</p>$type";
+									
+							}
 							break;
 					}
 					break; // case 'Page'

@@ -1,6 +1,35 @@
 <?php
 	include_once 'Database.php';
 
+	function FileWrite($path,$data)
+	{
+		$file = fopen($path,"w");
+		fwrite($file,$data);
+		fclose($file);			
+	}
+
+	//returns the data of the actual file //helper function for FileUpload
+	function FileDecode($path)
+	{
+		$file = fopen($path,"r");
+		$content = fread($file,filesize($path));
+		fclose($file);
+		$index = strpos($content,",");
+		return base64_decode(substr($content,$index + 1 ));
+	}
+	//function assists only the FileDownload and FileUpload process
+	function MoveUploadedFile($Path)
+	{
+		if (move_uploaded_file($_FILES['fle_userfile']['tmp_name'], $Path)) 
+		{
+			return true;			
+		}
+		else 
+		{
+			return false;	
+		}
+	}
+	
 	function FormatPhoneNumber($phonenumber)
 	{
 		return "(". substr($phonenumber,0,3).") ". substr($phonenumber,2,3) . "-" . substr($phonenumber,6);
@@ -136,6 +165,13 @@
 		{
 			return str_replace($delimitor,$slash,$path);
 		}
+	}
+	
+	function ReplaceDirChar($path,$delimitor = "|")
+	{
+		$path = str_replace("\\",$delimitor,$path);
+		$path = str_replace("/",$delimitor,$path);
+		return $path;
 	}
 
 	function FormattedUserLink($userId,$usersName)

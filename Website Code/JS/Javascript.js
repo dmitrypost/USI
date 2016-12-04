@@ -70,7 +70,14 @@ function clearLogin()
 // This is a function constructor:
 function replaceHtml(element,html) {
 	"use strict";
-    document.getElementById(element).innerHTML = html;
+	if (document.getElementById(element) === null)
+	{
+		$(element).html(html);
+	}
+	else
+	{
+    	document.getElementById(element).innerHTML = html;
+	}
 }
 
 
@@ -452,6 +459,76 @@ function ProcessProjectAddition()
     request.fail(function (jqXHR, textStatus, errorThrown) {
         console.error("The following error occurred: " + textStatus, errorThrown);
     });
+}
+
+//this function will 
+/* exported FileAction */
+function FileAction(elem,type,page,action,value,optional)
+{
+	"use strict"; //jshint unused:false
+	var formData = new FormData();
+	formData.append("Page","FileAction");
+	formData.append("Type",type);
+	
+		if ((page !== null) && (page !== "") && (page !== undefined)) {formData.append("UponPage",page); }
+		if ((action !== null) && (action !== "") && (action !== undefined)) {formData.append("Action",action); }
+		if ((value !== null) && (value !== "") && (value !== undefined)) {formData.append("value",value); }
+		if ((optional !== null) && (optional !== "") && (optional !== undefined)) {formData.append("optional",optional); }
+	var next = false;
+	var input = document.getElementById('fle_userfile');
+    if (!input) {
+      console.log("Um, couldn't find the fileinput element.");
+	  next = true;
+    }
+    else if (!input.files) {
+      console.log("This browser doesn't seem to support the `files` property of file inputs.");
+    }
+    else if (!input.files[0]) {
+      console.log("Please select a file before clicking 'Load'");               
+    }
+    else {
+      	var file = input.files[0];
+		formData.append("fle_filename",input.files[0].name);
+      	var fr = new FileReader();
+      	fr.onload = function (event){
+			var content = fr.result;
+			var blob = new Blob([content], { type: "text/xml"});
+			formData.append("fle_userfile", blob);
+			
+			var request = new XMLHttpRequest();
+			request.open("POST", "Body.php");
+			request.send(formData);
+			request.onreadystatechange = function() {
+				if (request.readyState === XMLHttpRequest.DONE) {
+					if (request.status === 200) {
+						replaceHtml(elem,request.responseText);
+					}
+				}
+				};
+			};
+      	fr.readAsDataURL(file);
+		fr.loadend = function (event){
+			
+		};
+	}
+	if (next)
+	{
+		var request = new XMLHttpRequest();
+		request.open("POST", "Body.php");
+		request.send(formData);
+		request.onreadystatechange = function() {
+			if (request.readyState === XMLHttpRequest.DONE) {
+				if (request.status === 200) {
+					replaceHtml(elem,request.responseText);
+				}
+			}
+		};
+	}
+	//SidePanelPage(formData);
+	/*
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		console.error("The following error occurred: "+	textStatus, errorThrown	);
+	});*/
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
