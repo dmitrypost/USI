@@ -65,4 +65,6 @@
 <file name="ProjectApprovals.php" server="C:/wamp64/www/" local="131252808560868487" remote="131252808560000000" Dst="1" />
 <file name="Database.php" server="C:/wamp64/www" local="131242222234648628" remote="131242222230000000" Dst="1" />
 <file name="EditProfile.php" server="C:/wamp64/www" local="131252845789163990" remote="131252845780000000" Dst="1" />
+<file name="Functions.php" server="C:/wamp64/www" local="131252808794264055" remote="131252808790000000" Dst="1" />
+<file name="AlterCollegeMajor.php" server="C:/wamp64/www" local="131252858368114086" remote="131252858360000000" Dst="1" />
 </dwsync>
