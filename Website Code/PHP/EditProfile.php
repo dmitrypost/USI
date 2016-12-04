@@ -23,7 +23,7 @@
 	}
 	else
 	{
-			
+
 					echo "
 						<div class='row'><div class='small-12 columns' style='padding-right:0'>
 							<h1 id='page-name'>Edit Profile</h1></div></div>
@@ -50,8 +50,8 @@
 								</div>
 							<h3>Login Information</h3>
 								<div>
-										<input type='button' class='button' onClick='GoToPage(\"EditPassword\")' value='Change Password'><br>
 										Email: <input type='text' class='w300' id='txt_email' value=".$row['usr_email']." maxlength='30'><br>
+										<input type='button' class='button' onClick='GoToPage(\"EditPassword\")' value='Change Password'><br>
 								</div>
 							<h3>Academic Status</h3>
 								<div>
@@ -112,6 +112,6 @@
 						echo "<br><input class='button' type='button' value='Submit' onClick='ProcessProfileChanges()'>
 						<img src='/images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
 								";
-			
+
 	}
 ?>

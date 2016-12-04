@@ -1,6 +1,6 @@
 <?php
 	include_once 'Functions.php';
-	
+
 	//helper functions for easier formatting of the page
 	function FormattedParticipant($ParticipantName,$ParticipantId,$ParticipantRole,$ParticipantEmail)
 	{
@@ -12,26 +12,26 @@
 			</a><input type='hidden' value='$ParticipantId'>
 		</div><br>";
 	}
-	
+
 	function FormattedFile($FileName,$FileId)
 	{
 		return "
 		<div class='File' onClick='FileDownload($FileId)'>
 			$FileName
 		</div>
-		";	
+		";
 	}
-	
+
 	function FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML)
 	{
 		echo "
 		<input type='hidden' id='hdn_ProjectId' value='$ProjectId'>
 		<div id='accordion'>
-			<h3>Basic Information</h3>	
+			<h3>Basic Information</h3>
 				<div>
 					Title<input type='text' id='txt_title' value='$ProjectTitle'>
 					Year<input type='text' class='w300' id='txt_year' value='$ProjectYear'>
-					Major
+					Major<br>
 					<select id='slt_major'>";
 					include_once 'Database.php';
 										$con = open();
@@ -52,17 +52,17 @@
 							mysqli_close($con); echo "
 					</select>
 				</div>
-			<h3>Description</h3>	
+			<h3>Description</h3>
 				<div>
 					Description<input type='text' id='txt_description' value='$ProjectDescription'>
 					Project description will be submitted for approval by an administrator.
 				</div>
-			<h3>Body</h3>	
+			<h3>Body</h3>
 				<div>
 					Body<textarea id='txt_body' >$ProjectBody</textarea>
 					Project body will be submitted for approval by an administrator.
 				</div>
-			<h3>Participants</h3>	
+			<h3>Participants</h3>
 				<div>
 					$FormattedParticipantsHTML
 					<hr>
@@ -81,20 +81,20 @@
 					</button><br>
 					Removing project participants will require approval by an administrator.
 				</div>
-			<h3>Files</h3>	
+			<h3>Files</h3>
 				<div>
 					$FormattedFilesHTML
 					<hr>
 					<button type='button' class='btn btn-default btn-sm' onClick=''>
 					  <span class='glyphicon glyphicon-plus'></span> Add
-					</button>					
+					</button>
 				</div>
 		</div>
 		<input class='button' type='button' value='Submit' onClick='ProcessProjectChanges()'>
 		<img src='/images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>
-		";	
+		";
 	}
-	
+
 	function FormatParticipants($ProjectID)
 	{
 		$con = Open();
@@ -104,14 +104,14 @@
 		{ if(mysqli_num_rows($result) > 0)
 			{while ($row = mysqli_fetch_assoc($result))
 				{
-					$ParticipantsHTML .= FormattedParticipant($row['usr_fname']." ".$row['usr_lname'],$row['usr_id'],$row['rol_name'],$row['usr_email']);	
+					$ParticipantsHTML .= FormattedParticipant($row['usr_fname']." ".$row['usr_lname'],$row['usr_id'],$row['rol_name'],$row['usr_email']);
 				}
 			}
 		}
 		mysqli_close($con);
 		return $ParticipantsHTML;
 	}
-	
+
 	function FormatFiles($ProjectID)
 	{
 		$con = Open();
@@ -121,28 +121,28 @@
 		{ if(mysqli_num_rows($result) > 0)
 			{while ($row = mysqli_fetch_assoc($result))
 				{
-					$FilesHTML .= FormattedFile($row['fle_name'],$row['fle_id']);	
+					$FilesHTML .= FormattedFile($row['fle_name'],$row['fle_id']);
 				}
 			}
 		}
 		mysqli_close($con);
 		return $FilesHTML;
 	}
-	
-	//start writing of the actual page... 
+
+	//start writing of the actual page...
 	PageTitle("Edit Project");
 	$con = Open();
-	
-	if (!isset($_POST['value'])) 
-	{ 
+
+	if (!isset($_POST['value']))
+	{
 		echo "<p class='alert-box error>No project id was passed.</p>";
 	}
 	else
 	{
-		$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); 
+		$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));
 		//variables
-		$ProjectTitle; $ProjectDescription; $ProjectBody; $ProjectMajorId; 
-				
+		$ProjectTitle; $ProjectDescription; $ProjectBody; $ProjectMajorId;
+
 		$query = "SELECT pjh_description, pjh_body FROM tblProjectHistory WHERE pjh_id =$ProjectId AND pjh_approved = FALSE";
 		if ($result = mysqli_query($con,$query))
 		{ if(mysqli_num_rows($result) > 0)
@@ -166,34 +166,34 @@
 					}
 					else
 					{
-						echo "<p class='alert-box information'>There is no project with that id. Please try again.</p>";		
+						echo "<p class='alert-box information'>There is no project with that id. Please try again.</p>";
 					}
 				}
 				else
 				{
-					echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";	
+					echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";
 				}
 			}
 			else
 			{
 				//project does not have any pending changes
-				$query = "SELECT pjt_name, pjt_description, pjt_body, pjt_mgr_id, pjt_year, pjt_picture FROM tblProject WHERE pjt_id = $ProjectId";	
+				$query = "SELECT pjt_name, pjt_description, pjt_body, pjt_mgr_id, pjt_year, pjt_picture FROM tblProject WHERE pjt_id = $ProjectId";
 				if ($result = mysqli_query($con,$query))
 				{ if (mysqli_num_rows($result) > 0)
 					{ while ($row = mysqli_fetch_assoc($result))
-						{	
+						{
 							$ProjectTitle = $row['pjt_name']; $ProjectBody = $row['pjt_body']; $ProjectDescription = $row['pjt_description']; $ProjectMajorId = $row['pjt_mgr_id']; $ProjectYear = $row['pjt_year'];
 							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
-						}						
+						}
 					}
 					else
 					{
-						echo "<p class='alert-box information'>There is no project with that id. Please try again.</p>";	
+						echo "<p class='alert-box information'>There is no project with that id. Please try again.</p>";
 					}
 				}
 				else
 				{
-					echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";	
+					echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";
 				}
 			}
 		}
@@ -201,6 +201,6 @@
 		{
 			echo "<p class='alert-box error'>There was an issue retrieving the project details. Please try again.</p>";
 		}
-		
+
 	}
 ?>
