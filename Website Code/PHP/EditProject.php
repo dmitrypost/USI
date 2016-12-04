@@ -22,79 +22,6 @@
 		";
 	}
 
-	function FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML)
-	{
-		echo "
-		<input type='hidden' id='hdn_ProjectId' value='$ProjectId'>
-		<div id='accordion'>
-			<h3>Basic Information</h3>
-				<div>
-					Title<input type='text' id='txt_title' value='$ProjectTitle'>
-					Year<input type='text' class='w300' id='txt_year' value='$ProjectYear'>
-					Major<br>
-					<select id='slt_major'>";
-					include_once 'Database.php';
-										$con = open();
-										$query = "SELECT mgr_id, mgr_name FROM tblMajor ";
-										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
-										while($row = mysqli_fetch_assoc( $result)) {
-												if ($row['mgr_id'] == $ProjectMajorId)
-												{
-													echo "<option value=".$row['mgr_id']." selected>".$row['mgr_name']."</option>";
-												}
-												else
-												{
-													echo "<option value=".$row['mgr_id'].">".$row['mgr_name']."</option>";
-												}
-										}
-										} else { /*no results found*/ }
-										} else {echo 'error';}
-							mysqli_close($con); echo "
-					</select>
-				</div>
-			<h3>Description</h3>
-				<div>
-					Description<input type='text' id='txt_description' value='$ProjectDescription'>
-					Project description will be submitted for approval by an administrator.
-				</div>
-			<h3>Body</h3>
-				<div>
-					Body<textarea id='txt_body' >$ProjectBody</textarea>
-					Project body will be submitted for approval by an administrator.
-				</div>
-			<h3>Participants</h3>
-				<div>
-					$FormattedParticipantsHTML
-					<hr>
-					<div id='participants'>
-
-					</div>
-					<input type='hidden' id='hdn_AddingParticipantCount' value='0'>
-					<div id='participant' class='hidden'>
-						First name<input type='text' class='participant-fname w300'>
-						Last name<input type='text' class='participant-lname w300'>
-						Email<input type='email' class='participant-email w300'>
-						Role<input type='text' class='participant-role w300'>
-					</div>
-					<button type='button' class='btn btn-default btn-sm' onClick='addParticipantRow()'>
-					  <span class='glyphicon glyphicon-plus'></span> Add
-					</button><br>
-					Removing project participants will require approval by an administrator.
-				</div>
-			<h3>Files</h3>
-				<div>
-					$FormattedFilesHTML
-					<hr>
-					<button type='button' class='btn btn-default btn-sm' onClick=''>
-					  <span class='glyphicon glyphicon-plus'></span> Add
-					</button>
-				</div>
-		</div>
-		<input class='button' type='button' value='Submit' onClick='ProcessProjectChanges()'>
-		<img src='/images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>
-		";
-	}
-
 	function FormatParticipants($ProjectID)
 	{
 		$con = Open();
@@ -183,13 +110,8 @@
 					{ while ($row = mysqli_fetch_assoc($result))
 						{
 							$ProjectTitle = $row['pjt_name']; $ProjectBody = $row['pjt_body']; $ProjectDescription = $row['pjt_description']; $ProjectMajorId = $row['pjt_mgr_id']; $ProjectYear = $row['pjt_year'];
-
-							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
-						}
-
 							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId),FALSE);
 						}
-
 					}
 					else
 					{
