@@ -59,7 +59,7 @@ mysqli_close($con);
 							mysqli_close($con);
 								?>
    </select>
-   <input type="text"  id="txt_EditMajor" value="Edit Major Here" maxlength="50";>
+   <input type="text"  id="txt_EditMajor" value="Edit College Here" maxlength="50";>
 	<button class="accordianbtns" onclick="GoToPage('AlterCollegeMajor', 'EditMajor', $('#txt_EditMajor').val(), $('#slt_college1 option:selected').val())">Edit College</button>
     <h5>Major:</h5>
     <select id ="slt_major" name="slt_major" >

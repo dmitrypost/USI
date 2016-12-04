@@ -45,6 +45,14 @@ textarea#txt_body {
 	width:100px;
 }
 
+#editNameBox{
+	float:left;
+	width:50%;
+}
+#editPicBox{
+	float:left;
+}
+
 #loginDiv {
 	display: inline-block;
     width: 240px;
