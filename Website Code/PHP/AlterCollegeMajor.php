@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/../foundation2.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<?php include_once 'Functions.php'; PageTitle("Alter College and Majors");?>
+<?php include_once 'Functions.php'; PageTitle("Alter College & Majors");?>
 </head>
 
 <body>
