@@ -1,6 +1,11 @@
 <?php
 	include_once 'Database.php';
 	
+	function FileExists($path)
+	{
+		return file_exists(GetPath($path));
+	}	
+	
 	function FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML,$AddEdit)
 	{
 		echo "
