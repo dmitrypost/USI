@@ -1,5 +1,11 @@
 // JavaScript Document
 
+/* exported DisableElement */
+function DisableElement(element)
+{	"use strict"; //jshint unused:false
+	document.getelementbyid(element).disabled ='disabled';
+}
+
 /* exported ToggleVisibility */
 function ToggleVisibility(element)
 {	"use strict"; //jshint unused:false
@@ -360,6 +366,15 @@ function EditProjectLoaded()
 	FileAction($('#div_fileform'),'','Upload','Project','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
 }
 
+/* exported AddProjectLoaded */
+function AddProjectLoaded()
+{
+	"use strict"; //jshint unused:false
+	$( "#accordion" ).accordion();
+	replaceHtml('#div_projectpictureform',"Once project gets approved you may add a picture");
+	replaceHtml('#div_fileform',"Enabled after project gets approved");
+}
+
 /* exported onEnter */
 function onEnter(event,control,action,optional)
 {
@@ -450,7 +465,7 @@ function getParticipantAdditions()
         var lname = $("#participants #" + i + " input.participant-lname").val();
         var email = $("#participants #" + i + " input.participant-email").val();
         var role = $("#participants #" + i + " input.participant-role").val();
-        Participants = Participants + '["' + fname + '","' + lname + '","' + email + '","' + role + '",' + $("#hdn_ProjectId").val() +']';
+        Participants = Participants + '|fname:' + fname + ',lname:' + lname + ',email:' + email + ',role:' + role + ',projectid:' + $("#hdn_ProjectId").val() +'';
     }
     return Participants;
 }

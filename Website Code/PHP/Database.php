@@ -2,13 +2,25 @@
 	function Open()
 	{
 		//connect to database
-		$host = gethostbyname ('mysqlsvr.ddns.net');
-		$con = mysqli_connect($host, 'user', 'password', 'usiprojectrepository','3301');
-		if (!$con)
+		if ($_SERVER['HTTP_HOST'] == "collabra.usi.edu")
 		{
-			die ("connection error: " . mysqli_connect_error());
+			$con = mysqli_connect("localhost", "eproject", "dana123", "usiprojectrepository");
+			if (!$con)
+			{
+				die ("connection error: " . mysqli_connect_error());
+			}
+			return $con;
 		}
-		return $con;
+		else
+		{	//for testing 
+			$host = gethostbyname ('mysqlsvr.ddns.net');
+			$con = mysqli_connect($host, 'user', 'password', 'usiprojectrepository','3301');
+			if (!$con)
+			{
+				die ("connection error: " . mysqli_connect_error());
+			}
+			return $con;
+		}
 	}
 	
 	//quick query is meant for inserts and updates NOT for selects

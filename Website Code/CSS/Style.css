@@ -90,7 +90,7 @@ input {
 }
 
 #BgContainer {
-	background-image:url("./Images/blue-bkgd.jpg");
+	background-image:url('./Images/blue-bkgd.jpg');
 }
 
 button, .button {

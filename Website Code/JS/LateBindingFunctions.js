@@ -33,7 +33,7 @@ $("#loginForm").submit(function(event)
 		$inputs.prop("disabled", true);
 		// Fire off the request to /form.php
 		request = $.ajax({
-			url: "php/login.php",
+			url: "./PHP/Login.php",
 			type: "post",
 			data: serializedData
 		});

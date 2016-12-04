@@ -18,33 +18,33 @@
 								//include 'PHP/ProjectFilter.php';
 								break;	
 							case 'Project': //if the page is on project sidepanel shall show the participants
-								include 'PHP/SidePanel/Participants.php';
+								include './PHP/SidePanel/Participants.php';
 								break;
 							case 'Profile':
 								//include 'PHP/Profile.php';
 								break;
 							case 'AdminPanel':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 							case 'UserManagement':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 							case 'AlterHomePage':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 							case 'RunSQL':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 							case 'AlterCollegeMajor':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 							case 'ProjectApprovals':
-								include 'PHP/SidePanel/AdminLinks.php';
+								include './PHP/SidePanel/AdminLinks.php';
 								break;
 						}
 					break;
 				case 'value';
-					include 'PHP/SidePanel/Default.php';
+					include './PHP/SidePanel/Default.php';
 					//only happens upon college select change
 					break;
 			}
@@ -53,7 +53,7 @@
 		if ($defaultPage)
 		{
 			
-			include "PHP/SidePanel/Default.php";
+			include "./PHP/SidePanel/Default.php";
 		}
 	}
 	

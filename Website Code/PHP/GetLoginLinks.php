@@ -1,11 +1,14 @@
 <?php
+ini_set('display_errors', 1);
 	if (($_SERVER['REQUEST_METHOD'] == 'POST') )
     { 
+		include_once './Functions.php';
+		$con = open();
 		session_start(); //required to get session_id 
-		if (!empty(session_id()))
+		if (is_session_started())
 		{
-			include_once 'Functions.php';
-			$con = open();
+			
+			
 			$query = "SELECT usr_fname, usr_id, usr_admin FROM tblUser INNER JOIN tblSession ON tblUser.usr_id = tblSession.ses_usr_id WHERE ses_session = '".session_id()."' AND ISNULL(ses_expired)";
 			if ($result = mysqli_query($con, $query))
 			{
@@ -63,16 +66,16 @@
 				}
 				else
 				{ //session does not match a session in the database
-					echo('<a href="javascript:void(0)" onClick="showLogin()" title="Login">Login</a>');	
+					echo('<a onClick="showLogin()" title="Login">Login</a>');	
 					echo('|');		
-					echo('<a href="javascript:void(0)" onClick="showRegister()" title="Register">Register</a>');		
+					echo('<a onClick="showRegister()" title="Register">Register</a>');		
 				}
 			}
 			else
 			{	//if user tries to send a post to this php and the query returns no result for the session in the database
-				echo('<a href="javascript:void(0)" onClick="showLogin()" title="Login">Login</a>');	
+				echo('<a onClick="showLogin()" title="Login">Login</a>');	
 				echo('|');		
-				echo('<a href="javascript:void(0)" onClick="showRegister()" title="Register">Register</a>');
+				echo('<a onClick="showRegister()" title="Register">Register</a>');
 			}
 					
 		}
@@ -82,6 +85,7 @@
 			echo('|');		
 			echo('<a href="javascript:void(0)" onClick="showRegister()">Register</a>');					
 		}
-		mysqli_close($con);
+		if ($con) {
+		mysqli_close($con); }
 	}
 ?>

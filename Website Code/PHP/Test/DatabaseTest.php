@@ -13,9 +13,21 @@
 			$con = mysqli_connect($host, $user, $password, 'usiprojectrepository',$port);
 			if (!$con)
 			{
-				die ("connection error: " . mysqli_connect_error());
+				echo ("connection error: " . mysqli_connect_error());
 			}
-
+			else
+			{
+				echo "connected method 1";
+			}
+			$con = mysql_connect('localhost', "$user", "$password");
+			if (!$con)
+			{
+				echo ("connection error: " . mysqli_connect_error());
+			}
+			else
+			{
+				echo "connected method 2";	
+			}
 		}
 	}
 	echo "<form action='DatabaseTest.php' method='post'>
