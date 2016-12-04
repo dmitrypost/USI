@@ -76,8 +76,8 @@
 			{
 				while ($row = mysqli_fetch_assoc($result))
 				{
-					$ProjectDescription = $row['pjt_description'];
-					$ProjectBody = $row['pjt_body'];
+					$ProjectDescription = $row['pjh_description'];
+					$ProjectBody = $row['pjh_body'];
 				}
 				$query2 = "SELECT pjt_name, pjt_mgr_id, pjt_picture, pjt_year FROM tblProject WHERE pjt_id = $ProjectId";
 				if ($result2 = mysqli_query($con,$query2))

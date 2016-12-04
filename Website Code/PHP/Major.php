@@ -12,7 +12,7 @@
 				echo "<h6>Users with this major:</h6>";
 				while($row = mysqli_fetch_assoc( $result)) 
 				{
-				FormattedUserLink($row['usr_id'],$row['usr_fname']." ".$row['usr_lname']);
+						FormattedUserLink($row['usr_id'],$row['usr_fname']." ".$row['usr_lname']);
 				}
 			} else { echo "no users found with this major";/*no users found*/ }
 			} else { echo 'error';}
@@ -23,7 +23,7 @@
 				echo "<h6>Projects with this major:</h6>";
 				while($row = mysqli_fetch_assoc( $result)) 
 				{
-				FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
+					FormattedProjectLink($row['pjt_id'],$row['pjt_name']);
 				}
 			} else { echo "no projects found with this major";/*no users found*/ }
 			} else { echo 'error';}
