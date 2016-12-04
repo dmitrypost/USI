@@ -21,7 +21,6 @@
 		</div>
 		";
 	}
-<<<<<<< HEAD
 
 	function FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear,$FormattedParticipantsHTML,$FormattedFilesHTML)
 	{
@@ -96,9 +95,6 @@
 		";
 	}
 
-=======
-	
->>>>>>> origin/master
 	function FormatParticipants($ProjectID)
 	{
 		$con = Open();
@@ -187,13 +183,13 @@
 					{ while ($row = mysqli_fetch_assoc($result))
 						{
 							$ProjectTitle = $row['pjt_name']; $ProjectBody = $row['pjt_body']; $ProjectDescription = $row['pjt_description']; $ProjectMajorId = $row['pjt_mgr_id']; $ProjectYear = $row['pjt_year'];
-<<<<<<< HEAD
+
 							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId));
 						}
-=======
+
 							FormattedEditProjectPage($ProjectId,$ProjectTitle,$ProjectBody,$ProjectDescription,$ProjectMajorId,$ProjectYear, FormatParticipants($ProjectId),FormatFiles($ProjectId),FALSE);
-						}						
->>>>>>> origin/master
+						}
+
 					}
 					else
 					{
