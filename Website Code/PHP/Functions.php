@@ -1,6 +1,11 @@
 <?php
 	include_once 'Database.php';
 
+	function FormatPhoneNumber($phonenumber)
+	{
+		return "(". substr($phonenumber,0,3).") ". substr($phonenumber,2,3) . "-" . substr($phonenumber,6);
+	}
+	
 	function FileExists($path)
 	{
 		return file_exists(GetPath($path));
