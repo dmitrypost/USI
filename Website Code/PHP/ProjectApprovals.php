@@ -1,4 +1,6 @@
 <?php
+include_once 'Functions.php';
+PageTitle("Project Approvals");
 echo "<select id='pjh_id'>";
 include_once 'Database.php';
           $con = open();
@@ -16,7 +18,7 @@ include_once 'Database.php';
           }
           } else { /*no results found*/ }
           } else {echo 'error';}
-    mysqli_close($con); 
+    mysqli_close($con);
 echo "
 </select>";
 ?>
