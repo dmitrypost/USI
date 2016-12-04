@@ -54,8 +54,8 @@
 								</div>
 							<h3>Login Information</h3>
 								<div>
-										Email: <input type='text' class='w300' id='txt_email' value=".$row['usr_email']." maxlength='30'><br>
 										<input type='button' class='button' onClick='GoToPage(\"EditPassword\")' value='Change Password'><br>
+										Email: <input type='text' class='w300' id='txt_email' value=".$row['usr_email']." maxlength='30'><br>
 								</div>
 							<h3>Academic Status</h3>
 								<div>
