@@ -1,4 +1,19 @@
 // JavaScript Document
+
+/* exported ToggleVisibility */
+function ToggleVisibility(element)
+{	"use strict"; //jshint unused:false
+	if (document.getElementById(element) === null)
+	{
+		$(element).toggle();
+	}
+	else
+	{
+    	var div = document.getElementById(element);
+		div.style.display = div.style.display === "none" ? "block" : "none";
+	}
+}
+
 window.addEventListener('popstate', function(event) {
     // The popstate event is fired each time when the current history entry changes.
 	"use strict"; //jshint unused:false
@@ -340,6 +355,8 @@ function EditProjectLoaded()
 {
 	"use strict"; //jshint unused:false
 	$( "#accordion" ).accordion();
+	FileAction($('#div_projectpictureform'),'','Upload','Profile','ProjectPictureChange',$("#hdn_ProjectId").val(),''); //tells the div_projectpictureform to change into project picture change form
+	FileAction($('#div_fileform'),'','Upload','Profile','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
 }
 
 /* exported onEnter */

@@ -3,7 +3,7 @@ include_once 'Functions.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-	/*	foreach ($_POST as $key => $val) {
+		/*foreach ($_POST as $key => $val) {
 		  echo '<p>'.$key.':'.$_POST[$key].'</p>';
 		  if (is_array($_POST[$key])) {echo "array";}
 		}
@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
 					echo "
 					<body>
-					  <form enctype='multipart/form-data' action=\"javascript:FileAction($('#div_fileform'),'fle_projectpic','Upload','Project','ProjectPicture','$ProjectId','')\" method='POST'>
+					  <form enctype='multipart/form-data' action=\"javascript:FileAction($('#div_projectpictureform'),'fle_projectpic','Upload','Project','ProjectPicture','$ProjectId','')\" method='POST'>
 						  <input type='hidden' name='MAX_FILE_SIZE' value='30000000000000000' />
 						  <input id='fle_projectpic' type='file' />
 						  <input class='button' type='submit' value='Upload' />
@@ -199,15 +199,64 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 							$query = "UPDATE tblProject SET pjt_picture = '".FileRead($tempFilePath)."' WHERE pjt_id = $ProjectId";
 							if (QuickQuery($query))
 							{
-								
 								echo "<p class='alert-box success'>Project picture updated successfully!</p>";
+								FileDelete($tempFilePath); //deletes the file
 							}
 							else
 							{
 								echo "<p class='alert-box error'>There was a problem updating the project picture!</p>";
 							}
 						}
-						echo  "<button onClick='FileAction($(\"#div_fileform\"),\"\",\"Upload\",\"Project\",\"UploadForm\",$ProjectPictureChange,\"\")'>Upload More</button>";
+						echo  "<button onClick='FileAction($(\"#div_projectpictureform\"),\"\",\"Upload\",\"Project\",\"UploadForm\",\"ProjectPictureChange\",\"\")'>Change again</button>";
+				}
+				break;
+			case 'ProfilePictureChange':
+				if (isset($_POST['value']))
+				{
+					$con = Open();
+					$ProfileId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
+					echo "
+					<body>
+					  <form enctype='multipart/form-data' action=\"javascript:FileAction($('#div_profilepictureform'),'fle_profilepic','Upload','Profile','ProfilePicture','$ProfileId','')\" method='POST'>
+						  <input type='hidden' name='MAX_FILE_SIZE' value='30000000000000000' />
+						  <input id='fle_profilepic' type='file' />
+						  <input class='button' type='submit' value='Upload' />
+					  </form>
+					</body>";
+					mysqli_close($con);	
+				}
+				break;
+			case 'ProfilePicture':
+				//only has to overwrite the profile picture in the database
+				
+				if (isset($_POST['value']))
+				{
+					$con = Open();
+					$tempFilePath = tempnam(sys_get_temp_dir(),"TempProfilePic");
+					$ProfileId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
+					if ($UserId != $ProfileId && !isAdmin()) 
+					{
+						echo "<p class='alert-box error'>You are only permitted to change your own picture!</p>";
+					}
+					else
+					{
+					//file does not exist so proceed with uploading
+					if (MoveUploadedFile($tempFilePath))
+					{
+						$query = "UPDATE tblProject SET pjt_picture = '".FileRead($tempFilePath)."' WHERE pjt_id = $ProjectId";
+						if (QuickQuery($query))
+						{
+							
+							echo "<p class='alert-box success'>Project picture updated successfully!</p>";
+							FileDelete($tempFilePath); //deletes the file
+						}
+						else
+						{
+							echo "<p class='alert-box error'>There was a problem updating the project picture!</p>";
+						}
+					}
+					echo  "<button onClick='FileAction($(\"#div_profilepictureform\"),\"\",\"Upload\",\"Profile\",\"ProfilePictureChange\",$ProfileId,\"\")'>Change again</button>";
+					}
 				}
 				break;
 		}		

@@ -102,6 +102,9 @@
 										} else {echo 'error';}
 							mysqli_close($con); echo "
 					</select>
+					<hr>Update Project Picture
+					<div id='div_projectpictureform' >
+    				</div>
 				</div>
 			<h3>Description</h3>
 				<div>
@@ -136,9 +139,12 @@
 				<div>
 					$FormattedFilesHTML
 					<hr>
-					<button type='button' class='btn btn-default btn-sm' onClick=''>
+					<button type='button' class='btn btn-default btn-sm' onClick='ToggleVisibility(div_fileform)'>
 					  <span class='glyphicon glyphicon-plus'></span> Add
 					</button>
+				
+					<div id='div_fileform' class='hidden'>
+    				</div>
 				</div>
 		</div>
 		".FormattedProjectAlterProcessingButton($AddEdit)."
