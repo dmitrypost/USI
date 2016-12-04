@@ -1,13 +1,13 @@
 <?php
-<select id='pjh_id'>";
+echo "<select id='pjh_id'>";
 include_once 'Database.php';
           $con = open();
-          $query = "SELECT pjh_id, pjh_approved FROM tblProjectHistory ";
+          $query = "SELECT pjh_pjt_id  FROM tblProjectHistory WHERE pjh_approved = FALSE";
           if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_assoc( $result)) {
               if ($row['pjh_id'] == $ProjectMajorId)
               {
-                echo "<option value=".$row['pjh_id']." selected>".$row['pjh_approved']."</option>";
+                echo "<option value=".$row['pjh_pjt_id']." selected>".$row['pjh_pjt_id']."</option>";
               }
               else
               {
@@ -16,6 +16,7 @@ include_once 'Database.php';
           }
           } else { /*no results found*/ }
           } else {echo 'error';}
-    mysqli_close($con); echo "
-</select>
+    mysqli_close($con); 
+echo "
+</select>";
 ?>
