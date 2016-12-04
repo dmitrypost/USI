@@ -26,6 +26,21 @@
 							case 'AdminPanel':
 								include 'PHP/SidePanel/AdminLinks.php';
 								break;
+							case 'UserManagement':
+								include 'PHP/SidePanel/AdminLinks.php';
+								break;
+							case 'AlterHomePage':
+								include 'PHP/SidePanel/AdminLinks.php';
+								break;
+							case 'RunSQL':
+								include 'PHP/SidePanel/AdminLinks.php';
+								break;
+							case 'AlterCollegeMajor':
+								include 'PHP/SidePanel/AdminLinks.php';
+								break;
+							case 'ProjectApprovals':
+								include 'PHP/SidePanel/AdminLinks.php';
+								break;
 						}
 					break;
 				case 'value';
