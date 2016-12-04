@@ -1,12 +1,8 @@
 <?php
-/*
-	php which uses the first posted key as a determinant on what page to retrieve
-
-	add to history upon ajax change of page
-	http://stackoverflow.com/questions/824349/modify-the-url-without-reloading-the-page
-*/
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
+	
+
 		$defaultPage = true;
 		foreach ($_POST as $key => $val) {
 		  //echo '<p>'.$key.'</p>';
@@ -55,6 +51,9 @@
 							break;
 						case 'EditProject':
 							include './PHP/EditProject.php';
+							break;
+						case 'AddProject':
+							include './PHP/AddProject.php';
 							break;
 						case 'Profile':
 							include './PHP/Profile.php';

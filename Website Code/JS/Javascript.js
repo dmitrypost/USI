@@ -430,6 +430,30 @@ function getParticipantAdditions()
     return Participants;
 }
 
+/* exported ProcessProjectAddition */
+function ProcessProjectAddition()
+{
+    "use strict"; //jshint unused:false
+    var request;
+    var data = "Page=AddProject&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text() + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions();
+
+    request = $.ajax({
+        url: "Body.php",
+        type: "post",
+        data: data
+    });
+    // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR) {
+        //replaceHtml('BodyPanel',response);
+        replaceHtml('BodyPanel', response);
+        UpdateAddressBar("/?Page=AddProject");
+    });
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("The following error occurred: " + textStatus, errorThrown);
+    });
+}
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 /* exported SelectDropdown */
 function SelectDropdown()
