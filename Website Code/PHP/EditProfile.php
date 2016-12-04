@@ -39,11 +39,15 @@
 									<table width='100%' border='0' cellpadding='2'>
 									  <tbody>
 										<tr>
+												<div id ='editNameBox'>
 												First name: <input type='text' class='w300' id='txt_firstName' value=".$row['usr_fname']." maxlength='20'>
 												Last name: <input type='text' class='w300' id='txt_lastName' value=".$row['usr_lname']." maxlength='20'>
+												</div>
+												<div id ='editPicBox'>
 												<a class='ProfilePic' >
 													<img class='userPic Left' src='".$row['usr_picture']."' alt='No Profile Picture'>
 												</a>
+												</div>
 										</tr>
 									  </tbody>
 									</table>
