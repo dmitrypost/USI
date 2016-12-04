@@ -12,7 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		//    path with the start of "/" references the root
 		//    path with the start of "./" references the path relative to this file
 		$projectDir = GetPath("./../Files/ProjectFiles/");
+		$filename = basename($_FILES['userfile']['name']);
 		
+		if (FileExists($filename)) //if file being uploaded already has the same name as a file that already exists for this given project
+		{
+			
+		}
 		$uploadfile = $projectDir . basename($_FILES['userfile']['name']); //gives you a path that the new file will be stored at...
 		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
 			echo "File is valid, and was successfully uploaded.\n";
