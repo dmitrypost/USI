@@ -32,7 +32,7 @@
 			<div class='small-12 large-5 columns info left'>
 				<b>Major:</b> ".$major."
 				<br><b>Academic Status:</b> ".$grad."
-				<br><b>Contact:</b> <a href='tel:".$row['usr_phone']."' title='call number'>".$row['usr_phone']."</a>
+				<br><b>Contact:</b> <a href='tel:".FormatPhoneNumber($row['usr_phone'])."' title='call number'>".FormatPhoneNumber($row['usr_phone'])."</a>
 				<br><b>Email:</b> <a href='mailto:".$row['usr_email']."' >".$row['usr_email']."</a>
 				<br><b>LinkedIn:</b> <a href='".$row['usr_linkedin']."' >".$row['usr_linkedin']."</a>
 			</div>
