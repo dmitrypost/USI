@@ -6,11 +6,12 @@
 <link rel="stylesheet" type="text/css" href="/../foundation2.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
+<?php include_once 'Functions.php'; PageTitle("Alter College and Majors");?>
 </head>
 
 <body>
 <div id="accordion">
-  <h3>Add</h3><!------------------------------------------------------------------>
+  <h4>Add</h4><!------------------------------------------------------------------>
   <div>
     <h5>College:</h5>
     <input type="text" id="txt_addcollege" value="Add College Here" maxlength="50";>
@@ -42,7 +43,7 @@ mysqli_close($con);
 	<button class="accordianbtns">Add Major</button>
 
   </div>
-  <h3>Edit</h3><!------------------------------------------------------------------>
+  <h4>Edit</h4><!------------------------------------------------------------------>
   <div>
     <h5>College:</h5>
     <select id ="slt_college1">
@@ -79,7 +80,7 @@ mysqli_close($con);
    <input type="text"  value="Edit Major Here" maxlength="50";>
 	<button class="accordianbtns">Edit Major</button>
   </div>
-  <h3>Delete</h3><!------------------------------------------------------------------>
+  <h4>Delete</h4><!------------------------------------------------------------------>
   <div>
     <h5>College:</h5>
     <select id ="slt_college" name="slt_college" >

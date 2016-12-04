@@ -1,6 +1,6 @@
 <?php
 	include_once 'Functions.php';
-	PageTitle("Home Page");
-	
+	PageTitle("Alter Home Page");
+
 
 ?>
