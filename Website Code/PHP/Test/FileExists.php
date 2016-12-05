@@ -1,5 +1,21 @@
 <?php
+echo "Test<hr>";
+	function FileNameFromPath($Path)
+	{
+		$slash = DIRECTORY_SEPARATOR;
+		$i = strripos($Path,$slash);
+		echo $i;
+		return substr($Path,(int)$i);	
+	}
 
+	function GetPath($path,$delimitor = "|")
+	{
+		$slash = DIRECTORY_SEPARATOR;
+		
+			return str_replace($delimitor,$slash,$path);
+		
+	}
+	echo "<hr>".FileNameFromPath(GetPath(".\..\Filename.txt"));
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     {
 		if (isset($_POST['file']))
@@ -8,6 +24,8 @@
 			if (file_exists($path))
 			{
 				echo "file does exist! :)";	
+				echo GetPath($path);
+				echo FileNameFromPath(GetPath($path));
 			}
 			else
 			{

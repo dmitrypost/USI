@@ -1,8 +1,6 @@
 <?php
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
-	
-
 		$defaultPage = true;
 		foreach ($_POST as $key => $val) {
 		  //echo '<p>'.$key.'</p>';
@@ -116,5 +114,9 @@
 		{
 			include './PHP/Default.php';
 		}
+	}
+	if ($_SERVER['REQUEST_METHOD'] == 'GET')
+	{
+		include './PHP/FileDownload.php';
 	}
 ?>

@@ -1,5 +1,6 @@
 // JavaScript Document
 
+
 /* exported DisableElement */
 function DisableElement(element)
 {	"use strict"; //jshint unused:false
@@ -437,11 +438,11 @@ function SubmitPasswordChanges()
 	return false;
 }
 
-/* exported FileDownload */
-function FileDownload(fileid)
+/* exported GetFileContents */
+function GetFileContents(fileid)
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "FileDownload="+fileid});
+	var request = $.ajax({url:"Body.php",type: "get", data: "FileId="+fileid});
 	request.done(function (response,textStatus,jqXHR) {
 		console.log(response);
 	});
@@ -450,6 +451,24 @@ function FileDownload(fileid)
 	});
 	return false;
 }
+
+/* exported FileDownload */
+function FileDownload(fileid)
+{
+	"use strict"; //jshint unused:false
+	var request = $.ajax({url:"Body.php",type: "get", data: "FileId="+fileid+"&ReturnType=Path"});
+	request.done(function (response,textStatus,jqXHR) {
+		$.fileDownload(response)
+        .done= (function () { console.log('File download a success!'); })
+        .fail= (function () { console.log('File download failed!'); });
+    return false; //this is critical to stop the click event which will trigger a normal file download
+	});
+	request.fail(function (jqXHR, textStatus, errorThrown) {
+		console.error("There was an error downloading the file: " + textStatus, errorThrown);
+	});
+	return false;
+}
+
 
 /* exported addParticipantRow */
 function addParticipantRow()
@@ -516,7 +535,7 @@ function FileAction(divelem,fileelem,type,page,action,value,optional)
 	var next = false;
 	var input = document.getElementById(fileelem);
     if (!input) {
-      console.log("Um, couldn't find the fileinput element.");
+      //console.log("Um, couldn't find the fileinput element.");
 	  next = true;
     }
     else if (!input.files) {

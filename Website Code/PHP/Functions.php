@@ -109,7 +109,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $fileId = 0;
-		$query = "SELECT fle_id FROM tblFile WHERE fle_data = '$path' AND fle_pjt_id = $projectId";
+		$query = "SELECT fle_id FROM tblFile WHERE fle_path = '$path' AND fle_pjt_id = $projectId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$fileId = $row['fle_id'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -303,30 +303,24 @@
 		mysqli_close($con);
 	}
 
-
 	function Email($destinationAddress, $subject, $message)
 	{
 		mail($destinationAddress,$subject,$message);
+	}
+	
+	function FileNameFromPath($Path)
+	{
+		$slash = DIRECTORY_SEPARATOR;
+		return substr($Path,strripos($Path,$slash)+1);	
 	}
 
 	function GetPath($path,$delimitor = "|")
 	{
 		$slash = DIRECTORY_SEPARATOR;
-		if ($delimitor == "|")
-		{
-			if ($slash == "/") //linux based environment
-			{
-				return str_replace("\\",$slash,$path);
-			}
-			else //windows based environment
-			{
-				return str_replace("/",$slash,$path);
-			}
-		}
-		else //delimitor was passed
-		{
-			return str_replace($delimitor,$slash,$path);
-		}
+		$path = str_replace($delimitor,$slash,$path); //remove default delimitor
+		$path = str_replace("\\",$slash,$path); //remove \ delimitor
+		$path = str_replace("/",$slash,$path); //remove / delimitor
+		return $path;
 	}
 	
 	function ReplaceDirChar($path,$delimitor = "|")

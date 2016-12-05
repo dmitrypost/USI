@@ -21,19 +21,25 @@
 			$pageview = $row['pjt_pageview'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
 		
-		$query = "SELECT fle_id, fle_name FROM tblFile WHERE fle_pjt_id = ".$projectID;
-		
+		$query = "SELECT fle_id, fle_path FROM tblFile WHERE fle_pjt_id = $projectID";
 		if ($result = mysqli_query($con, $query))
 		{	if (mysqli_num_rows($result) > 0)
-			{ 	echo "<div id='Files'>Project Files</div>";
+			{ 	echo "
+				<table width='100%' border='0' cellpadding='2'>
+				  <tbody>
+					<tr>
+					  <th scope='col'>Project Files</th>
+					</tr>";
 				while($row = mysqli_fetch_assoc( $result)) 
 				{
-					echo "
-					<a onClick='DownloadFile(".$row['fle_id'].")'>".$row['fle_name']."</a>";
-					echo "<p>".$row['fle_name']."<p>";			
+					//echo $row['fle_path']."<br>".GetPath($row['fle_path']).FileNameFromPath(GetPath($row['fle_path']));
+					echo "<tr><td><a onClick='FileDownload(".$row['fle_id'].")'>".FileNameFromPath(GetPath($row['fle_path']))."</a></td></tr>";
 				}	
+				echo "
+				  </tbody>
+				</table>";
 			}	
-		} else {echo 'error';}
+		} else {echo 'fies error'.$query;}
 		if (!is_numeric($pageview)) {$pageview = 0;}
 		echo "<p>
 		<div class='view-count'>Project views: $pageview</div>

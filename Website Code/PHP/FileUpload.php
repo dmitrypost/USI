@@ -1,6 +1,6 @@
 <?php
 include_once 'Functions.php';
-
+$FilesDir = "./Files/";
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 		/*foreach ($_POST as $key => $val) {
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					//    path with the start of "./" references the path relative to this file
 					$con = Open();
 					$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
-					$projectDir = GetPath("C:/wamp64/www/Files/ProjectFiles/".$ProjectId."/");
+					$projectDir = GetPath($FilesDir."ProjectFiles/".$ProjectId."/");
 					$originalFileName = basename($_FILES['fle_userfile']['name']);
 					$NewFilePath =$projectDir . mysqli_real_escape_string($con,trim(strip_tags($_POST['fle_filename'])));
 					$NewFileName = mysqli_real_escape_string($con,trim(strip_tags($_POST['fle_filename'])));
@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 						if (MoveUploadedFile($UploadFilePath))
 						{
 							rename($UploadFilePath,$NewFilePath);
-							$query = "INSERT INTO tblFile (fle_pjt_id,fle_data,fle_usr_id,fle_deleted) VALUES ($ProjectId,'".ReplaceDirChar($NewFilePath)."',$UserId,FALSE)";
+							$query = "INSERT INTO tblFile (fle_pjt_id,fle_path,fle_usr_id) VALUES ($ProjectId,'".ReplaceDirChar($NewFilePath)."',$UserId)";
 							if (QuickQuery($query))
 							{
 								//file is encoded in base64 and has metadata with it
@@ -103,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				{
 					$con = Open();
 					$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
-					$projectDir = GetPath("C:/wamp64/www/Files/ProjectFiles/".$ProjectId."/");
+					$projectDir = GetPath($FilesDir."ProjectFiles/".$ProjectId."/");
 					//split the optional posted value (contains the old file name and the new file name)
 					$optional = mysqli_real_escape_string($con,trim(strip_tags($_POST['optional'])));
 					$optionalArray = explode("|",$optional);
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					if (FileExists($TempFilePath))
 					{
 						rename($TempFilePath,$NewFilePath);
-						$query = "UPDATE tblFile SET fle_usr_id = $UserId WHERE fle_pjt_id = $ProjectId AND fle_data = '$NewFilePath'";
+						$query = "UPDATE tblFile SET fle_usr_id = $UserId WHERE fle_pjt_id = $ProjectId AND fle_path = '$NewFilePath'";
 							if (QuickQuery($query))
 							{
 								//file is encoded in base64 and has metadata with it
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 				{
 					$con = Open();
 					$ProjectId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));	
-					$projectDir = GetPath("C:/wamp64/www/Files/ProjectFiles/".$ProjectId."/");
+					$projectDir = GetPath($FilesDir."ProjectFiles/".$ProjectId."/");
 					//split the optional posted value (contains the old file name and the new file name)
 					$originalFileName = mysqli_real_escape_string($con,trim(strip_tags($_POST['optional'])));
 					$TempFilePath = $projectDir . $originalFileName;

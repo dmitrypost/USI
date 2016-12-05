@@ -56,17 +56,14 @@
 	}
 	} 
 	} else {echo 'error';}
-
-
-
-
+	$pageViews = ($row['usr_pageview'] == "") ?  0 : $row['usr_pageview']; 
 	echo "
 		</div>
 	</div>
-	<div class='view-count'>Profile views: ".$row['usr_pageview']."</div>
+	<div class='view-count'>Profile views: $pageViews</div>
 	";
 	//increment pageview
-	QuickQuery("UPDATE tblUser SET usr_pageview = usr_pageview +1 WHERE usr_id=".$uid);
+	QuickQuery("UPDATE tblUser SET usr_pageview = $pageViews +1 WHERE usr_id=".$uid);
 	}
 	} else {echo 'no user found with that id';}
 	} else {echo 'error';}
