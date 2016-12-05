@@ -353,7 +353,7 @@ function RegistrationFormLoaded()
 function ProfileEditLoaded()
 {
 	"use strict"; //jshint unused:false
-	$( "#accordion" ).accordion();
+	Accordion();
 	FileAction($('#div_profilepictureform'),'','Upload','Profile','ProfilePictureChange',$("#hdn_userid").val(),''); //tells the div_projectpictureform to change into project picture change form
 }
 
@@ -361,7 +361,7 @@ function ProfileEditLoaded()
 function EditProjectLoaded()
 {
 	"use strict"; //jshint unused:false
-	$( "#accordion" ).accordion();
+	Accordion();
 	FileAction($('#div_projectpictureform'),'','Upload','Project','ProjectPictureChange',$("#hdn_ProjectId").val(),''); //tells the div_projectpictureform to change into project picture change form
 	FileAction($('#div_fileform'),'','Upload','Project','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
 }
@@ -370,9 +370,15 @@ function EditProjectLoaded()
 function AddProjectLoaded()
 {
 	"use strict"; //jshint unused:false
-	$( "#accordion" ).accordion();
+	Accordion();
 	replaceHtml('#div_projectpictureform',"Once project gets approved you may add a picture");
 	replaceHtml('#div_fileform',"Enabled after project gets approved");
+}
+
+function Accordion()
+{
+	"use strict"; //jshint unused:false
+	$( "#accordion" ).accordion();
 }
 
 /* exported onEnter */
