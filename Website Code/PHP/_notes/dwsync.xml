@@ -2,7 +2,7 @@
 <dwsync>
 <file name="ProcessRegistration.php" server="C:/wamp64/www/" local="131242179230171733" remote="131242179230000000" Dst="1" />
 <file name="Database.php" server="C:/wamp64/www/" local="131253400902498882" remote="131253400900000000" Dst="1" />
-<file name="Functions.php" server="C:/wamp64/www/" local="131253357182228843" remote="131253357180000000" Dst="1" />
+<file name="Functions.php" server="C:/wamp64/www/" local="131253982621214371" remote="131253982620000000" Dst="1" />
 <file name="Profile.php" server="C:/wamp64/www/" local="131253224690001822" remote="131253224690000000" Dst="1" />
 <file name="Logout.php" server="C:/wamp64/www/" local="131226088633129270" remote="131226088630000000" Dst="1" />
 <file name="Login.php" server="C:/wamp64/www/" local="131240814056082240" remote="131240814050000000" Dst="1" />
@@ -13,7 +13,7 @@
 <file name="GetLoginLinks.php" server="C:/wamp64/www/" local="131253419683754669" remote="131253419680000000" Dst="1" />
 <file name="EditProfile.php" server="C:/wamp64/www/" local="131253215112723873" remote="131253215110000000" Dst="1" />
 <file name="Search.php" server="C:/wamp64/www/" local="131246804065318618" remote="131246804060000000" Dst="1" />
-<file name="Default.php" server="C:/wamp64/www/" local="131252884244054214" remote="131252884240000000" Dst="1" />
+<file name="Default.php" server="C:/wamp64/www/" local="131253993768882438" remote="131253993760000000" Dst="1" />
 <file name="College.php" server="C:/wamp64/www/" local="131246125084173914" remote="131246125080000000" Dst="1" />
 <file name="Database.php" server="C:/xampp/htdocs/" local="131217967031309232" remote="131217967030000000" Dst="1" />
 <file name="Functions.php" server="C:/xampp/htdocs/" local="131230329801014115" remote="131230329800000000" Dst="1" />
@@ -52,16 +52,16 @@
 <file name="ProcessProfileEdits.php" server="C:/wamp64/www/" local="131246100703573507" remote="131246100700000000" Dst="1" />
 <file name="RunSQL.php" server="C:/wamp64/www/" local="131252927739682413" remote="131252927730000000" Dst="1" />
 <file name="EditPassword.php" server="C:/wamp64/www/" local="131242155096778086" remote="131242155090000000" Dst="1" />
-<file name="AdminPanel.php" server="C:/wamp64/www/" local="131246131897987571" remote="131246131890000000" Dst="1" />
+<file name="AdminPanel.php" server="C:/wamp64/www/" local="131253928494275305" remote="131253928490000000" Dst="1" />
 <file name="AlterCollegeMajor.php" server="C:/wamp64/www/" local="131252927739382209" remote="131252927730000000" Dst="1" />
 <file name="AlterHomePage.php" server="C:/wamp64/www/" local="131252927739462263" remote="131252927730000000" Dst="1" />
 <file name="FileDownload.php" server="C:/wamp64/www/" local="131245968503167464" remote="131245968500000000" Dst="1" />
 <file name="FileUpload.php" server="C:/wamp64/www/" local="131253216627806364" remote="131253216620000000" Dst="1" />
-<file name="ProcessProjectChanges.php" server="C:/wamp64/www/" local="131246666911385637" remote="131246666910000000" Dst="1" />
+<file name="ProcessProjectChanges.php" server="C:/wamp64/www/" local="131253905239922838" remote="131253905230000000" Dst="1" />
 <file name="Profiles.php" server="C:/wamp64/www/" local="131232065992409384" remote="131232065990000000" Dst="1" />
 <file name="UserManagement.php" server="C:/wamp64/www/" local="131252908382567295" remote="131252908380000000" Dst="1" />
-<file name="AddProject.php" server="C:/wamp64/www/" local="131253297749585738" remote="131253297740000000" Dst="1" />
-<file name="ProjectApprovals.php" server="C:/wamp64/www/" local="131252927739537300" remote="131252927730000000" Dst="1" />
+<file name="AddProject.php" server="C:/wamp64/www/" local="131253866718439032" remote="131253866710000000" Dst="1" />
+<file name="ProjectApprovals.php" server="C:/wamp64/www/" local="131253992190255491" remote="131253992190000000" Dst="1" />
 <file name="AddProject.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131253297749585738" remote="131253297740000000" Dst="1" />
 <file name="AdminPanel.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131246131897987571" remote="131246131890000000" Dst="1" />
 <file name="AlterCollegeMajor.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131252927739382209" remote="131252927730000000" Dst="1" />
@@ -91,4 +91,5 @@
 <file name="RunSQL.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131252927739682413" remote="131252927730000000" Dst="1" />
 <file name="Search.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131246804065318618" remote="131246804060000000" Dst="1" />
 <file name="UserManagement.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131252908382567295" remote="131252908380000000" Dst="1" />
+<file name="Major.php" server="C:/wamp64/www/" local="131252913552936288" remote="131252913550000000" Dst="1" />
 </dwsync>

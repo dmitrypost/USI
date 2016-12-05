@@ -3,7 +3,7 @@
 	PageTitle("Admin Panel");
 	if (isAdmin())
 	{
-		
+		echo "<p> There is ".GetNumberOfPendingProjectApprovals()." projects pending approval";
 	}
 	else
 	{

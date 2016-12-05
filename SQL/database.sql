@@ -35,5 +35,6 @@ ALTER TABLE tblRole ADD FOREIGN KEY (rol_rst_id) REFERENCES tblRoleState(rst_id)
 INSERT INTO tblRoleState (rst_name)VALUES('PENDING REMOVAL');
 INSERT INTO tblRoleState (rst_name)VALUES('PENDING ADDITION');
 INSERT INTO tblRoleState (rst_name)VALUES('NORMAL'); 
+INSERT INTO tblRoleState (rst_name)VALUES('REMOVED'); 
 
 

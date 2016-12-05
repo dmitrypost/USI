@@ -1,6 +1,42 @@
 <?php
 	include_once 'Database.php';
 	
+	function GetRoleIdByName($RoleName)
+	{
+		include_once 'Database.php';
+		$con = Open(); $RoleId = 0;
+		$query = "SELECT rst_id FROM tblRoleState WHERE rst_name = '$RoleName'";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$RoleId = $row['rst_id'];
+		}	} else { /*no results found*/ }	} else {/* error with query */}
+		mysqli_close($con);
+		return $RoleId;
+	}
+	
+	function GetProjectIdByProjectHistoryId($ProjectHistoryId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $ProjectId = 0;
+		$query = "SELECT pjh_pjt_id FROM tblProjectHistory WHERE pjh_id = $ProjectHistoryId";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$ProjectId = $row['pjh_pjt_id'];
+		}	} else { /*no results found*/ }	} else {/* error with query */}
+		mysqli_close($con);
+		return $ProjectId;
+	}
+	
+	function GetNumberOfPendingProjectApprovals()
+	{
+		include_once 'Database.php';
+		$con = Open(); $Count = 0;
+		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblProjectHistory WHERE pjh_approved IS NULL";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$Count = $row['pjh_count'];
+		}	} else { /*no results found*/ }	} else {/* error with query */}
+		mysqli_close($con);
+		return $Count;
+	}
+	
 	function is_session_started()
 	{
 		if ( php_sapi_name() !== 'cli' ) {

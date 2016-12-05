@@ -32,6 +32,10 @@ textarea#txt_body {
 	width:300px !important;
 }
 
+.w100percent {
+	width:100%;	
+}
+
 .hidden { display:none; }
 
 .view-count {

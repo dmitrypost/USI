@@ -26,7 +26,7 @@
 			//add a project into tblproject (not visiable just a place holder
 			//add a pending change into project history
 			$query = "INSERT INTO tblProject (pjt_name,pjt_description,pjt_mgr_id,pjt_year)VALUES('$title','pending','$majorId','$year');"; $lastProjectId = GetLastProjectId();
-			$query2 = "INSERT INTO tblProjectHistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_approved,pjh_modified)VALUES('$description','$body',$UserId,$lastProjectId,FALSE,NOW());";
+			$query2 = "INSERT INTO tblProjectHistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$description','$body',$UserId,$lastProjectId,NOW());";
 			if (strlen($AddedParticipants) > 0 )
 			{
 				echo $AddedParticipants;
@@ -61,7 +61,7 @@
 				}
 				
 			}
-			if (true)//QuickQuery($query) && QuickQuery($query2)
+			if (QuickQuery($query) && QuickQuery($query2))//QuickQuery($query) && QuickQuery($query2)
 			{
 				echo "<p class='alert-box success'>Project added and pending approval.</p>";
 			}
