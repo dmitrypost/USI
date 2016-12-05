@@ -15,7 +15,7 @@
 					switch ($_POST['Page'])
 						{								
 							case 'Projects':
-								//include 'PHP/ProjectFilter.php';
+								include 'PHP/SidePanel/ProjectLinks.php';
 								break;	
 							case 'Project': //if the page is on project sidepanel shall show the participants
 								include './PHP/SidePanel/Participants.php';

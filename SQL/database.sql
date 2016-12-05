@@ -8,7 +8,7 @@ CREATE TABLE tblKeywordAssociation (key_id INT, key_kwd_id INT, PRIMARY KEY (key
 CREATE TABLE tblProject (pjt_id INT NOT NULL AUTO_INCREMENT, pjt_name TINYTEXT, pjt_body LONGTEXT, pjt_description LONGTEXT, pjt_key_id INT, pjt_picture MEDIUMTEXT, pjt_mgr_id INT, pjt_pageview INT, pjt_year YEAR, PRIMARY KEY (pjt_id));
 CREATE TABLE tblCollege (clg_id INT NOT NULL AUTO_INCREMENT, clg_name TINYTEXT, clg_key_id INT, clg_pageview INT, PRIMARY KEY (clg_id));
 CREATE TABLE tblFile (fle_id INT NOT NULL AUTO_INCREMENT, fle_data MEDIUMTEXT, fle_deleted TINYINT, fle_usr_id INT, fle_pjt_id INT, fle_name TINYTEXT, PRIMARY KEY (fle_id));
-CREATE TABLE tblProjectHistory (pjh_id INT NOT NULL AUTO_INCREMENT, pjh_description LONGTEXT, pjh_body LONGTEXT, pjh_modified DATETIME, pjh_approved TINYINT, pjh_usr_id INT, pjh_pjt_id INT, PRIMARY KEY (pjh_id));
+CREATE TABLE tblProjectHistory (pjh_id INT NOT NULL AUTO_INCREMENT, pjh_name TINYTEXT, pjh_description LONGTEXT, pjh_body LONGTEXT, pjh_modified DATETIME, pjh_approved TINYINT, pjh_usr_id INT, pjh_pjt_id INT, PRIMARY KEY (pjh_id));
 CREATE TABLE tblSession (ses_id INT NOT NULL AUTO_INCREMENT, ses_session TINYTEXT, ses_usr_id INT, ses_date DATETIME, ses_expired TINYINT, PRIMARY KEY (ses_id));
 CREATE TABLE tblRoleState (rst_id INT NOT NULL AUTO_INCREMENT, rst_name TINYTEXT NOT NULL, PRIMARY KEY (rst_id));
 CREATE TABLE tblPage(pge_id INT NOT NULL AUTO_INCREMENT, pge_name TINYTEXT NOT NULL, pge_body MEDIUMTEXT, PRIMARY KEY (pge_id));

@@ -12,7 +12,7 @@
 		  echo '<p>'.$key.':'.$_POST[$key].'</p>';
 		}*/
 		//Page:AddProject title: year:2016 major:Anthropology description: body: AddedParticipants:
-		if (isset($_POST['title']) && isset($_POST['year']) && isset($_POST['major']) && isset($_POST['description']) && isset($_POST['body']) && isset($_POST['AddedParticipants']))
+		if (isset($_POST['title']) && isset($_POST['year']) && isset($_POST['major']) && isset($_POST['description']) && isset($_POST['body']) && isset($_POST['AddedParticipants']) && isset($_POST['YourRole']))
 		{
 			$con = Open();
 			$title = mysqli_real_escape_string($con,trim(strip_tags($_POST['title'])));	
@@ -22,11 +22,15 @@
 			$description = mysqli_real_escape_string($con,trim(strip_tags($_POST['description'])));	
 			$body = mysqli_real_escape_string($con,trim(strip_tags($_POST['body'])));	
 			$AddedParticipants = mysqli_real_escape_string($con,trim(strip_tags($_POST['AddedParticipants'])));	
+			$CreatorsRole = mysqli_real_escape_string($con,trim(strip_tags($_POST['YourRole'])));	
 			
 			//add a project into tblproject (not visiable just a place holder
 			//add a pending change into project history
-			$query = "INSERT INTO tblProject (pjt_name,pjt_description,pjt_mgr_id,pjt_year)VALUES('$title','pending','$majorId','$year');"; $lastProjectId = GetLastProjectId();
+			$query = "INSERT INTO tblProject (pjt_name,pjt_description,pjt_mgr_id,pjt_year)VALUES('$title','pending','$majorId','$year');"; 
+			$lastProjectId = GetLastProjectId();
 			$query2 = "INSERT INTO tblProjectHistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$description','$body',$UserId,$lastProjectId,NOW());";
+			//add the project uploader as a participant
+			AddRegisteredParticipant(GetEmailByUserId($UserId),$CreatorsRole,$lastProjectId);
 			if (strlen($AddedParticipants) > 0 )
 			{
 				echo $AddedParticipants;

@@ -450,7 +450,7 @@ function addParticipantRow()
 {	"use strict";
 	var s = document.getElementById("participant").innerHTML; // HTML string
 	var div = document.createElement('div');
-	div.innerHTML = s;
+	div.innerHTML = s; div.className = 'flex';
 	document.getElementById("hdn_AddingParticipantCount").value = parseInt(document.getElementById("hdn_AddingParticipantCount").value) + 1;
 	div.id = document.getElementById("hdn_AddingParticipantCount").value;
 	document.getElementById("participants").appendChild(div);
@@ -475,7 +475,7 @@ function ProcessProjectAddition()
 {
     "use strict"; //jshint unused:false
     var request;
-    var data = "Page=AddProject&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text() + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions();
+    var data = "Page=AddProject&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text() + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions() + "&YourRole=" + $('#txt_CreatorsRole').val();
 
     request = $.ajax({
         url: "Body.php",
@@ -486,7 +486,7 @@ function ProcessProjectAddition()
     request.done(function (response, textStatus, jqXHR) {
         //replaceHtml('BodyPanel',response);
         replaceHtml('BodyPanel', response);
-        UpdateAddressBar("/?Page=AddProject");
+        UpdateAddressBar("/?Page=Projects");
     });
     // Callback handler that will be called on failure
     request.fail(function (jqXHR, textStatus, errorThrown) {

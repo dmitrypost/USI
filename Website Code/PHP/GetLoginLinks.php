@@ -34,24 +34,20 @@ ini_set('display_errors', 1);
 									<li><a  onClick='Logout()' title='Logout'>Logout</a></li>
 							  </ul>
 						</li>						
-						";
-						echo('|');		
-						echo "
+						|
 						<li class='has-dropdown' onMouseOver='ToggleDropdown(this)' onMouseOut='ToggleDropdown(this)'>
 							<a onClick='GoToPage(\"Projects\",\"\",\"Owned\",\"\")' title='My Projects'>My Projects</a>
 								<ul class='dropdown'>
 									<li class='title back js-generated'>
 										<h5><a href='#'>« Back</a></h5></li>
 									<li><a class='parent-link js-generated' href='javascript:void(0)' onClick='GoToPage(\"Projects\",\"\",\"Owned\",\"\")'>My Projects</a></li>	
-									<li><a onClick='GoToPage(\"AddProject\")' title='Add a new project'>Add Project</a></li>					
+									<li><a onClick='GoToPage(\"AddProject\")' title='Add a new project'>Add Project</a></li>
+									<li><a onClick='GoToPage(\"Projects\",\"\",\"Pending\",\"\")' title='View projects that are not approved'>Pending Projects</a></li>					
 						";
-						$query = "SELECT pjt_id, pjt_name FROM tblProject INNER JOIN tblRole ON tblProject.pjt_id = tblRole.rol_pjt_id WHERE rol_usr_id = $UserId";	
-						
+						$query = "SELECT pjt_id, pjt_name FROM tblProject INNER JOIN tblRole ON tblProject.pjt_id = tblRole.rol_pjt_id WHERE rol_usr_id = $UserId AND pjt_description != 'pending'";	
 						if ($result = mysqli_query($con, $query))
-						{
-							if (mysqli_num_rows($result) > 0)
-							{
-								while ($row = mysqli_fetch_assoc($result))
+						{	if (mysqli_num_rows($result) > 0)
+							{	while ($row = mysqli_fetch_assoc($result))
 								{
 									echo "<li><a onClick='GoToPage(\"Project\",\"\",".$row['pjt_id'].",\"\")' >".$row['pjt_name']."</a></li>";
 								}

@@ -25,6 +25,18 @@
 		return $ProjectId;
 	}
 	
+	function GetPendingProjectCountByUserId($UserId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $Count = 0;
+		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblProjectHistory WHERE pjh_approved IS NULL";
+			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$Count = $row['pjh_count'];
+		}	} else { /*no results found*/ }	} else {/* error with query */}
+		mysqli_close($con);
+		return $Count;
+	}
+	
 	function GetNumberOfPendingProjectApprovals()
 	{
 		include_once 'Database.php';
@@ -133,7 +145,7 @@
 	}
 
 	//returns the data of the actual file //helper function for FileUpload
-	function FileDecode($path)
+	function FileDecode($path) //decodes the base64 version of data that was uploaded
 	{
 		$file = fopen($path,"r");
 		$content = fread($file,filesize($path));
@@ -209,7 +221,12 @@
 					Project body will be submitted for approval by an administrator.
 				</div>
 			<h3>Participants</h3>
-				<div>
+				<div>";
+				if ($AddEdit){ echo "Your role
+					<input type='text' id='txt_CreatorsRole' value='Project Uploader'> 
+					<hr>"; }
+				echo "
+					<h6>Current participants</h6>
 					$FormattedParticipantsHTML
 					<hr>
 					<div id='participants'>
@@ -217,10 +234,11 @@
 					</div>
 					<input type='hidden' id='hdn_AddingParticipantCount' value='0'>
 					<div id='participant' class='hidden'>
-						First name<input type='text' class='participant-fname w300'>
-						Last name<input type='text' class='participant-lname w300'>
-						Email<input type='email' class='participant-email w300'>
-						Role<input type='text' class='participant-role w300'>
+						<section>First name<input type='text' class='participant-fname w300'>
+						Email<input type='email' class='participant-email w300'></section>
+						<section style='width: 20px;'></section>
+						<section>Last name<input type='text' class='participant-lname w300'>
+						Role<input type='text' class='participant-role w300'></section>
 					</div>
 					<button type='button' class='btn btn-default btn-sm' onClick='addParticipantRow()'>
 					  <span class='glyphicon glyphicon-plus'></span> Add
@@ -239,9 +257,7 @@
     				</div>
 				</div>
 		</div>
-		".FormattedProjectAlterProcessingButton($AddEdit)."
-		
-		";
+		".FormattedProjectAlterProcessingButton($AddEdit);
 	}
 
 	//variable AddEdit is a boolean; Add = true, Edit = false
@@ -264,7 +280,10 @@
 		$con = Open();
 		$UserId = GetUserIdByEmail($email);
 		$query = "INSERT INTO tblRole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,'$role',(SELECT rst_id FROM tblRoleState WHERE rst_name = 'NORMAL'))";
-		QuickQuery($query);
+		if (!QuickQuery($query))
+		{
+			
+		}
 		mysqli_close($con);
 	}
 	
@@ -533,6 +552,18 @@
 		}	} else { /*no results found*/ }	} else {echo 'error';}
 		mysqli_close($con);
 		return $userId;
+	}
+	
+	function GetEmailByUserId($UserId)
+	{
+		include_once 'Database.php';
+		$con = Open(); $email = 0;
+		$query = "SELECT usr_email FROM tblUser WHERE usr_id = $UserId";
+		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
+			$email = $row['usr_email'];
+		}	} else { /*no results found*/ }	} else {echo 'error';}
+		mysqli_close($con);
+		return $email;
 	}
 
 	function GetImage($ImageId)

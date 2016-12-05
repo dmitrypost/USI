@@ -16,15 +16,18 @@
 			{
 				case 'Approve':	
 					$ProjectId = GetProjectIdByProjectHistoryId($Value);
-					$query = "UPDATE tblProjectHistory SET pjh_approved = TRUE WHERE pjh_id = $Value";
+					
 					$query2 = "
 					UPDATE tblProject SET 
 						pjt_body = (SELECT pjh_body FROM tblProjectHistory WHERE pjh_id = $Value), 
-						pjt_description = (SELECT pjh_description FROM tblProjectHistory WHERE pjh_id = $Value)	WHERE pjt_id = $ProjectId";
+						pjt_description = (SELECT pjh_description FROM tblProjectHistory WHERE pjh_id = $Value),
+						pjt_name = (SELECT pjh_name FROM tblProjectHistory WHERE pjh_id = $Value) 
+					WHERE pjt_id = $ProjectId";
 					$query3 = "
 					UPDATE tblRole SET rol_rst_id = $NormalRoleId WHERE rol_pjt_id = $ProjectId";
-					if (QuickQuery($query) && QuickQuery($query2) && QuickQuery($query3))
-					{
+					if (QuickQuery($query2) && QuickQuery($query3))
+					{	
+						QuickQuery("UPDATE tblProjectHistory SET pjh_approved = TRUE WHERE pjh_id = $Value");
 						echo "<p class='alert-box success'>The project was approved successfully!</p>";	
 					}
 					else
@@ -49,9 +52,9 @@
 				
 					$hidden = ""; //make div visible
 					$ProjectId = GetProjectIdByProjectHistoryId($Value);
-					$query = "SELECT pjt_name, pjh_body, pjh_description FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id WHERE pjh_id = $Value";
+					$query = "SELECT pjh_name, pjh_body, pjh_description FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id WHERE pjh_id = $Value";
 					if ($result = mysqli_query($con, $query)){ if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
-						$Title = $row['pjt_name'];
+						$Title = $row['pjh_name'];
 						$Description = $row['pjh_description'];
 						$Body = $row['pjh_body'];
 					}}}
@@ -87,20 +90,21 @@
 		echo "<select id='slt_selected' class='w100percent' onChange='GoToPage(\"ProjectApprovals\",\"Select\",$(\"#slt_selected\").val(),\"\")'>
 				<option></option>";
 		  $con = open();
-		  $query = "SELECT pjt_name, pjh_id, pjh_modified, usr_fname FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id INNER JOIN tblUser ON tblProjectHistory.pjh_usr_id = tblUser.usr_id WHERE pjh_approved IS NULL";
+		  $query = "SELECT pjt_id, pjt_name, pjh_id, pjh_modified, usr_fname FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id INNER JOIN tblUser ON tblProjectHistory.pjh_usr_id = tblUser.usr_id WHERE pjh_approved IS NULL";
 		  if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 		  while($row = mysqli_fetch_assoc( $result)) {
 			  if ($Value == $row['pjh_id'])
 			  {
-				  echo "<option value=".$row['pjh_id']." selected>".$row['pjt_name']." ON ".$row['pjh_modified']." BY ".$row['usr_fname']."</option>";
+				  echo "<option value=".$row['pjh_id']." data='".$row['pjt_id']."' selected>".$row['pjt_name']." ON ".$row['pjh_modified']." BY ".$row['usr_fname']."</option>";
 			  }
 			  else
 			  {
-				  echo "<option value=".$row['pjh_id'].">".$row['pjt_name']." ON ".$row['pjh_modified']." BY ".$row['usr_fname']."</option>";
+				  echo "<option value=".$row['pjh_id']." data='".$row['pjt_id']."'>".$row['pjt_name']." ON ".$row['pjh_modified']." BY ".$row['usr_fname']."</option>";
 			  }
 		  }
 		  } else { /*no results found*/ }
 		  } else {echo 'failed to get project approvals';}
+		
 		echo "</select>
 		<hr>
 		<div id='div_PendingChanges' class='$hidden'>
@@ -111,12 +115,13 @@
 			<hr>
 			<button onClick='GoToPage(\"ProjectApprovals\",\"Approve\",$(\"#slt_selected option:selected\").val(),\"\")' value='Approve'>Approve</button>
 			<button onClick='GoToPage(\"ProjectApprovals\",\"Deny\",$(\"#slt_selected option:selected\").val(),\"\")' value='Approve'>Deny</button>
+			<button onClick='GoToPage(\"EditProject\",\"\",$(\"#slt_selected option:selected\").attr(\"data\"),\"\")'>Edit</button>
 		</div>
 		";
 		mysqli_close($con);
 	}
 	else
 	{
-		"<p class='alert-box error'>Access Denied!</p>";	
+		echo "<p class='alert-box error'>Access Denied!</p>";	
 	}
 ?>

@@ -307,3 +307,4 @@ button, .button {
 
 .in-line {	display:inline-flex;	}
 .no-wrap { 	white-space:nowrap;	}
+.flex { display:flex; }

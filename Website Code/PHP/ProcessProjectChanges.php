@@ -21,24 +21,27 @@
 			$body = 		mysqli_real_escape_string($con,trim(strip_tags($_POST['body'])));	
 			$AddedParticipants = mysqli_real_escape_string($con,trim(strip_tags($_POST['AddedParticipants'])));	
 			
+			//update the non-tracked changes
+			$query = "UPDATE tblProject SET pjt_year = $year, pjt_mgr_id = $majorId WHERE pjt_id = $projectId";
+			
 			
 			// check to see if there is existing tblProjectHistory that's not approved first
 			$ProjectHistoryId = 0;
 			
-			$query2 = "INSERT INTO tblProjectHistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$description','$body',$UserId,$projectId,NOW());";
+			$query2 = "INSERT INTO tblProjectHistory (pjh_name,pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$title','$description','$body',$UserId,$projectId,NOW());";
 			
-			$query = "SELECT pjh_id FROM tblProjectHistory WHERE pjh_pjt_id = $projectId AND pjh_approved IS NULL";
-			if ($result = mysqli_query($con, $query))
+			$query3 = "SELECT pjh_id FROM tblProjectHistory WHERE pjh_pjt_id = $projectId AND pjh_approved IS NULL";
+			if ($result = mysqli_query($con, $query3))
 			{ 	if (mysqli_num_rows($result) > 0)
 				{	while($row = mysqli_fetch_assoc( $result)) 
 					{
 						$ProjectHistoryId = $row['pjh_id']; // change the query2 only if there is an existing edit pending for approval
-						$query2 = "UPDATE tblProjectHistory pjh_description = '$description', pjh_body = '$body',pjh_usr_id = $UserId,pjh_modified = NOW() WHERE pjh_pjt_id = $ProjectHistoryId";
+						$query2 = "UPDATE tblProjectHistory SET pjh_name = '$title', pjh_description = '$description', pjh_body = '$body',pjh_usr_id = $UserId,pjh_modified = NOW() WHERE pjh_pjt_id = $ProjectHistoryId";
 					}
 				}
 			}
 			
-			if (QuickQuery($query2))
+			if (QuickQuery($query2) && QuickQuery($query))
 			{
 				//process the participants...
 				if (strlen($AddedParticipants) > 0 )
@@ -54,17 +57,17 @@
 							$lname = explode(":",$PData[1]); $lname = $lname[1];
 							$email = explode(":",$PData[2]); $email = $email[1];
 							$role = explode(":",$PData[3]); $role = $role[1];
-							if (ParticipantDataValid($fname,$lname,$email,$role,$lastProjectId))
+							if (ParticipantDataValid($fname,$lname,$email,$role,$projectId))
 							{
 								// proceed
 								if (GetUserIdByEmail($email) != 0) //user already registered
 								{
-									AddRegisteredParticipant($email,$role,$lastProjectId);
+									AddRegisteredParticipant($email,$role,$projectId);
 									echo "<p class='alert-box notice'>Participant with the email $email is already registered. Added to project with the role of $role.</p>";		
 								}
 								else
 								{
-									AddUnregisteredParticipant($fname,$lname,$email,$role,$lastProjectId);	
+									AddUnregisteredParticipant($fname,$lname,$email,$role,$projectId);	
 									echo "<p class='alert-box notice'>Participant with the email $email is not registered. An email has been sent to them containing login information.</p>";
 								}							
 							}
@@ -80,6 +83,7 @@
 			else
 			{
 				echo "<p class='alert-box error'>There was an error in processing the changes. Please try again.</p>";
+				echo $query2;
 			}
 			
 		}
