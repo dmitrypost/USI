@@ -37,7 +37,7 @@
 		<?php
             include_once 'Database.php';
             $con = open();
-            $query = "SELECT clg_id, clg_name FROM tblCollege ";
+            $query = "SELECT clg_id, clg_name FROM tblcollege ";
             if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
             while($row = mysqli_fetch_assoc( $result)) {
                 echo "<option value=".$row['clg_id'].">".$row['clg_name']."</option>";
@@ -52,7 +52,7 @@
     	<?php
 			include_once 'Database.php';
 			$con = open();
-			$query = "SELECT mgr_clg_id, mgr_name FROM tblMajor";
+			$query = "SELECT mgr_clg_id, mgr_name FROM tblmajor";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0 ) { while($row = mysqli_fetch_assoc($result)){
 				echo "<option value=".$row['mgr_clg_id'].">".$row['mgr_name']."</option>";
 			}
@@ -63,6 +63,6 @@
     </select>
                 
 	<br><input class="button" type="button" value="Submit" onClick="ProcessRegistration()">
-    <img src="http://www.w3schools.com/jsref/w3javascript.gif" onload="RegistrationFormLoaded()" width="0" height="0">
+    <img src="./Images/pixel.png" onload="RegistrationFormLoaded()" width="0" height="0">
 
 </form>

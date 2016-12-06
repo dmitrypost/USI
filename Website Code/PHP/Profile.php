@@ -6,7 +6,7 @@
 	if (!isset($_POST['value'])) { $uid = 2; }
 	else{ $uid = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); }
 	//query
-	$query = "SELECT usr_fname , usr_lname, usr_email, usr_picture, mgr_name, usr_graduate, usr_pageview, usr_phone, usr_linkedin, usr_id FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id =".$uid;
+	$query = "SELECT usr_fname , usr_lname, usr_email, usr_picture, mgr_name, usr_graduate, usr_pageview, usr_phone, usr_linkedin, usr_id FROM tbluser LEFT JOIN tblmajor ON tbluser.usr_mgr_id = tblmajor.mgr_id WHERE usr_id =".$uid;
 	//echo $query;
 	if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 	//user info found
@@ -41,7 +41,7 @@
 		<div class='row'>
 		<hr>
 	";
-	$query2 = "SELECT rol_name, pjt_name, pjt_description, mgr_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id LEFT JOIN tblMajor ON tblproject.pjt_mgr_id = tblMajor.mgr_id WHERE usr_id = $uid AND pjt_description != 'pending'";
+	$query2 = "SELECT rol_name, pjt_name, pjt_description, mgr_name, usr_id , pjt_year, pjt_id FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id LEFT JOIN tblmajor ON tblproject.pjt_mgr_id = tblmajor.mgr_id WHERE usr_id = $uid AND pjt_description != 'pending'";
 	if ($result2 = mysqli_query($con, $query2)){if (mysqli_num_rows($result2) > 0){
 		echo "<div class='center'><h4>Projects ".$row['usr_fname']." has participated in:</h4></div>";
 		while($row2 = mysqli_fetch_assoc( $result2)) {
@@ -63,7 +63,7 @@
 	<div class='view-count'>Profile views: $pageViews</div>
 	";
 	//increment pageview
-	QuickQuery("UPDATE tblUser SET usr_pageview = $pageViews +1 WHERE usr_id=".$uid);
+	QuickQuery("UPDATE tbluser SET usr_pageview = $pageViews +1 WHERE usr_id=".$uid);
 	}
 	} else {echo 'no user found with that id';}
 	} else {echo 'error';}

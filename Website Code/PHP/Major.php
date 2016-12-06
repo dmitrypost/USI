@@ -7,7 +7,7 @@
 		{
 			$MajorId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));
 			PageTitle(GetMajorNameById($MajorId));
-			$query = "SELECT usr_id, usr_fname, usr_lname, mgr_name, clg_name FROM tblUser INNER JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE mgr_id = $MajorId";
+			$query = "SELECT usr_id, usr_fname, usr_lname, mgr_name, clg_name FROM tbluser INNER JOIN tblmajor ON tbluser.usr_mgr_id = tblmajor.mgr_id INNER JOIN tblcollege ON tblmajor.mgr_clg_id = tblcollege.clg_id WHERE mgr_id = $MajorId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 				echo "<h6>Users with this major:</h6>";
 				while($row = mysqli_fetch_assoc( $result)) 
@@ -18,7 +18,7 @@
 			} else { echo 'error';}
 			echo "<br>";
 			//projects that belong to this major
-			$query = "SELECT pjt_id, pjt_name FROM tblProject WHERE pjt_mgr_id = $MajorId";
+			$query = "SELECT pjt_id, pjt_name FROM tblproject WHERE pjt_mgr_id = $MajorId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 				echo "<h6>Projects with this major:</h6>";
 				while($row = mysqli_fetch_assoc( $result)) 

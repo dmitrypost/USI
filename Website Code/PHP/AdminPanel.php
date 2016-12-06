@@ -1,5 +1,5 @@
 <?php
-	include_once 'Functions.php';
+	include_once './PHP/Functions.php';
 	PageTitle("Admin Panel");
 	if (isAdmin())
 	{

@@ -7,7 +7,7 @@
 		{
 			$path = "";
 			$con = Open();
-			$query = "SELECT fle_path FROM tblFile WHERE fle_id = $FileId";
+			$query = "SELECT fle_path FROM tblfile WHERE fle_id = $FileId";
 			if ($result = mysqli_query($con, $query))
 			{	if (mysqli_num_rows($result) > 0)
 				{	while($row = mysqli_fetch_assoc( $result)) 

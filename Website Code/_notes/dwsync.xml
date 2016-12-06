@@ -7,7 +7,7 @@
 <file name="Mail.php" server="C:/wamp64/www/USI/" local="131201491361921999" remote="131201491360000000" Dst="2" />
 <file name="go-pear.phar" server="C:/wamp64/www/USI/" local="131201491362422326" remote="131201491360000000" Dst="2" />
 <file name="go-pear.php" server="C:/wamp64/www/USI/" local="131201491362852611" remote="131201491360000000" Dst="2" />
-<file name="Body.php" server="C:/wamp64/www/" local="131254251034854369" remote="131254251030000000" Dst="1" />
+<file name="Body.php" server="C:/wamp64/www/" local="131254696118640769" remote="131254696110000000" Dst="1" />
 <file name="go-pear.phar" server="C:/wamp64/www/" local="131226088639542007" remote="131226088630000000" Dst="1" />
 <file name="go-pear.php" server="C:/wamp64/www/" local="131226088663908136" remote="131226088660000000" Dst="1" />
 <file name="Mail.php" server="C:/wamp64/www/" local="131230506448235265" remote="131230506440000000" Dst="1" />
@@ -17,12 +17,13 @@
 <file name="Index.html" server="C:/xampp/htdocs/" local="131230222136698101" remote="131230222130000000" Dst="1" />
 <file name="Body.php" server="C:/xampp/htdocs" local="131226045726227112" remote="131226045720000000" Dst="2" />
 <file name="Index.html" server="C:/xampp/htdocs" local="131226063834932108" remote="131226063830000000" Dst="2" />
-<file name="SidePanel.php" server="C:/wamp64/www/" local="131254048983485978" remote="131254048980000000" Dst="1" />
+<file name="SidePanel.php" server="C:/wamp64/www/" local="131254685163119521" remote="131254685160000000" Dst="1" />
 <file name="test.html" server="C:/wamp64/www/" local="131250272505629811" remote="131250272500000000" Dst="1" />
-<file name="Body.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131252991010000000" remote="131252991010000000" Dst="1" />
-<file name="go-pear.phar" server="collabra.usi.edu:7531//home/eproject/www/" local="131226088639542007" remote="131253315640000000" Dst="1" />
-<file name="go-pear.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131226088663908136" remote="131253315660000000" Dst="1" />
-<file name="Mail.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131230506448235265" remote="131230506440000000" Dst="1" />
-<file name="SidePanel.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131252870683150913" remote="131252870680000000" Dst="1" />
-<file name="test.html" server="collabra.usi.edu:7531//home/eproject/www/" local="131250272505629811" remote="131250272500000000" Dst="1" />
+<file name="Body.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131254650618043753" remote="131254650970000000" Dst="1" />
+<file name="go-pear.phar" server="collabra.usi.edu:7531//home/eproject/www/" local="131226088639542007" remote="131254587310000000" Dst="1" />
+<file name="go-pear.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131226088663908136" remote="131254587330000000" Dst="1" />
+<file name="Mail.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131230506448235265" remote="131254587340000000" Dst="1" />
+<file name="SidePanel.php" server="collabra.usi.edu:7531//home/eproject/www/" local="131254640273587268" remote="131254640430000000" Dst="1" />
+<file name="test.html" server="collabra.usi.edu:7531//home/eproject/www/" local="131250272505629811" remote="131254587340000000" Dst="1" />
+<file name="index.html" server="collabra.usi.edu:7531//home/eproject/www/" local="131254325383703665" remote="131254587330000000" Dst="1" />
 </dwsync>

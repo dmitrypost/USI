@@ -1,14 +1,14 @@
 <?php
+ini_set('display_errors', 1);
 	if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
 		$defaultPage = true;
-		foreach ($_POST as $key => $val) {
-		  //echo '<p>'.$key.'</p>';
+		foreach ($_POST as $key => $val) 
+		{
 		  $defaultPage = false;
 		  switch ($key)
 			{
 				case 's';
-					//echo "search";
 					include './PHP/Search.php';
 					break;
 				case 'logout':
@@ -27,10 +27,8 @@
 					include './PHP/ProcessProfileEdits.php';
 					break;
 				case 'ProcessProjectChanges':
+					echo "fdsaf";
 					include './PHP/ProcessProjectChanges.php';
-					break;
-				case 'FileUpload':
-					include './Templates/upload.html';
 					break;
 				case 'Page':
 					switch ($_POST['Page'])
@@ -72,23 +70,23 @@
 							include './PHP/AlterHomePage.php';
 							break;
 						case 'RunSQL':
-							include '/PHP/RunSQL.php';
+							include './PHP/RunSQL.php';
 							break;
 						case 'AlterCollegeMajor':
-							include '/PHP/AlterCollegeMajor.php';
+							include './PHP/AlterCollegeMajor.php';
 							break;
 						case 'ProjectApprovals':
-							include '/PHP/ProjectApprovals.php';
+							include './PHP/ProjectApprovals.php';
 							break;
 						case 'FileAction':
 							$type = strip_tags($_POST['Type']);
 							if ($type == 'Upload')
 							{
-								include '/PHP/FileUpload.php';
+								include './PHP/FileUpload.php';
 							}
 							elseif($type == 'Download')
 							{
-								include '/PHP/FileDownload.php';	
+								include './PHP/FileDownload.php';	
 							}
 							else
 							{
@@ -98,20 +96,21 @@
 							break;
 					}
 					break; // case 'Page'
-					case 'Action':
-						switch ($_POST['Action'])
-						{
-							case 'SetPassword':
-								include 'PHP/UserManagement.php';
-								break;
-						}
-						break; // case 'Action'
+				case 'Action':
+					switch ($_POST['Action'])
+					{
+						case 'SetPassword':
+							include './PHP/UserManagement.php';
+							break;
+					}
+					break; // case 'Action'
 
 			}
-			break;//only process first submitted variable
+			//break;//only process first submitted variable
 		}
 		if ($defaultPage)
 		{
+			echo "1";
 			include './PHP/Default.php';
 		}
 	}

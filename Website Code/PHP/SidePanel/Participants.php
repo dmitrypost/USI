@@ -6,11 +6,11 @@
 		 	echo '<p>'.$key.'</p>';
 		} */
 		
-		include_once '/../Functions.php';
+		include_once './PHP/Functions.php';
 		
 		$con = Open();
 		if (!isset($_POST['value'])) { $projectID = 1; } else{ $projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); }
-		$query = "SELECT usr_id, usr_picture, usr_fname, usr_lname, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id =".$projectID;
+		$query = "SELECT usr_id, usr_picture, usr_fname, usr_lname, rol_name FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id WHERE rol_pjt_id =".$projectID;
 		
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 			echo "<p>

@@ -35,7 +35,7 @@
 		function FormattedTableUsers()
 		{
 			$con = Open();
-			$query = "SELECT usr_id, usr_fname, usr_lname, usr_email, usr_phone, usr_admin FROM tblUser";
+			$query = "SELECT usr_id, usr_fname, usr_lname, usr_email, usr_phone, usr_admin FROM tbluser";
 			$html = "";
 			if ($result = mysqli_query($con,$query))
 			{ if (mysqli_num_rows($result)> 0)

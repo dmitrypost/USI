@@ -75,9 +75,26 @@ var uri = "/";
 function UpdateAddressBar(urlPath)
 {
 	"use strict";
+	if (IsServer()) 
+	{ 
+		if (!PathContains(urlPath,'/~eproject/')) 
+		{	urlPath = '/~eproject'+urlPath;						} 
+	}
 	uri = urlPath;
 	window.history.pushState({"html":"","pageTitle":""},"", urlPath);
 	//window.location.hash = urlPath;
+}
+
+function IsServer()
+{	"use strict";
+	if (window.location.hostname === 'collabra.usi.edu')
+	{ return true; } else { return false; } 
+}
+
+function PathContains(path,content)
+{	"use strict";
+	//if path contains /~eproject
+	return path.includes(content);	
 }
 
 //clears login information
@@ -111,7 +128,7 @@ function getRegisterLoginUserLinks()
     var request;
 	var serializedData = "" ;
 	request = $.ajax({
-		url: "PHP/GetLoginLinks.php",
+		url: "./PHP/GetLoginLinks.php",
 		type: "post",
 		data: serializedData
 	});
@@ -136,7 +153,7 @@ function getBody()
 	"use strict"; //jshint unused:false
     //window.location.search is only the ?= ... part
 	var variables = window.location.search;
-    var request = $.ajax({ url: "Body.php", type: "post", data: variables.substring(1) });
+    var request = $.ajax({ url: "./Body.php", type: "post", data: variables.substring(1) });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
 		getSidePanel();
@@ -152,7 +169,7 @@ function getBody()
 function Logout()
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "logout" });
+	var request = $.ajax({url:"./Body.php",type: "post", data: "logout" });
     request.done(function (response, textStatus, jqXHR) {
     	getRegisterLoginUserLinks();
     });
@@ -167,7 +184,7 @@ function Logout()
 function showRegister()
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "register" });
+	var request = $.ajax({url:"./Body.php",type: "post", data: "register" });
     request.done(function (response, textStatus, jqXHR) {
     	replaceHtml('BodyPanel',response);
 		UpdateAddressBar("/?register");
@@ -187,7 +204,7 @@ function ProcessRegistration()
 	var data = "registerForm&firstname=" + $('#firstname').val() + "&lastname=" + $('#lastname').val() + "&email=" + $('#email').val() + "&password=" + $('#password').val() + "&college=" + $("#slt_college option:selected").text() + "&major=" + $('#slt_major option:selected').text();
 
 	request = $.ajax({
-		url: "Body.php",
+		url: "./Body.php",
 		type: "post",
 		data: data
 	});
@@ -211,7 +228,7 @@ function ProcessProfileChanges()
 	var data = "processProfileEdits&firstname=" + $('#txt_firstName').val() + "&lastname=" + $('#txt_lastName').val() + "&email=" + $('#txt_email').val()  + "&major=" + $('#slt_major option:selected').text() + "&gradstatus=" + $('input[name=academicstatus]:checked').val() + "&phone=" + $('#txt_phone').val() + "&linkedin=" + $('#txt_linkedin').val() + "&userid=" + $('#hdn_userid').val();
 
 	request = $.ajax({
-		url: "Body.php",
+		url: "./Body.php",
 		type: "post",
 		data: data
 	});
@@ -219,7 +236,7 @@ function ProcessProfileChanges()
 	request.done(function (response, textStatus, jqXHR){
 		//replaceHtml('BodyPanel',response);
 		replaceHtml('BodyPanel',response);
-		UpdateAddressBar("/?processProfileEdits");
+		//UpdateAddressBar("/?processProfileEdits");
 	});
 	// Callback handler that will be called on failure
 	request.fail(function (jqXHR, textStatus, errorThrown){
@@ -232,16 +249,17 @@ function ProcessProjectChanges()
 {
 	"use strict"; //jshint unused:false
 	var request;
-    var data = "ProcessProjectChanges&projectid=" + $("#hdn_ProjectId").val() + "&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions();
+    var data = "ProcessProjectChanges&projectid=" + $("#hdn_ProjectId").val() + "&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text()  + "&description=" + $("#txt_description").val() + "&body=" + GetEditorHtml() + "&AddedParticipants=" + getParticipantAdditions();
 
 	request = $.ajax({
-		url: "Body.php",
+		url: "./Body.php",
 		type: "post",
 		data: data
 	});
 	// Callback handler that will be called on success
 	request.done(function (response, textStatus, jqXHR){
 		//replaceHtml('BodyPanel',response);
+		UnloadEditor('textarea');
 		replaceHtml('BodyPanel',response);
 		UpdateAddressBar("/?ProcessProjectChanges&value=");
 	});
@@ -258,7 +276,7 @@ function AjaxProfileChange(control,action,optional)
 
     var data = "Page=EditProfile&Action=" + action + "&Value=" + GetControlValue(control) + "&Optional=" + optional;
 	var request = $.ajax({
-		url: "Body.php",
+		url: "./Body.php",
 		type: "post",
 		data: data
 	});
@@ -284,7 +302,7 @@ function GoToPage(page,action,value,optional)
     if ((optional !== null) && (optional !== "") && (optional !== undefined)) {data = data + "&optional="+optional; }
 	//var data = "Page="+page+"&Action="+action+"&value="+value+"&optional="+optional;
 	var request = $.ajax({
-		url: "Body.php",
+		url: "./Body.php",
 		type: "post",
 		data: data
 	});
@@ -303,7 +321,7 @@ function SidePanelPage(data)
 {
 	"use strict"; //jshint unused:false
 	var request = $.ajax({
-		url: "SidePanel.php",
+		url: "./SidePanel.php",
 		type: "post",
 		data: data
 	});
@@ -361,10 +379,11 @@ function ProfileEditLoaded()
 /* exported EditProjectLoaded */
 function EditProjectLoaded()
 {
-	"use strict"; //jshint unused:false
+	"use strict"; //jshint unused:false 
 	Accordion();
 	FileAction($('#div_projectpictureform'),'','Upload','Project','ProjectPictureChange',$("#hdn_ProjectId").val(),''); //tells the div_projectpictureform to change into project picture change form
 	FileAction($('#div_fileform'),'','Upload','Project','UploadForm',$("#hdn_ProjectId").val(),''); //tells the div_fileform to to change into fileupload form
+	LoadEditor('textarea');
 }
 
 /* exported AddProjectLoaded */
@@ -374,12 +393,39 @@ function AddProjectLoaded()
 	Accordion();
 	replaceHtml('#div_projectpictureform',"Once project gets approved you may add a picture");
 	replaceHtml('#div_fileform',"Enabled after project gets approved");
+	LoadEditor('textarea');
 }
 
 function Accordion()
 {
 	"use strict"; //jshint unused:false
 	$( "#accordion" ).accordion();
+}
+
+function LoadEditor(elem)
+{	"use strict"; //jshint unused:false
+		tinymce.init({
+		selector: elem,
+		height: 500,
+		menubar: false,
+		plugins: [
+		'advlist autolink lists link image charmap print preview anchor autosave',
+		'searchreplace visualblocks code fullscreen',
+		'insertdatetime media table contextmenu paste code'
+		],
+		toolbar: 'save | undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+		content_css: ''
+		});
+}
+
+function UnloadEditor(elem)
+{	"use strict"; //jshint unused:false
+	tinymce.EditorManager.execCommand('mceRemoveEditor',true, elem);	
+}
+
+function GetEditorHtml()
+{	"use strict"; //jshint unused:false
+	return tinymce.get()[0].save();
 }
 
 /* exported onEnter */
@@ -397,7 +443,7 @@ function getSidePanel()
 	"use strict"; //jshint unused:false
     //window.location.search is only the ?= ... part
 	var variables = window.location.search;
-    var request = $.ajax({ url: "SidePanel.php", type: "post", data: variables.substring(1) });
+    var request = $.ajax({ url: "./SidePanel.php", type: "post", data: variables.substring(1) });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
     });
@@ -412,7 +458,7 @@ function getSidePanel()
 function UpdateSPMajorList(collgeid)
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"SidePanel.php",type: "post", data: "value=" + collgeid });
+	var request = $.ajax({url:"./SidePanel.php",type: "post", data: "value=" + collgeid });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('SidePanel', response);              //replaces the link with either the logged in user link or login link
     });
@@ -427,7 +473,7 @@ function UpdateSPMajorList(collgeid)
 function SubmitPasswordChanges()
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "post", data: "Page=EditPassword&oldpassword=" + $("#pass_current").val() + "&newpassword=" + $("#pass_new").val() + "&repeatedpassword=" + $("#pass_confirm").val() });
+	var request = $.ajax({url:"./Body.php",type: "post", data: "Page=EditPassword&oldpassword=" + $("#pass_current").val() + "&newpassword=" + $("#pass_new").val() + "&repeatedpassword=" + $("#pass_confirm").val() });
     request.done(function (response, textStatus, jqXHR) {
         replaceHtml('BodyPanel', response);              //replaces the link with either the logged in user link or login link
     });
@@ -442,7 +488,7 @@ function SubmitPasswordChanges()
 function GetFileContents(fileid)
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "get", data: "FileId="+fileid});
+	var request = $.ajax({url:"./Body.php",type: "get", data: "FileId="+fileid});
 	request.done(function (response,textStatus,jqXHR) {
 		console.log(response);
 	});
@@ -456,7 +502,7 @@ function GetFileContents(fileid)
 function FileDownload(fileid)
 {
 	"use strict"; //jshint unused:false
-	var request = $.ajax({url:"Body.php",type: "get", data: "FileId="+fileid+"&ReturnType=Path"});
+	var request = $.ajax({url:"./Body.php",type: "get", data: "FileId="+fileid+"&ReturnType=Path"});
 	request.done(function (response,textStatus,jqXHR) {
 		$.fileDownload(response)
         .done= (function () { console.log('File download a success!'); })
@@ -503,7 +549,7 @@ function ProcessProjectAddition()
     var data = "Page=AddProject&title=" + $('#txt_title').val() + "&year=" + $('#txt_year').val() + "&major=" + $('#slt_major option:selected').text() + "&description=" + $("#txt_description").val() + "&body=" + $('#txt_body').val() + "&AddedParticipants=" + getParticipantAdditions() + "&YourRole=" + $('#txt_CreatorsRole').val();
 
     request = $.ajax({
-        url: "Body.php",
+        url: "./Body.php",
         type: "post",
         data: data
     });
@@ -554,7 +600,7 @@ function FileAction(divelem,fileelem,type,page,action,value,optional)
 			formData.append("fle_userfile", blob);
 			
 			var request = new XMLHttpRequest();
-			request.open("POST", "Body.php");
+			request.open("POST", "./Body.php");
 			request.send(formData);
 			request.onreadystatechange = function() {
 				if (request.readyState === XMLHttpRequest.DONE) {
@@ -572,7 +618,7 @@ function FileAction(divelem,fileelem,type,page,action,value,optional)
 	if (next)
 	{
 		var request = new XMLHttpRequest();
-		request.open("POST", "Body.php");
+		request.open("POST", "./Body.php");
 		request.send(formData);
 		request.onreadystatechange = function() {
 			if (request.readyState === XMLHttpRequest.DONE) {
@@ -608,7 +654,7 @@ function SetPassword()
 {	"use strict";//jshint unused:false
 	var id = $("#hdn_SelectedUserId").val();
 	var pass = $("#pwd_newpassword").val();
-	var request = $.ajax({url:"Body.php",type: "post", data: "Action=SetPassword&Id="+id+"&Pass="+pass});
+	var request = $.ajax({url:"./Body.php",type: "post", data: "Action=SetPassword&Id="+id+"&Pass="+pass});
 	request.done(function (response,textStatus,jqXHR) {
 		//console.log(response);
 		replaceHtml('status',response);

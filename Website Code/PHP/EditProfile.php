@@ -30,7 +30,7 @@
 						";
 
 
-							$query = "SELECT usr_id, usr_fname, usr_lname, usr_picture, usr_graduate, usr_mgr_id, usr_phone, usr_email, usr_linkedin, mgr_name FROM tblUser LEFT JOIN tblMajor ON tblUser.usr_mgr_id = tblMajor.mgr_id WHERE usr_id = ".$ProfileId;
+							$query = "SELECT usr_id, usr_fname, usr_lname, usr_picture, usr_graduate, usr_mgr_id, usr_phone, usr_email, usr_linkedin, mgr_name FROM tbluser LEFT JOIN tblmajor ON tbluser.usr_mgr_id = tblmajor.mgr_id WHERE usr_id = ".$ProfileId;
 							if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 						echo "<input type='hidden' id='hdn_userid' value='".$row['usr_id']."'
 						<div id='accordion'><div id='accordion'>
@@ -67,7 +67,7 @@
 										<div id='editmajor'>
 											<select class='w300' id='slt_major'>";
 												$con2 = open(); $mgrid = $row['usr_mgr_id'];
-												$query2 = "SELECT mgr_clg_id, mgr_name, mgr_id FROM tblMajor";
+												$query2 = "SELECT mgr_clg_id, mgr_name, mgr_id FROM tblmajor";
 												if ($result2 = mysqli_query($con2, $query2)){if (mysqli_num_rows($result2) > 0 ) { while($row2 = mysqli_fetch_assoc($result2)){
 												  if ($mgrid == $row2['mgr_id'])
 												  {
@@ -100,8 +100,8 @@
 								</div>
 							<h3>Contact Information</h3>
 								<div>
-									Phone Number: <input type='text' class='w300' id='txt_phone' value=".$row['usr_phone']." maxlength='10'><br>
-									LinkedIn: <input type='text' class='w300' id='txt_linkedin' value=".$row['usr_linkedin']."><br>
+									Phone Number: <input type='text' class='w300' id='txt_phone' value='".$row['usr_phone']."' maxlength='10'><br>
+									LinkedIn: <input type='text' class='w300' id='txt_linkedin' value='".$row['usr_linkedin']."'><br>
 								</div>
 						</div></div>
 						";
@@ -117,7 +117,7 @@
 							mysqli_close($con);
 
 						echo "<br><input class='button' type='button' value='Submit' onClick='ProcessProfileChanges()'>
-						<img src='/images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
+						<img src='./Images/pixel.png' onload='ProfileEditLoaded()' width='0' height='0'>
 								";
 
 	}

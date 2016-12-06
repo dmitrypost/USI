@@ -6,7 +6,7 @@
 	{
 		$html = "";
 		$con = open();
-		$query = "SELECT clg_id, clg_name FROM tblCollege ";
+		$query = "SELECT clg_id, clg_name FROM tblcollege ";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 		while($row = mysqli_fetch_assoc( $result)) {
 			if ($SelectedId = $row['clg_id'])
@@ -26,7 +26,7 @@
 	{
 		$html = "";
 		$con = open();
-		$query = "SELECT mgr_id, mgr_name FROM tblMajor ";
+		$query = "SELECT mgr_id, mgr_name FROM tblmajor ";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 		while($row = mysqli_fetch_assoc( $result)) {
 			if ($SelectedId = $row['mgr_id'])
@@ -99,33 +99,33 @@
 		switch ($Action)
 		{
 			case 'AddCollege':
-				$query = "INSERT INTO tblCollege (clg_name) VALUES ('$Value')";
+				$query = "INSERT INTO tblcollege (clg_name) VALUES ('$Value')";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>College added successfully.</p>" : "<p class='alert-box error'>College failed to be added.</p>";
 				break;
 			case 'EditCollege':
 				if (!isset($_POST['optional'])) { echo "<p class='alert-box error'>Wrong number of arguments passed!</p>"; break; }
 				$Optional  = mysqli_real_escape_string($con,trim(strip_tags($_POST['optional'])));
-				$query = "UPDATE tblCollege SET clg_name = '$Optional' WHERE clg_id = '$Value'";
+				$query = "UPDATE tblcollege SET clg_name = '$Optional' WHERE clg_id = '$Value'";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>College updated successfully.</p>" : "<p class='alert-box error'>College failed to be updated.</p>";
 				break;
 			case 'RemoveCollege':
-				$query = "DELETE FROM tblCollege WHERE clg_id = $Value";
+				$query = "DELETE FROM tblcollege WHERE clg_id = $Value";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>College removed successfully.</p>" : "<p class='alert-box error'>College failed to be removed.</p>";
 				break;
 			case 'AddMajor':
 				if (!isset($_POST['optional'])) { echo "<p class='alert-box error'>Wrong number of arguments passed!</p>"; break; }
 				$Optional  = mysqli_real_escape_string($con,trim(strip_tags($_POST['optional'])));
-				$query = "INSERT INTO tblMajor (mgr_name) VALUES ('$Value')";
+				$query = "INSERT INTO tblmajor (mgr_clg_id,mgr_name) VALUES ('$Value','$Optional')";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>Major added successfully.</p>" : "<p class='alert-box error'>Major failed to be added.</p>";
 				break;
 			case 'EditMajor':
 				if (!isset($_POST['optional'])) { echo "<p class='alert-box error'>Wrong number of arguments passed!</p>"; break; }
 				$Optional  = mysqli_real_escape_string($con,trim(strip_tags($_POST['optional'])));
-				$query = "UPDATE tblMajor SET mgr_name = '$Optional' WHERE mgr_id = $Value";
+				$query = "UPDATE tblmajor SET mgr_name = '$Optional' WHERE mgr_id = $Value";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>Major updated successfully.</p>" : "<p class='alert-box error'>Major failed to be updated.</p>";
 				break;
 			case 'RemoveMajor':
-				$query = "DELETE FROM tblMajor WHERE mgr_id = $Value";
+				$query = "DELETE FROM tblmajor WHERE mgr_id = $Value";
 				echo (QuickQuery($query)) ? "<p class='alert-box success'>Major removed successfully.</p>" : "<p class='alert-box error'>Major failed to be removed.</p>";
 				break;
 			default:
@@ -135,4 +135,4 @@
   	}
 	echo PageHTML(); //displays the page
 ?>
-<img src="../Images/pixel.png" onload="Accordion()" width="0" height="0">
+<img src="./Images/pixel.png" onload="Accordion()" width="0" height="0">

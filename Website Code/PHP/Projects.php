@@ -17,7 +17,7 @@
 						$query = "SELECT rol_name, pjt_name, pjt_description, mgr_name, usr_id , pjt_year, pjt_id 
 						FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id 
 							INNER JOIN tblproject ON tblrole.rol_pjt_id = tblproject.pjt_id 
-							INNER JOIN tblMajor ON tblproject.pjt_mgr_id = tblMajor.mgr_id 
+							INNER JOIN tblmajor ON tblproject.pjt_mgr_id = tblmajor.mgr_id 
 						WHERE usr_id =$uid AND pjt_description != 'pending'";
 						if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 							FormattedProjectPreview($row['pjt_name'],$row['pjt_description'],$row['pjt_year'],$row['pjt_id'],true);
@@ -30,11 +30,11 @@
 						$query = "SELECT * FROM
 								(
 								SELECT rol_name, pjt_name, pjt_description, pjt_year, pjt_id 
-									FROM tblProject INNER JOIN tblrole ON tblrole.rol_pjt_id = tblproject.pjt_id 
+									FROM tblproject INNER JOIN tblrole ON tblrole.rol_pjt_id = tblproject.pjt_id 
 									WHERE rol_usr_id = $uid AND pjt_description != 'pending' 
 								UNION ALL
 								SELECT '' as rol_name , pjt_name, pjt_description, pjt_year, pjt_id 
-									FROM tblProject 
+									FROM tblproject 
 									WHERE pjt_description != 'pending'
 								) as t
 								GROUP BY
@@ -47,8 +47,8 @@
 				elseif($Value == "Pending")
 				{
 					$query = "SELECT pjt_id, pjt_name, pjt_year, pjh_description
-					FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id 
-						INNER JOIN tblUser ON tblProjectHistory.pjh_usr_id = tblUser.usr_id 
+					FROM tblprojecthistory INNER JOIN tblproject ON tblprojecthistory.pjh_pjt_id = tblproject.pjt_id 
+						INNER JOIN tbluser ON tblprojecthistory.pjh_usr_id = tbluser.usr_id 
 					WHERE pjh_approved IS NULL AND usr_id = $uid AND pjt_description = 'pending'";
 						if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 							FormattedProjectPreview($row['pjt_name'],$row['pjh_description'],$row['pjt_year'],$row['pjt_id'],true);
@@ -57,8 +57,8 @@
 				elseif($Value == "ChangesPending")
 				{
 					$query = "SELECT pjt_id, pjt_name, pjt_year, pjh_description 
-					FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id 
-						INNER JOIN tblUser ON tblProjectHistory.pjh_usr_id = tblUser.usr_id 
+					FROM tblprojecthistory INNER JOIN tblproject ON tblprojecthistory.pjh_pjt_id = tblproject.pjt_id 
+						INNER JOIN tbluser ON tblprojecthistory.pjh_usr_id = tbluser.usr_id 
 					WHERE pjh_approved IS NULL AND usr_id = $uid AND pjt_description != 'pending'";
 						if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 							FormattedProjectPreview($row['pjt_name'],$row['pjh_description'],$row['pjt_year'],$row['pjt_id'],true);

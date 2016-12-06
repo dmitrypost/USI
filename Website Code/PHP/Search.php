@@ -16,7 +16,7 @@
 
 //USERS
 	//query to check for user's
-		$query = "SELECT usr_id, usr_fname, usr_lname FROM tblUser WHERE (usr_fname LIKE '%$Search%' OR usr_lname LIKE '%$Search%')";
+		$query = "SELECT usr_id, usr_fname, usr_lname FROM tbluser WHERE (usr_fname LIKE '%$Search%' OR usr_lname LIKE '%$Search%')";
 		//link to user's profile
 		//echo $query;
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
@@ -33,7 +33,7 @@
 	//PROJECTS BY NAME
 		$NoProjects = true;
 		//query to check for projects
-		$query = "SELECT pjt_id, pjt_name, pjt_description FROM tblProject WHERE pjt_name LIKE '%$Search%'";
+		$query = "SELECT pjt_id, pjt_name, pjt_description FROM tblproject WHERE pjt_name LIKE '%$Search%'";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			echo "<h4>Projects</h4>"; $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
@@ -45,7 +45,7 @@
 	
 	//PROJECTS BY DESCRIPTION
 		;echo "<div>";
-		$query = "SELECT pjt_id, pjt_name, pjt_description FROM tblProject WHERE pjt_description LIKE '%$Search%'";
+		$query = "SELECT pjt_id, pjt_name, pjt_description FROM tblproject WHERE pjt_description LIKE '%$Search%'";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoProjects) {echo "<h4>Projects</h4>"; } $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
@@ -57,7 +57,7 @@
 		
 		echo "<div>";
 	//PROJECTS BY KEYWORD
-		$query = "SELECT pjt_id FROM tblProject INNER JOIN tblKeywordAssociation ON tblProject.pjt_key_id = tblKeywordAssociation.key_id INNER JOIN tblKeyword ON tblKeywordAssociation.key_kwd_id = tblKeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
+		$query = "SELECT pjt_id FROM tblproject INNER JOIN tblkeywordassociation ON tblproject.pjt_key_id = tblkeywordassociation.key_id INNER JOIN tblkeyword ON tblkeywordassociation.key_kwd_id = tblkeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoProjects) {echo "<h4>Projects</h4>"; } $NoProjects = false;
 			while($row = mysqli_fetch_assoc( $result)) {
@@ -72,7 +72,7 @@
 	//COLLEGES BY NAME
 		$NoColleges = true;
 		//query to check for college
-		$query = "SELECT clg_id, clg_name FROM tblCollege WHERE clg_name LIKE '%$Search%'";
+		$query = "SELECT clg_id, clg_name FROM tblcollege WHERE clg_name LIKE '%$Search%'";
 		echo "<div>";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoColleges) {echo "<h4>Colleges</h4>"; } $NoColleges = false;
@@ -85,7 +85,7 @@
 		
 		echo "<div>";
 	//COLLEGES BY KEYWORD
-		$query = "SELECT clg_id FROM tblCollege INNER JOIN tblKeywordAssociation ON tblCollege.clg_key_id = tblKeywordAssociation.key_id INNER JOIN tblKeyword ON tblKeywordAssociation.key_kwd_id = tblKeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
+		$query = "SELECT clg_id FROM tblcollege INNER JOIN tblkeywordassociation ON tblcollege.clg_key_id = tblkeywordassociation.key_id INNER JOIN tblkeyword ON tblkeywordassociation.key_kwd_id = tblkeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoColleges) {echo "<h4>Colleges</h4>"; } $NoColleges = false;
 			while($row = mysqli_fetch_assoc( $result)) {
@@ -99,7 +99,7 @@
 //MAJORS
 	//MAJORS BY NAME
 		$NoMajors = true;
-		$query = "SELECT mgr_id, mgr_name FROM tblMajor WHERE mgr_name LIKE '%$Search%'";
+		$query = "SELECT mgr_id, mgr_name FROM tblmajor WHERE mgr_name LIKE '%$Search%'";
 		echo "<div>";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;
@@ -111,7 +111,7 @@
 		} else {echo 'error';}
 	
 	//MAJORS BY KEYWORD
-		$query = "SELECT mgr_id, mgr_name FROM tblMajor INNER JOIN tblKeywordAssociation ON tblMajor.mgr_key_id = tblKeywordAssociation.key_id INNER JOIN tblKeyword ON tblKeywordAssociation.key_kwd_id = tblKeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
+		$query = "SELECT mgr_id, mgr_name FROM tblmajor INNER JOIN tblkeywordassociation ON tblmajor.mgr_key_id = tblkeywordassociation.key_id INNER JOIN tblkeyword ON tblkeywordassociation.key_kwd_id = tblkeyword.kwd_id WHERE kwd_name LIKE '%$Search%'";
 		echo "<div>";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 			if ($NoMajors) {echo "<h4>Majors</h4>"; } $NoMajors = false;

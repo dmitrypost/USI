@@ -5,7 +5,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $RoleId = 0;
-		$query = "SELECT rst_id FROM tblRoleState WHERE rst_name = '$RoleName'";
+		$query = "SELECT rst_id FROM tblrolestate WHERE rst_name = '$RoleName'";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$RoleId = $row['rst_id'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -17,7 +17,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $ProjectId = 0;
-		$query = "SELECT pjh_pjt_id FROM tblProjectHistory WHERE pjh_id = $ProjectHistoryId";
+		$query = "SELECT pjh_pjt_id FROM tblprojecthistory WHERE pjh_id = $ProjectHistoryId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$ProjectId = $row['pjh_pjt_id'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -29,7 +29,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $Count = 0;
-		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblProjectHistory WHERE pjh_approved IS NULL";
+		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblprojecthistory WHERE pjh_approved IS NULL";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$Count = $row['pjh_count'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -41,7 +41,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $Count = 0;
-		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblProjectHistory WHERE pjh_approved IS NULL";
+		$query = "SELECT COUNT(pjh_id) AS pjh_count FROM tblprojecthistory WHERE pjh_approved IS NULL";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$Count = $row['pjh_count'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -97,7 +97,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $ProjectId = 0;
-		$query = "SELECT pjt_id FROM tblProject ORDER BY pjt_id DESC LIMIT 1";
+		$query = "SELECT pjt_id FROM tblproject ORDER BY pjt_id DESC LIMIT 1";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$ProjectId = $row['pjt_id'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -109,7 +109,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $fileId = 0;
-		$query = "SELECT fle_id FROM tblFile WHERE fle_path = '$path' AND fle_pjt_id = $projectId";
+		$query = "SELECT fle_id FROM tblfile WHERE fle_path = '$path' AND fle_pjt_id = $projectId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$fileId = $row['fle_id'];
 		}	} else { /*no results found*/ }	} else {/* error with query */}
@@ -190,7 +190,7 @@
 					<select id='slt_major'>";
 					include_once 'Database.php';
 										$con = open();
-										$query = "SELECT mgr_id, mgr_name FROM tblMajor ";
+										$query = "SELECT mgr_id, mgr_name FROM tblmajor ";
 										if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 										while($row = mysqli_fetch_assoc( $result)) {
 												if ($row['mgr_id'] == $ProjectMajorId)
@@ -266,12 +266,12 @@
 		if ($AddEdit)
 		{
 			return "<input class='button' type='button' value='Submit' onClick='ProcessProjectAddition()'>
-			<img src='/images/pixel.png' onload='AddProjectLoaded()' width='0' height='0'>";
+			<img src='./Images/pixel.png' onload='AddProjectLoaded()' width='0' height='0'>";
 		}
 		else
 		{
 			return "<input class='button' type='button' value='Submit' onClick='ProcessProjectChanges()'>
-			<img src='/images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>";
+			<img src='./Images/pixel.png' onload='EditProjectLoaded()' width='0' height='0'>";
 		}
 	}
 
@@ -279,7 +279,7 @@
 	{
 		$con = Open();
 		$UserId = GetUserIdByEmail($email);
-		$query = "INSERT INTO tblRole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,'$role',(SELECT rst_id FROM tblRoleState WHERE rst_name = 'NORMAL'))";
+		$query = "INSERT INTO tblrole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,'$role',(SELECT rst_id FROM tblrolestate WHERE rst_name = 'NORMAL'))";
 		if (!QuickQuery($query))
 		{
 			
@@ -292,10 +292,10 @@
 	{
 		$randomPassword = uniqid();
 		$con = Open();
-		$query = "INSERT INTO tblUser (usr_fname,usr_lname,usr_email)VALUES('$firstName','$lastName','$email')";
+		$query = "INSERT INTO tbluser (usr_fname,usr_lname,usr_email)VALUES('$firstName','$lastName','$email')";
 		QuickQuery($query);
 		$UserId = GetUserIdByEmail($email);
-		$query = "INSERT INTO tblRole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,'$role',(SELECT rst_id FROM tblRoleState WHERE rst_name = 'NORMAL'))";
+		$query = "INSERT INTO tblrole (rol_usr_id,rol_pjt_id,rol_name,rol_rst_id)VALUES($UserId,$projectId,'$role',(SELECT rst_id FROM tblrolestate WHERE rst_name = 'NORMAL'))";
 		QuickQuery($query);
 		SetPassword($randomPassword,$UserId);
 		$emailMessage = "You have been added as a project participant, thus we have created a password for you to allow you to login and make changes to your profile and edit details about the project. Your login information is Email: $email Password: $randomPassword";
@@ -403,7 +403,7 @@
 		include_once 'Database.php';
 		$con = Open();
 		mysqli_set_charset ( $con, 'utf8mb4' );
-		$query = "UPDATE tblUser SET usr_password = '".$encryptedpassword."',usr_salt = '".$salt."' WHERE usr_id =".$userId;
+		$query = "UPDATE tbluser SET usr_password = '".$encryptedpassword."',usr_salt = '".$salt."' WHERE usr_id =".$userId;
 		//echo "<br>salt:$salt <br>encPass:$encryptedpassword <br>";
 		if (mysqli_query($con,(string)$query)) //run the query
 		{	//query ran successfully
@@ -428,7 +428,7 @@
 		$con = Open();
 		if (($userId != 0) AND (strlen($password) > 0))
 		{
-			$query = "SELECT usr_password, usr_salt FROM tblUser WHERE usr_id =".$userId;
+			$query = "SELECT usr_password, usr_salt FROM tbluser WHERE usr_id =".$userId;
 			if ($result = mysqli_query($con, $query))
 			{
 				if (mysqli_num_rows($result) > 0)
@@ -504,7 +504,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $mgr_id = 0;
-		$query = "SELECT mgr_id FROM tblMajor WHERE mgr_name = '".$majorName."'";
+		$query = "SELECT mgr_id FROM tblmajor WHERE mgr_name = '".$majorName."'";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$mgr_id = $row['mgr_id'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -516,7 +516,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $mgr_name = "";
-		$query = "SELECT mgr_name FROM tblMajor WHERE mgr_id = $majorId";
+		$query = "SELECT mgr_name FROM tblmajor WHERE mgr_id = $majorId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$mgr_name = $row['mgr_name'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -528,7 +528,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $clg_name = "";
-		$query = "SELECT clg_name FROM tblCollege WHERE clg_id = $collegeId";
+		$query = "SELECT clg_name FROM tblcollege WHERE clg_id = $collegeId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$clg_name = $row['clg_name'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -540,7 +540,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $userId = 0;
-		$query = "SELECT usr_id FROM tblUser WHERE usr_email = '".$email."'";
+		$query = "SELECT usr_id FROM tbluser WHERE usr_email = '".$email."'";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$userId = $row['usr_id'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -552,7 +552,7 @@
 	{
 		include_once 'Database.php';
 		$con = Open(); $email = 0;
-		$query = "SELECT usr_email FROM tblUser WHERE usr_id = $UserId";
+		$query = "SELECT usr_email FROM tbluser WHERE usr_id = $UserId";
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			$email = $row['usr_email'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -564,7 +564,7 @@
 	{
         include_once 'Database.php';
 		$con = Open();
-		$query = "SELECT img_image FROM tblImage WHERE img_id = ".$ImageId;
+		$query = "SELECT img_image FROM tblimage WHERE img_id = ".$ImageId;
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){while($row = mysqli_fetch_assoc( $result)) {
 			echo "<img src=".$row['img_image'].">";
 		}	} else { /*no results found*/ }	} else {echo 'error';}
@@ -577,7 +577,7 @@
     		session_start();
 		}
 		$con = Open();
-		$query = "SELECT ses_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
+		$query = "SELECT ses_id FROM tblsession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
 		$loggedin = false;
 		if ($result = mysqli_query($con, $query))
 		{
@@ -595,7 +595,7 @@
     		session_start();
 		}
 		$con = Open();
-		$query = "SELECT ses_id FROM tblSession INNER JOIN tblUser ON tblSession.ses_usr_id = tblUser.usr_id WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired) AND usr_admin = true";
+		$query = "SELECT ses_id FROM tblsession INNER JOIN tbluser ON tblsession.ses_usr_id = tbluser.usr_id WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired) AND usr_admin = true";
 		$bool = false;
 		if ($result = mysqli_query($con, $query))
 		{
@@ -612,7 +612,7 @@
     		session_start();
 		}
 		$con = Open();
-		$query = "SELECT ses_usr_id FROM tblSession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
+		$query = "SELECT ses_usr_id FROM tblsession WHERE ses_session ='".session_id()."' AND ISNULL(ses_expired)";
 		$uid = 0;
 		if ($result = mysqli_query($con, $query))
 		{

@@ -18,16 +18,16 @@
 					$ProjectId = GetProjectIdByProjectHistoryId($Value);
 					
 					$query2 = "
-					UPDATE tblProject SET 
-						pjt_body = (SELECT pjh_body FROM tblProjectHistory WHERE pjh_id = $Value), 
-						pjt_description = (SELECT pjh_description FROM tblProjectHistory WHERE pjh_id = $Value),
-						pjt_name = (SELECT pjh_name FROM tblProjectHistory WHERE pjh_id = $Value) 
+					UPDATE tblproject SET 
+						pjt_body = (SELECT pjh_body FROM tblprojecthistory WHERE pjh_id = $Value), 
+						pjt_description = (SELECT pjh_description FROM tblprojecthistory WHERE pjh_id = $Value),
+						pjt_name = (SELECT pjh_name FROM tblprojecthistory WHERE pjh_id = $Value) 
 					WHERE pjt_id = $ProjectId";
 					$query3 = "
-					UPDATE tblRole SET rol_rst_id = $NormalRoleId WHERE rol_pjt_id = $ProjectId";
+					UPDATE tblrole SET rol_rst_id = $NormalRoleId WHERE rol_pjt_id = $ProjectId";
 					if (QuickQuery($query2) && QuickQuery($query3))
 					{	
-						QuickQuery("UPDATE tblProjectHistory SET pjh_approved = TRUE WHERE pjh_id = $Value");
+						QuickQuery("UPDATE tblprojecthistory SET pjh_approved = TRUE WHERE pjh_id = $Value");
 						echo "<p class='alert-box success'>The project was approved successfully!</p>";	
 					}
 					else
@@ -37,11 +37,11 @@
 					break;
 				case 'Deny':
 					$ProjectId = GetProjectIdByProjectHistoryId($Value);
-					$query = "UPDATE tblProjectHistory SET pjh_approved = FALSE WHERE pjh_id = $Value; ";
-					$query2 = "UPDATE tblRole SET rol_rst_id = $RemovedRoleId WHERE rol_pjt_id = $ProjectId";
+					$query = "UPDATE tblprojecthistory SET pjh_approved = FALSE WHERE pjh_id = $Value; ";
+					$query2 = "UPDATE tblrole SET rol_rst_id = $RemovedRoleId WHERE rol_pjt_id = $ProjectId";
 					if (QuickQuery($query) && QuickQuery($query2))
 					{
-						echo "<p class='alert-box success'>The project was approved successfully!</p>";	
+						echo "<p class='alert-box success'>The project was denied successfully!</p>";	
 					}
 					else
 					{
@@ -52,7 +52,7 @@
 				
 					$hidden = ""; //make div visible
 					$ProjectId = GetProjectIdByProjectHistoryId($Value);
-					$query = "SELECT pjh_name, pjh_body, pjh_description FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id WHERE pjh_id = $Value";
+					$query = "SELECT pjh_name, pjh_body, pjh_description FROM tblprojecthistory INNER JOIN tblproject ON tblprojecthistory.pjh_pjt_id = tblproject.pjt_id WHERE pjh_id = $Value";
 					if ($result = mysqli_query($con, $query)){ if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 						$Title = $row['pjh_name'];
 						$Description = $row['pjh_description'];
@@ -71,7 +71,7 @@
 								<tr></tr><tr></tr><tr></tr><tr></tr>
 							</tr>
 							";
-					$query = "SELECT usr_fname, usr_lname, usr_email, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id = $ProjectId AND rol_rst_id = $PendingRemovalRoleId";
+					$query = "SELECT usr_fname, usr_lname, usr_email, rol_name FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id WHERE rol_pjt_id = $ProjectId AND rol_rst_id = $PendingRemovalRoleId";
 					if ($result = mysqli_query($con, $query)){ if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
 						$RemovalParticipantsHTML .= "<tr><td>".$row['usr_fname']."</td><td>".$row['usr_lname']."</td><td>".$row['usr_email']."</td><td>".$row['rol_name']."</td></tr>";
 					}}}
@@ -90,7 +90,7 @@
 		echo "<select id='slt_selected' class='w100percent' onChange='GoToPage(\"ProjectApprovals\",\"Select\",$(\"#slt_selected\").val(),\"\")'>
 				<option></option>";
 		  $con = open();
-		  $query = "SELECT pjt_id, pjt_name, pjh_id, pjh_modified, usr_fname FROM tblProjectHistory INNER JOIN tblProject ON tblProjectHistory.pjh_pjt_id = tblProject.pjt_id INNER JOIN tblUser ON tblProjectHistory.pjh_usr_id = tblUser.usr_id WHERE pjh_approved IS NULL";
+		  $query = "SELECT pjt_id, pjt_name, pjh_id, pjh_modified, usr_fname FROM tblprojecthistory INNER JOIN tblproject ON tblprojecthistory.pjh_pjt_id = tblproject.pjt_id INNER JOIN tbluser ON tblprojecthistory.pjh_usr_id = tbluser.usr_id WHERE pjh_approved IS NULL";
 		  if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 		  while($row = mysqli_fetch_assoc( $result)) {
 			  if ($Value == $row['pjh_id'])

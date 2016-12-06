@@ -1,16 +1,11 @@
 <?php
-	/* page is for processing the posted changes in the edit profile page.
-		sends the user id which gets checked against the logged in user id. 
-		If they do not match check if the logged in user is an admin. If not access deny.
-	*/
+	ini_set('display_errors', 1);
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		//display the data retrieved
-		/*
 		foreach ($_POST as $key => $val) {
 		  echo '<br>'.$key.':'.$_POST[$key];
 		}	
-		*/
-		include_once 'Functions.php';
+		
+		include_once './PHP/Functions.php';
 		$con = open();
 		if (isset($_POST['userid']) AND isset($_POST['firstname']) AND isset($_POST['lastname']) AND isset($_POST['email']) AND isset($_POST['gradstatus']) AND isset($_POST['major']) AND isset($_POST['phone']) AND isset($_POST['linkedin'])) 
 		{ 
@@ -34,7 +29,7 @@
 						break;
 					case 0:
 						//email not in use ... update email to submitted email
-							$query = "UPDATE tblUser SET usr_email = '".$email."' WHERE usr_id =".$usrid;
+							$query = "UPDATE tbluser SET usr_email = '".$email."' WHERE usr_id =".$usrid;
 							if (filter_var($email, FILTER_VALIDATE_EMAIL)) 
     						{
 								QuickQuery($query);
@@ -50,7 +45,7 @@
 						break;	
 				}
 				//processing of all other feilds 
-				$query = "UPDATE tblUser SET usr_fname = '$fname',usr_lname = '$lname',usr_phone = '$phone',usr_graduate = $gradS,usr_mgr_id=".GetMajorIdByName($major).", usr_linkedin ='$linkD' WHERE usr_id =$usrid";
+				$query = "UPDATE tbluser SET usr_fname = '$fname',usr_lname = '$lname',usr_phone = '$phone',usr_graduate = $gradS,usr_mgr_id=".GetMajorIdByName($major).", usr_linkedin ='$linkD' WHERE usr_id =$usrid";
 				if (mysqli_query($con, $query))
 				{
 					//updates executed correctly

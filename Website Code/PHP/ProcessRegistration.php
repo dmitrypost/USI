@@ -7,7 +7,7 @@
 		  echo '<br>'.$key.':'.$_POST[$key];
 		}	*/
 		
-		include_once 'Functions.php';
+		include_once './PHP/Functions.php';
 		$con = open();
 		if (isset($_POST['firstname']) AND isset($_POST['lastname']) AND isset($_POST['email']) AND isset($_POST['password']) AND isset($_POST['college']) AND isset($_POST['major'])) 
 		{ 
@@ -20,7 +20,7 @@
 			$major = mysqli_real_escape_string($con,trim(strip_tags($_POST['major']))); 
 			
 			//check to make sure the email is not in use yet...
-			$query = "SELECT 1 FROM tblUser WHERE usr_email = '".$email."'";
+			$query = "SELECT 1 FROM tbluser WHERE usr_email = '".$email."'";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 					//email exists... let user know and quit
 					echo "<p class='warrning'>The email entered is already in use. Please try again with a different email.</p>";
@@ -31,7 +31,7 @@
 
 					//get the id of the major selected
 					$mgrId;
-					$query2 = "SELECT mgr_id FROM tblMajor INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE mgr_name = '".$major."' AND clg_name ='".$colle."'";
+					$query2 = "SELECT mgr_id FROM tblmajor INNER JOIN tblcollege ON tblmajor.mgr_clg_id = tblcollege.clg_id WHERE mgr_name = '".$major."' AND clg_name ='".$colle."'";
 					
 					if ($result2 = mysqli_query($con, $query2))
 					{
@@ -40,8 +40,8 @@
 							while($row2 = mysqli_fetch_assoc($result2)) 
 							{
 								$mgrId = $row2['mgr_id'];
-								//now that we have everything we need we can go ahead and do an insert into tblUser for this newly registered user
-								$query3 = "INSERT INTO tblUser (usr_fname, usr_lname, usr_email, usr_mgr_id)VALUES('$fname','$lname','$email', $mgrId)";
+								//now that we have everything we need we can go ahead and do an insert into tbluser for this newly registered user
+								$query3 = "INSERT INTO tbluser (usr_fname, usr_lname, usr_email, usr_mgr_id)VALUES('$fname','$lname','$email', $mgrId)";
 								if (mysqli_query($con, $query3))
 								{
 									//query ran properly

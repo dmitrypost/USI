@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{ 
 			$CollegeId = mysqli_real_escape_string($con,trim(strip_tags($_POST['value'])));
 			PageTitle(GetCollegeNameById($CollegeId));
-			$query = "SELECT mgr_id, mgr_name, clg_name FROM tblMajor INNER JOIN tblCollege ON tblMajor.mgr_clg_id = tblCollege.clg_id WHERE clg_id = $CollegeId";
+			$query = "SELECT mgr_id, mgr_name, clg_name FROM tblmajor INNER JOIN tblcollege ON tblmajor.mgr_clg_id = tblcollege.clg_id WHERE clg_id = $CollegeId";
 			if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){
 				while($row = mysqli_fetch_assoc( $result)) 
 				{

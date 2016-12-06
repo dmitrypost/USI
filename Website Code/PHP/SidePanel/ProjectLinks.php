@@ -1,5 +1,5 @@
 <?php
-	include_once '/PHP/Functions.php';
+	include_once './PHP/Functions.php';
 	echo "<button class='alink' onClick='GoToPage(\"Projects\",\"\",\"All\",\"\")' title='All approved projects'>All projects</button><br>";
 	if (getUID() != 0)
 	{

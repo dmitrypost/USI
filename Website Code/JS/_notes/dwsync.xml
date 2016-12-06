@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="Javascript.js" server="C:/wamp64/www/" local="131254279482389271" remote="131254279480000000" Dst="1" />
+<file name="Javascript.js" server="C:/wamp64/www/" local="131254433903416328" remote="131254433900000000" Dst="1" />
 <file name="LateBindingFunctions.js" server="C:/wamp64/www/" local="131253413301809227" remote="131253413300000000" Dst="1" />
 <file name="foundation.min.js" server="C:/wamp64/www/" local="131244825712142027" remote="131244825710000000" Dst="1" />
 <file name="GoogleAnalytics.js" server="C:/wamp64/www/" local="131246666911105451" remote="131246666910000000" Dst="1" />
@@ -9,10 +9,13 @@
 <file name="jquery.min.js" server="C:/wamp64/www/" local="131244825713692316" remote="131244825710000000" Dst="1" />
 <file name="foundation.min.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131244825712142027" remote="131244825710000000" Dst="1" />
 <file name="GoogleAnalytics.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131246666911105451" remote="131246666910000000" Dst="1" />
-<file name="Javascript.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131253264160057072" remote="131253264160000000" Dst="1" />
+<file name="Javascript.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131254636649519163" remote="131254636590000000" Dst="1" />
 <file name="jquery-ui.min.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131244825712827503" remote="131244825710000000" Dst="1" />
 <file name="jquery.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131244825713222000" remote="131244825710000000" Dst="1" />
 <file name="jquery.min.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131244825713692316" remote="131244825710000000" Dst="1" />
-<file name="LateBindingFunctions.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131240810203182736" remote="131240810200000000" Dst="1" />
+<file name="LateBindingFunctions.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131253413301809227" remote="131253413300000000" Dst="1" />
 <file name="jquery.fileDownload.js" server="C:/wamp64/www/" local="131254256785304091" remote="131254256780000000" Dst="1" />
+<file name="tinymce.min.js" server="C:/wamp64/www/" local="131254320320108893" remote="131254320320000000" Dst="1" />
+<file name="jquery.fileDownload.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131254256785304091" remote="131254575470000000" Dst="1" />
+<file name="tinymce.min.js" server="collabra.usi.edu:7531//home/eproject/www/" local="131254320320108893" remote="131254575490000000" Dst="1" />
 </dwsync>

@@ -25,7 +25,7 @@
 	function FormatParticipants($ProjectID)
 	{
 		$con = Open();
-		$query = "SELECT usr_fname, usr_lname, usr_id, usr_email, rol_name FROM tblUser INNER JOIN tblRole ON tblUser.usr_id = tblRole.rol_usr_id WHERE rol_pjt_id = $ProjectID";
+		$query = "SELECT usr_fname, usr_lname, usr_id, usr_email, rol_name FROM tbluser INNER JOIN tblrole ON tbluser.usr_id = tblrole.rol_usr_id WHERE rol_pjt_id = $ProjectID";
 		$ParticipantsHTML = "";
 		if ($result = mysqli_query($con,$query))
 		{ if(mysqli_num_rows($result) > 0)
@@ -42,7 +42,7 @@
 	function FormatFiles($ProjectID)
 	{
 		$con = Open();
-		$query = "SELECT fle_id, fle_name FROM tblFile INNER JOIN tblProject ON tblFile.fle_pjt_id = tblProject.pjt_id = $ProjectID";
+		$query = "SELECT fle_id, fle_name FROM tblfile INNER JOIN tblproject ON tblfile.fle_pjt_id = tblproject.pjt_id = $ProjectID";
 		$FilesHTML = "";
 		if ($result = mysqli_query($con,$query))
 		{ if(mysqli_num_rows($result) > 0)
@@ -70,7 +70,7 @@
 		//variables
 		$ProjectTitle; $ProjectDescription; $ProjectBody; $ProjectMajorId;
 
-		$query = "SELECT pjh_description, pjh_body FROM tblProjectHistory WHERE pjh_id =$ProjectId AND pjh_approved = FALSE";
+		$query = "SELECT pjh_description, pjh_body FROM tblprojecthistory WHERE pjh_id =$ProjectId AND pjh_approved = FALSE";
 		if ($result = mysqli_query($con,$query))
 		{ if(mysqli_num_rows($result) > 0)
 			{
@@ -79,7 +79,7 @@
 					$ProjectDescription = $row['pjh_description'];
 					$ProjectBody = $row['pjh_body'];
 				}
-				$query2 = "SELECT pjt_name, pjt_mgr_id, pjt_picture, pjt_year FROM tblProject WHERE pjt_id = $ProjectId";
+				$query2 = "SELECT pjt_name, pjt_mgr_id, pjt_picture, pjt_year FROM tblproject WHERE pjt_id = $ProjectId";
 				if ($result2 = mysqli_query($con,$query2))
 				{ if (mysqli_num_rows($result2) > 0)
 					{
@@ -104,7 +104,7 @@
 			else
 			{
 				//project does not have any pending changes
-				$query = "SELECT pjt_name, pjt_description, pjt_body, pjt_mgr_id, pjt_year, pjt_picture FROM tblProject WHERE pjt_id = $ProjectId";
+				$query = "SELECT pjt_name, pjt_description, pjt_body, pjt_mgr_id, pjt_year, pjt_picture FROM tblproject WHERE pjt_id = $ProjectId";
 				if ($result = mysqli_query($con,$query))
 				{ if (mysqli_num_rows($result) > 0)
 					{ while ($row = mysqli_fetch_assoc($result))

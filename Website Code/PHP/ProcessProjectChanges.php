@@ -1,11 +1,13 @@
 <?php
+	ini_set('display_errors', 1);
+	echo "got to processing";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-		/*foreach ($_POST as $key => $val) {
+		foreach ($_POST as $key => $val) {
 		  echo '<br>'.$key.':'.$_POST[$key];
-		}	*/
+		}	
 		
-		include_once 'Functions.php';
+		include_once './PHP/Functions.php';
 		$con = open(); 
 		$UserId = getUID();
 		//Page:AddProject title: year:2016 major:Anthropology description: body: AddedParticipants:
@@ -22,21 +24,21 @@
 			$AddedParticipants = mysqli_real_escape_string($con,trim(strip_tags($_POST['AddedParticipants'])));	
 			
 			//update the non-tracked changes
-			$query = "UPDATE tblProject SET pjt_year = $year, pjt_mgr_id = $majorId WHERE pjt_id = $projectId";
+			$query = "UPDATE tblproject SET pjt_year = $year, pjt_mgr_id = $majorId WHERE pjt_id = $projectId";
 			
 			
-			// check to see if there is existing tblProjectHistory that's not approved first
+			// check to see if there is existing tblprojecthistory that's not approved first
 			$ProjectHistoryId = 0;
 			
-			$query2 = "INSERT INTO tblProjectHistory (pjh_name,pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$title','$description','$body',$UserId,$projectId,NOW());";
+			$query2 = "INSERT INTO tblprojecthistory (pjh_name,pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$title','$description','$body',$UserId,$projectId,NOW());";
 			
-			$query3 = "SELECT pjh_id FROM tblProjectHistory WHERE pjh_pjt_id = $projectId AND pjh_approved IS NULL";
+			$query3 = "SELECT pjh_id FROM tblprojecthistory WHERE pjh_pjt_id = $projectId AND pjh_approved IS NULL";
 			if ($result = mysqli_query($con, $query3))
 			{ 	if (mysqli_num_rows($result) > 0)
 				{	while($row = mysqli_fetch_assoc( $result)) 
 					{
 						$ProjectHistoryId = $row['pjh_id']; // change the query2 only if there is an existing edit pending for approval
-						$query2 = "UPDATE tblProjectHistory SET pjh_name = '$title', pjh_description = '$description', pjh_body = '$body',pjh_usr_id = $UserId,pjh_modified = NOW() WHERE pjh_pjt_id = $ProjectHistoryId";
+						$query2 = "UPDATE tblprojecthistory SET pjh_name = '$title', pjh_description = '$description', pjh_body = '$body',pjh_usr_id = $UserId,pjh_modified = NOW() WHERE pjh_pjt_id = $ProjectHistoryId";
 					}
 				}
 			}

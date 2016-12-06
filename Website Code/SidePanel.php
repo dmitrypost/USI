@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 	echo "<p>";
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') 
     { 
@@ -15,7 +16,7 @@
 					switch ($_POST['Page'])
 						{								
 							case 'Projects':
-								include 'PHP/SidePanel/ProjectLinks.php';
+								include './PHP/SidePanel/ProjectLinks.php';
 								break;	
 							case 'Project': //if the page is on project sidepanel shall show the participants
 								include './PHP/SidePanel/Participants.php';

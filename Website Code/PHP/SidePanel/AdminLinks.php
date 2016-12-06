@@ -1,5 +1,5 @@
 <?php
-	include_once '/PHP/Functions.php';
+	include_once './PHP/Functions.php';
 	if (isAdmin())
 	{
 		echo "

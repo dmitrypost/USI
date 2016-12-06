@@ -8,7 +8,7 @@
 	if (isset($_POST['value'])) {
 		$projectID = mysqli_real_escape_string($con,trim(strip_tags($_POST['value']))); 
 		$query = "SELECT pjt_id, pjt_picture, pjt_name, pjt_body, pjt_description, pjt_pageview, pjt_year, mgr_name, pjt_pageview 
-			FROM tblProject INNER JOIN tblmajor ON tblProject.pjt_mgr_id = tblmajor.mgr_id 
+			FROM tblproject INNER JOIN tblmajor ON tblproject.pjt_mgr_id = tblmajor.mgr_id 
 			WHERE pjt_id =".$projectID;
 		$pageview = 0;
 		if ($result = mysqli_query($con, $query)){if (mysqli_num_rows($result) > 0){ while($row = mysqli_fetch_assoc( $result)) {
@@ -21,7 +21,7 @@
 			$pageview = $row['pjt_pageview'];
 		}	} else { /*no results found*/ }	} else {echo 'error';}
 		
-		$query = "SELECT fle_id, fle_path FROM tblFile WHERE fle_pjt_id = $projectID";
+		$query = "SELECT fle_id, fle_path FROM tblfile WHERE fle_pjt_id = $projectID";
 		if ($result = mysqli_query($con, $query))
 		{	if (mysqli_num_rows($result) > 0)
 			{ 	echo "
@@ -45,7 +45,7 @@
 		<div class='view-count'>Project views: $pageview</div>
 		";
 		mysqli_close($con);
-		QuickQuery("UPDATE tblProject SET pjt_pageview = $pageview + 1 WHERE pjt_id=".$projectID."");
+		QuickQuery("UPDATE tblproject SET pjt_pageview = $pageview + 1 WHERE pjt_id=".$projectID."");
 		
 
 		 } else { mysqli_close($con); exit; }

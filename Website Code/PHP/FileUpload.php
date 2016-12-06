@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 						if (MoveUploadedFile($UploadFilePath))
 						{
 							rename($UploadFilePath,$NewFilePath);
-							$query = "INSERT INTO tblFile (fle_pjt_id,fle_path,fle_usr_id) VALUES ($ProjectId,'".ReplaceDirChar($NewFilePath)."',$UserId)";
+							$query = "INSERT INTO tblfile (fle_pjt_id,fle_path,fle_usr_id) VALUES ($ProjectId,'".ReplaceDirChar($NewFilePath)."',$UserId)";
 							if (QuickQuery($query))
 							{
 								//file is encoded in base64 and has metadata with it
@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					if (FileExists($TempFilePath))
 					{
 						rename($TempFilePath,$NewFilePath);
-						$query = "UPDATE tblFile SET fle_usr_id = $UserId WHERE fle_pjt_id = $ProjectId AND fle_path = '$NewFilePath'";
+						$query = "UPDATE tblfile SET fle_usr_id = $UserId WHERE fle_pjt_id = $ProjectId AND fle_path = '$NewFilePath'";
 							if (QuickQuery($query))
 							{
 								//file is encoded in base64 and has metadata with it
@@ -196,7 +196,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					//file does not exist so proceed with uploading
 						if (MoveUploadedFile($tempFilePath))
 						{
-							$query = "UPDATE tblProject SET pjt_picture = '".FileRead($tempFilePath)."' WHERE pjt_id = $ProjectId";
+							$query = "UPDATE tblproject SET pjt_picture = '".FileRead($tempFilePath)."' WHERE pjt_id = $ProjectId";
 							if (QuickQuery($query))
 							{
 								echo "<p class='alert-box success'>Project picture updated successfully!</p>";
@@ -243,7 +243,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 					//file does not exist so proceed with uploading
 					if (MoveUploadedFile($tempFilePath))
 					{
-						$query = "UPDATE tblUser SET usr_picture = '".FileRead($tempFilePath)."' WHERE usr_id = $ProfileId";
+						$query = "UPDATE tbluser SET usr_picture = '".FileRead($tempFilePath)."' WHERE usr_id = $ProfileId";
 						if (QuickQuery($query))
 						{
 							

@@ -26,9 +26,9 @@
 			
 			//add a project into tblproject (not visiable just a place holder
 			//add a pending change into project history
-			$query = "INSERT INTO tblProject (pjt_name,pjt_description,pjt_mgr_id,pjt_year)VALUES('$title','pending','$majorId','$year');"; 
+			$query = "INSERT INTO tblproject (pjt_name,pjt_description,pjt_mgr_id,pjt_year)VALUES('$title','pending','$majorId','$year');"; 
 			$lastProjectId = GetLastProjectId();
-			$query2 = "INSERT INTO tblProjectHistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$description','$body',$UserId,$lastProjectId,NOW());";
+			$query2 = "INSERT INTO tblprojecthistory (pjh_description,pjh_body,pjh_usr_id,pjh_pjt_id,pjh_modified)VALUES('$description','$body',$UserId,$lastProjectId,NOW());";
 			//add the project uploader as a participant
 			AddRegisteredParticipant(GetEmailByUserId($UserId),$CreatorsRole,$lastProjectId);
 			if (strlen($AddedParticipants) > 0 )

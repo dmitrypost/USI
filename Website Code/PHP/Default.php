@@ -1,3 +1,10 @@
+<?php
+	foreach ($_POST as $key => $val) 
+		{
+			echo "<p>$val:".$_POST[$val]."</p>";
+		}
+?>
+
 <div>
     <h1 id ="homePage_title">Project Repository</h1>
     <p>Welcome to the University of Southern Indiana Project Repository.  Here, you can find projects completed by students inside and outside of the classroom.</p>

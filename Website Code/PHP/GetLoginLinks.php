@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 		{
 			
 			
-			$query = "SELECT usr_fname, usr_id, usr_admin FROM tblUser INNER JOIN tblSession ON tblUser.usr_id = tblSession.ses_usr_id WHERE ses_session = '".session_id()."' AND ISNULL(ses_expired)";
+			$query = "SELECT usr_fname, usr_id, usr_admin FROM tbluser INNER JOIN tblsession ON tbluser.usr_id = tblsession.ses_usr_id WHERE ses_session = '".session_id()."' AND ISNULL(ses_expired)";
 			if ($result = mysqli_query($con, $query))
 			{
 				if (mysqli_num_rows($result) > 0)
@@ -44,7 +44,7 @@ ini_set('display_errors', 1);
 									<li><a onClick='GoToPage(\"AddProject\")' title='Add a new project'>Add Project</a></li>
 									<li><a onClick='GoToPage(\"Projects\",\"\",\"Pending\",\"\")' title='View projects that are not approved'>Pending Projects</a></li>					
 						";
-						$query = "SELECT pjt_id, pjt_name FROM tblProject INNER JOIN tblRole ON tblProject.pjt_id = tblRole.rol_pjt_id WHERE rol_usr_id = $UserId AND pjt_description != 'pending'";	
+						$query = "SELECT pjt_id, pjt_name FROM tblproject INNER JOIN tblrole ON tblproject.pjt_id = tblrole.rol_pjt_id WHERE rol_usr_id = $UserId AND pjt_description != 'pending'";	
 						if ($result = mysqli_query($con, $query))
 						{	if (mysqli_num_rows($result) > 0)
 							{	while ($row = mysqli_fetch_assoc($result))
